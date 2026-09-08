@@ -6,34 +6,33 @@
 }
 
 html {
-    scroll-behavior: smooth; /* Hace que el desplazamiento al hacer clic en los botones sea suave */
+    scroll-behavior: smooth;
 }
 
 body {
     font-family: 'Inter', sans-serif;
-    background-color: #0b0f19; /* Fondo oscuro elegante */
+    background-color: #07090e;
     color: #94a3b8;
     line-height: 1.6;
     overflow-x: hidden;
 }
 
-/* --- HERO SECTION (CABECERA) --- */
+/* --- HERO SECTION (CON EFECTO DE LUZ) --- */
 .hero {
-    min-height: 75vh;
+    min-height: 80vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: radial-gradient(circle at center, #1e293b 0%, #0b0f19 100%);
-    padding: 2rem;
-    border-bottom: 1px solid #1e293b;
-    position: relative;
+    background: radial-gradient(circle at 50% 20%, #1e1b4b 0%, #07090e 70%);
+    padding: 3rem 1.5rem;
+    border-bottom: 2px solid #1e293b;
 }
 
 .avatar-placeholder {
-    width: 130px;
-    height: 130px;
-    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    width: 140px;
+    height: 140px;
+    background: linear-gradient(135deg, #6366f1, #3b82f6, #06b6d4);
     color: white;
     border-radius: 50%;
     display: flex;
@@ -42,38 +41,42 @@ body {
     margin: 0 auto 1.5rem auto;
     font-weight: 700;
     font-size: 1.1rem;
-    box-shadow: 0 0 25px rgba(59, 130, 246, 0.4);
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    box-shadow: 0 0 30px rgba(99, 102, 241, 0.5);
+    transition: all 0.4s ease;
 }
 
-/* Efecto interactivo en la foto de perfil al pasar el mouse */
+/* Efecto súper dinámico en la foto de perfil */
 .avatar-placeholder:hover {
-    transform: scale(1.08) rotate(3deg);
-    box-shadow: 0 0 35px rgba(59, 130, 246, 0.7);
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 0 50px rgba(6, 182, 212, 0.8);
+    background: linear-gradient(135deg, #06b6d4, #3b82f6, #6366f1);
 }
 
 .hero h1 {
-    font-size: 2.8rem;
-    color: #f8fafc;
+    font-size: 3rem;
+    color: #ffffff;
     margin-bottom: 0.5rem;
     letter-spacing: -0.5px;
 }
 
+/* Texto destacado con colores vibrantes */
 .highlight {
-    color: #3b82f6;
-    text-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+    background: linear-gradient(90deg, #6366f1, #06b6d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 30px rgba(99, 102, 241, 0.4);
 }
 
 .tagline {
-    font-size: 1.15rem;
-    color: #94a3b8;
+    font-size: 1.2rem;
+    color: #cbd5e1;
     margin-bottom: 2rem;
-    max-width: 650px;
+    max-width: 700px;
     margin-left: auto;
     margin-right: auto;
 }
 
-/* --- BOTONES INTERACTIVOS --- */
+/* --- BOTONES MODERNOS E INTERACTIVOS --- */
 .social-links {
     display: flex;
     gap: 1rem;
@@ -81,42 +84,42 @@ body {
 }
 
 .btn {
-    padding: 0.75rem 1.8rem;
+    padding: 0.8rem 2rem;
     border-radius: 50px;
     text-decoration: none;
     font-weight: 600;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.3s ease;
     display: inline-block;
 }
 
 .btn.primary {
-    background-color: #3b82f6;
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
     color: white;
-    box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4);
+    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
 }
 
 .btn.primary:hover {
-    background-color: #2563eb;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.6);
+    background: linear-gradient(135deg, #4f46e5, #4338ca);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.7);
 }
 
 .btn.secondary {
-    background-color: rgba(30, 41, 59, 0.6);
+    background-color: #111827;
     color: #f8fafc;
-    border: 1px solid #334155;
-    backdrop-filter: blur(5px);
+    border: 2px solid #374151;
 }
 
 .btn.secondary:hover {
-    background-color: #1e293b;
-    border-color: #3b82f6;
-    transform: translateY(-3px);
+    background-color: #1f2937;
+    border-color: #6366f1;
+    color: #6366f1;
+    transform: translateY(-4px);
 }
 
-/* --- CONTENEDOR PRINCIPAL Y SECCIONES --- */
+/* --- CONTENEDOR Y SECCIONES --- */
 .container {
-    max-width: 850px;
+    max-width: 900px;
     margin: 0 auto;
     padding: 4rem 1.5rem;
 }
@@ -126,30 +129,30 @@ body {
 }
 
 .section h2 {
-    font-size: 2rem;
-    color: #f8fafc;
+    font-size: 2.2rem;
+    color: #ffffff;
     margin-bottom: 1.5rem;
     position: relative;
     display: inline-block;
 }
 
-/* Línea decorativa moderna debajo de los títulos */
+/* Línea de color brillante bajo los títulos */
 .section h2::after {
     content: '';
     display: block;
     width: 100%;
-    height: 3px;
-    background: linear-gradient(90deg, #3b82f6, transparent);
+    height: 4px;
+    background: linear-gradient(90deg, #6366f1, #06b6d4, transparent);
     margin-top: 0.5rem;
     border-radius: 2px;
 }
 
 .section p {
     color: #94a3b8;
-    font-size: 1.05rem;
+    font-size: 1.1rem;
 }
 
-/* --- HABILIDADES (TARJETAS INTERACTIVAS) --- */
+/* --- HABILIDADES (TARJETAS CON CAMBIO DE COLOR AL PASAR EL MOUSE) --- */
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -157,29 +160,27 @@ body {
 }
 
 .skill-card {
-    background-color: #121826;
-    border: 1px solid #1e293b;
+    background-color: #111827;
+    border: 2px solid #1f2937;
     padding: 1.2rem;
     text-align: center;
     border-radius: 12px;
     font-weight: 600;
     color: #e2e8f0;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
-/* Efecto hover al pasar el cursor sobre las tarjetas de habilidades */
 .skill-card:hover {
-    transform: translateY(-6px) scale(1.02);
-    border-color: #3b82f6;
-    background-color: #1e293b;
-    box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.25);
-    color: #ffffff;
+    transform: translateY(-6px);
+    border-color: #06b6d4;
+    background-color: #1e1b4b;
+    color: #06b6d4;
+    box-shadow: 0 10px 25px rgba(6, 182, 212, 0.3);
 }
 
-/* --- LÍNEA DE TIEMPO / TARJETAS DE PROYECTOS Y EDUCACIÓN --- */
+/* --- LÍNEA DE TIEMPO (PROYECTOS Y EDUCACIÓN) --- */
 .timeline {
-    border-left: 2px solid #1e293b;
+    border-left: 3px solid #374151;
     padding-left: 2rem;
     margin-left: 0.5rem;
 }
@@ -187,85 +188,85 @@ body {
 .timeline-item {
     position: relative;
     margin-bottom: 2.5rem;
-    background: #121826;
-    padding: 1.5rem;
-    border-radius: 12px;
-    border: 1px solid #1e293b;
+    background: #111827;
+    padding: 1.8rem;
+    border-radius: 14px;
+    border: 2px solid #1f2937;
     transition: all 0.3s ease;
 }
 
-/* Efecto al pasar el cursor por los proyectos o educación */
 .timeline-item:hover {
-    border-color: #3b82f6;
-    transform: translateX(6px);
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+    border-color: #6366f1;
+    transform: translateX(8px);
+    background: #111827;
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.25);
 }
 
 .timeline-item::before {
     content: '';
     position: absolute;
-    left: -2.6rem;
-    top: 1.8rem;
-    width: 14px;
-    height: 14px;
-    background-color: #3b82f6;
+    left: -2.75rem;
+    top: 2rem;
+    width: 16px;
+    height: 16px;
+    background-color: #06b6d4;
     border-radius: 50%;
-    border: 3px solid #0b0f19;
-    box-shadow: 0 0 10px #3b82f6;
+    border: 3px solid #07090e;
+    box-shadow: 0 0 12px #06b6d4;
 }
 
 .timeline-item h3 {
-    color: #f8fafc;
-    font-size: 1.3rem;
-    margin-bottom: 0.3rem;
+    color: #ffffff;
+    font-size: 1.4rem;
+    margin-bottom: 0.4rem;
 }
 
 .timeline-item .date {
     display: inline-block;
-    font-size: 0.85rem;
-    color: #60a5fa;
-    background: rgba(59, 130, 246, 0.1);
-    padding: 0.2rem 0.6rem;
-    border-radius: 4px;
+    font-size: 0.9rem;
+    color: #ffffff;
+    background: linear-gradient(135deg, #6366f1, #06b6d4);
+    padding: 0.2rem 0.8rem;
+    border-radius: 6px;
     margin-bottom: 0.8rem;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .timeline-item p {
-    color: #94a3b8;
+    color: #cbd5e1;
 }
 
-/* --- SECCIÓN DE CONTACTO --- */
+/* --- CONTACTO --- */
 .contacto {
     text-align: center;
-    background: linear-gradient(180deg, #121826 0%, #0b0f19 100%);
-    padding: 3rem;
-    border-radius: 16px;
-    border: 1px solid #1e293b;
+    background: linear-gradient(135deg, #111827 0%, #07090e 100%);
+    padding: 3.5rem;
+    border-radius: 20px;
+    border: 2px solid #1f2937;
 }
 
 .email-link {
     display: inline-block;
     margin-top: 1.2rem;
-    font-size: 1.15rem;
-    color: #60a5fa;
+    font-size: 1.2rem;
+    color: #06b6d4;
     text-decoration: none;
-    font-weight: 600;
-    transition: color 0.3s ease, transform 0.2s ease;
+    font-weight: 700;
+    transition: all 0.3s ease;
 }
 
 .email-link:hover {
-    color: #93c5fd;
+    color: #6366f1;
     transform: scale(1.05);
-    text-decoration: underline;
+    text-shadow: 0 0 15px rgba(6, 182, 212, 0.6);
 }
 
 /* --- PIE DE PÁGINA --- */
 footer {
     text-align: center;
     padding: 2.5rem;
-    background-color: #07090f;
-    color: #475569;
+    background-color: #040507;
+    color: #4b5563;
     font-size: 0.9rem;
-    border-top: 1px solid #121826;
+    border-top: 2px solid #111827;
 }
