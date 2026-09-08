@@ -270,3 +270,46 @@ footer {
     font-size: 0.9rem;
     border-top: 2px solid #111827;
 }
+
+/* --- BARRA DE NAVEGACIÓN SUPERIOR --- */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: rgba(7, 9, 14, 0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #1f2937;
+    z-index: 1000;
+}
+
+.nav-brand {
+    font-weight: 700;
+    color: #ffffff;
+    font-size: 1.1rem;
+}
+
+.nav-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: #cbd5e1;
+    background: rgba(31, 41, 55, 0.6);
+    padding: 0.3rem 0.8rem;
+    border-radius: 50px;
+    border: 1px solid #374151;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #10b981; /* Verde brillante */
+    border-radius: 50%;
+    box-shadow: 0 0 8px #10b981;
+    display: inline-block;
+}
