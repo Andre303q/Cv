@@ -15,7 +15,7 @@ body {
     color: #94a3b8;
     line-height: 1.6;
     overflow-x: hidden;
-    padding-top: 60px; /* Evita que la navbar tape la parte superior */
+    padding-top: 60px;
 }
 
 /* --- BARRA DE NAVEGACIÓN SUPERIOR --- */
@@ -73,7 +73,7 @@ body {
     border-bottom: 2px solid #1e293b;
 }
 
-/* ESTILO PARA TU FOTO REAL */
+/* FOTO DE PERFIL */
 .avatar-img {
     width: 140px;
     height: 140px;
@@ -138,6 +138,7 @@ body {
     display: flex;
     gap: 1rem;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .btn {
@@ -172,6 +173,20 @@ body {
     border-color: #6366f1;
     color: #6366f1;
     transform: translateY(-4px);
+}
+
+/* ESTILO DEL BOTÓN DE DESCARGAR CV */
+.cv-btn {
+    background-color: rgba(6, 182, 212, 0.1);
+    color: #06b6d4;
+    border: 2px solid #06b6d4;
+}
+
+.cv-btn:hover {
+    background-color: #06b6d4;
+    color: #07090e;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(6, 182, 212, 0.5);
 }
 
 /* --- CONTENEDOR Y SECCIONES --- */
@@ -234,7 +249,7 @@ body {
     box-shadow: 0 10px 25px rgba(6, 182, 212, 0.3);
 }
 
-/* --- LÍNEA DE TIEMPO (PROYECTOS Y EDUCACIÓN) --- */
+/* --- LÍNEA DE TIEMPO --- */
 .timeline {
     border-left: 3px solid #374151;
     padding-left: 2rem;
@@ -292,7 +307,7 @@ body {
     color: #cbd5e1;
 }
 
-/* ETIQUETAS DE TECNOLOGÍA EN PROYECTOS */
+/* ETIQUETAS DE TECNOLOGÍA */
 .project-tags {
     display: flex;
     gap: 0.5rem;
@@ -308,41 +323,6 @@ body {
     border-radius: 4px;
     border: 1px solid rgba(99, 102, 241, 0.3);
     font-weight: 500;
-}
-
-/* --- CONTACTO --- */
-.contacto {
-    text-align: center;
-    background: linear-gradient(135deg, #111827 0%, #07090e 100%);
-    padding: 3.5rem;
-    border-radius: 20px;
-    border: 2px solid #1f2937;
-}
-
-.email-link {
-    display: inline-block;
-    margin-top: 1.2rem;
-    font-size: 1.2rem;
-    color: #06b6d4;
-    text-decoration: none;
-    font-weight: 700;
-    transition: all 0.3s ease;
-}
-
-.email-link:hover {
-    color: #6366f1;
-    transform: scale(1.05);
-    text-shadow: 0 0 15px rgba(6, 182, 212, 0.6);
-}
-
-/* --- PIE DE PÁGINA --- */
-footer {
-    text-align: center;
-    padding: 2.5rem;
-    background-color: #040507;
-    color: #4b5563;
-    font-size: 0.9rem;
-    border-top: 2px solid #111827;
 }
 
 /* --- TARJETA DE GITHUB --- */
@@ -390,61 +370,86 @@ footer {
     }
 }
 
-/* --- CORRECCIONES DEFINITIVAS PARA MÓVILES --- */
+/* --- CONTACTO --- */
+.contacto {
+    text-align: center;
+    background: linear-gradient(135deg, #111827 0%, #07090e 100%);
+    padding: 3.5rem;
+    border-radius: 20px;
+    border: 2px solid #1f2937;
+}
+
+.email-link {
+    display: inline-block;
+    margin-top: 1.2rem;
+    font-size: 1.2rem;
+    color: #06b6d4;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.email-link:hover {
+    color: #6366f1;
+    transform: scale(1.05);
+    text-shadow: 0 0 15px rgba(6, 182, 212, 0.6);
+}
+
+/* --- BANNER FLOTANTE MÓVIL --- */
+.mobile-banner {
+    display: none;
+}
+
 @media (max-width: 768px) {
-    /* 1. Hace que la barra superior no tape el contenido de arriba */
-    body {
-        padding-top: 75px; 
-    }
-
-    .navbar {
+    .mobile-banner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: fixed;
+        bottom: 15px;
+        left: 15px;
+        right: 15px;
+        background: rgba(17, 24, 39, 0.95);
+        backdrop-filter: blur(10px);
+        color: #f8fafc;
         padding: 0.8rem 1rem;
+        border-radius: 12px;
+        border: 1px solid #4f46e5;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        font-size: 0.8rem;
+        z-index: 9999;
     }
 
-    .nav-brand {
-        font-size: 0.95rem;
+    .mobile-banner b {
+        color: #06b6d4;
     }
 
-    .nav-status {
-        font-size: 0.75rem;
-        padding: 0.2rem 0.5rem;
+    .close-banner {
+        background: none;
+        border: none;
+        color: #94a3b8;
+        font-size: 1.4rem;
+        cursor: pointer;
+        padding: 0 0.2rem 0 0.8rem;
+        line-height: 1;
     }
 
-    /* 2. Ajusta los márgenes generales en pantallas pequeñas */
-    .container {
-        padding: 1.5rem 0.8rem;
-    }
-
-    /* 3. Reduce el tamaño del título principal */
-    .hero h1 {
-        font-size: 1.8rem;
-    }
-
-    .tagline {
-        font-size: 0.95rem;
-    }
-
-    /* 4. SOLUCIÓN AL CORREO: Fuerza a que se ajuste y quepa perfecto dentro de la tarjeta */
-    .contacto {
-        padding: 2rem 1rem;
-        overflow-hidden: hidden;
+    .close-banner:hover {
+        color: #ffffff;
     }
 
     .email-link {
-        font-size: 0.8rem; /* Reduce el tamaño solo en móviles para que entre bien */
-        word-break: break-all; /* Obliga al texto largo a cortarse y pasar a la siguiente línea */
-        display: inline-block;
-        max-width: 100%;
-        padding: 0.2rem;
+        font-size: 0.9rem;
+        word-break: break-all;
     }
+}
 
-    /* 5. Asegura que las tarjetas y líneas de tiempo no se desborden */
-    .timeline {
-        padding-left: 1rem;
-        margin-left: 0.2rem;
-    }
-
-    .github-card {
-        padding: 1.5rem 1rem;
-    }
+/* --- PIE DE PÁGINA --- */
+footer {
+    text-align: center;
+    padding: 2.5rem;
+    background-color: #040507;
+    color: #4b5563;
+    font-size: 0.9rem;
+    border-top: 2px solid #111827;
 }
