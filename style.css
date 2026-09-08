@@ -344,3 +344,48 @@ footer {
     font-size: 0.9rem;
     border-top: 2px solid #111827;
 }
+
+/* --- TARJETA DE GITHUB --- */
+.github-card {
+    background-color: #111827;
+    border: 2px solid #1f2937;
+    padding: 2.5rem;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.github-card:hover {
+    border-color: #6366f1;
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+    transform: translateY(-4px);
+}
+
+.github-info h3 {
+    color: #ffffff;
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+}
+
+.github-info p {
+    color: #94a3b8;
+    font-size: 1rem;
+}
+
+.github-btn {
+    align-self: flex-start;
+}
+
+@media (min-width: 768px) {
+    .github-card {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .github-info {
+        max-width: 60%;
+    }
+}
