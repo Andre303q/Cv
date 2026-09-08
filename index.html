@@ -3,20 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Curriculum Vitae Web - Sebástian André García Bonilla</title>
-    <!-- Enlazamos la fuente Inter de Google Fonts para un diseño moderno -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <!-- Enlazamos tu archivo CSS -->
+    <title>Sebástian García | Portafolio & CV</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tu archivo CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <!-- BARRA DE NAVEGACIÓN SUPERIOR (Llena el espacio vacío de arriba) -->
+    <nav class="navbar">
+        <div class="nav-brand">Sebástian.dev</div>
+        <div class="nav-status">
+            <span class="status-dot"></span> Disponible para Prácticas
+        </div>
+    </nav>
+
     <!-- CABECERA / HERO SECTION -->
     <header class="hero">
         <div class="hero-content">
-            <div class="avatar-placeholder">Tu Foto</div>
+            <div class="avatar-placeholder">SG</div>
             <h1>Hola, soy <span class="highlight">Sebástian André García Bonilla</span></h1>
-            <p class="tagline">Estudiante en proceso de graduación / Apasionado por la Programación y el Desarrollo</p>
+            <p class="tagline">Estudiante de 5to Bachillerato en Computación | Apasionado por el Desarrollo Web y la Tecnología</p>
+            
+            <!-- Enlaces rápidos (GitHub, LinkedIn, Contacto) -->
+            <div class="hero-badges">
+                <span class="badge">📍 Guatemala</span>
+                <span class="badge">🎓 18 años</span>
+                <span class="badge">💻 Desarrollador Junior</span>
+            </div>
+
             <div class="social-links">
                 <a href="#contacto" class="btn primary">Contáctame</a>
                 <a href="#proyectos" class="btn secondary">Ver Proyectos</a>
@@ -30,7 +46,7 @@
         <!-- SOBRE MÍ -->
         <section id="sobre-mi" class="section">
             <h2>Sobre mí</h2>
-            <p>Actualmente soy un estudiante de 5to bachillerato en ciencias y letras orientado a computacion en proceso de graduación de 18 años, estudio en el Colegio San José de los Infantes. Soy amante de la programación, la música y el deporte en general. Me considero una persona bastante adaptable en el ámbito del trabajo, me gusta aprender cosas que no sé, investigar y llenarme de conocimiento para resolver problemas. Me gustaría poder formar parte de un equipo para aportar valor mientras sigo creciendo como persona y adquiriendo experiencia laboral y técnica.</p>
+            <p>Actualmente soy un estudiante de 5to bachillerato en ciencias y letras orientado a computación en proceso de graduación (18 años), estudio en el Colegio San José de los Infantes. Soy amante de la programación, la música y el deporte en general. Me considero una persona bastante adaptable en el ámbito del trabajo, me gusta aprender cosas que no sé, investigar y llenarme de conocimiento para resolver problemas. Me gustaría poder formar parte de un equipo para aportar valor mientras sigo creciendo como persona y adquiriendo experiencia laboral y técnica.</p>
         </section>
 
         <!-- EDUCACIÓN / FORMACIÓN -->
@@ -39,15 +55,15 @@
             <div class="timeline">
                 <div class="timeline-item">
                     <h3>Colegio San José de los Infantes</h3>
-                    <span class="date">En proceso de Graduación</span>
-                    <p>Cursando los últimos grados de formación académica con enfoque en el desarrollo personal, disciplina y bases de estudio.</p>
+                    <span class="date">5to Bachillerato en Computación • En proceso de Graduación</span>
+                    <p>Cursando los últimos grados de formación académica con enfoque en el desarrollo personal, disciplina y bases sólidas en computación y sistemas.</p>
                 </div>
             </div>
         </section>
 
         <!-- HABILIDADES -->
         <section id="habilidades" class="section">
-            <h2>Habilidades</h2>
+            <h2>Habilidades Técnicas y Blandas</h2>
             <div class="skills-grid">
                 <div class="skill-card">HTML & CSS</div>
                 <div class="skill-card">JavaScript</div>
@@ -59,19 +75,25 @@
             </div>
         </section>
 
-        <!-- EXPERIENCIA / PROYECTOS -->
+        <!-- PROYECTOS (Con etiquetas de tecnologías para rellenar y verse profesional) -->
         <section id="proyectos" class="section">
             <h2>Proyectos y Prácticas</h2>
             <div class="timeline">
                 <div class="timeline-item">
-                    <h3>RGPracticas / AppWeb </h3>
+                    <h3>RGPracticas / AppWeb</h3>
                     <span class="date">2026</span>
-                    <p>Es una AppWeb que realizamos en tiempos de practias, que funciona como un sistema de marcaje de registros de horario para los practicantes bastante sencillo y funcional.</p>
+                    <p>AppWeb que realizamos en tiempos de prácticas, que funciona como un sistema de marcaje de registros de horario para los practicantes, siendo bastante sencillo y funcional.</p>
+                    <div class="project-tags">
+                        <span>HTML</span><span>CSS</span><span>JavaScript</span>
+                    </div>
                 </div>
                 <div class="timeline-item">
-                    <h3>RevelionShop / Sitio Web </h3>
+                    <h3>RevelionShop / Sitio Web</h3>
                     <span class="date">2025</span>
-                    <p>OActividad realizada en mi antepenultimo año de estudios, web donde como mision tenia el hacer una tienda online que pudiera crearle factura, suma total y que fuera interactiva.</p>
+                    <p>Actividad realizada en mi antepenúltimo año de estudios, web cuya misión era hacer una tienda online interactiva capaz de calcular la suma total y generar una factura.</p>
+                    <div class="project-tags">
+                        <span>HTML</span><span>CSS</span><span>JavaScript</span>
+                    </div>
                 </div>
             </div>
         </section>
@@ -79,7 +101,7 @@
         <!-- CONTACTO -->
         <section id="contacto" class="section contacto">
             <h2>¡Hablemos!</h2>
-            <p>¿Necesitas una mano o alguien que este dispuesto a trabajar con entusiasmo y que busque crecer en experiencias? Escríbeme:</p>
+            <p>¿Necesitas una mano o alguien dispuesto a trabajar con entusiasmo y que busque crecer en experiencia? Escríbeme:</p>
             <a href="mailto:graciabonillasebastianandre@gmail.com" class="email-link">graciabonillasebastianandre@gmail.com</a>
         </section>
 
