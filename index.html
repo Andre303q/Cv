@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sebástian García | Portafolio & CV</title>
-    <!-- Google Fonts: Plus Jakarta Sans e Inter -->
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <!-- Tu archivo CSS -->
     <link rel="stylesheet" href="style.css">
@@ -18,17 +18,65 @@
             <div class="nav-status">
                 <span class="status-dot"></span> Disponible para Prácticas
             </div>
-            <!-- Botón de Modo Día / Modo Noche -->
-            <button id="theme-toggle" class="theme-btn" title="Cambiar modo claro/oscuro">🌙</button>
+            <!-- Botón para abrir el selector de temas estilo Max Böck -->
+            <button id="theme-menu-btn" class="theme-menu-btn" title="Personalizar Tema">
+                🎨 <span class="theme-btn-text">Temas</span>
+            </button>
         </div>
     </nav>
+
+    <!-- PANEL DESPLEGABLE DE SELECCIÓN DE TEMA (Estilo mxb.dev) -->
+    <div id="theme-picker-drawer" class="theme-picker-drawer">
+        <div class="theme-picker-content">
+            <div class="theme-picker-header">
+                <h3>SELECCIONA UN TEMA</h3>
+                <button id="close-theme-drawer" class="close-drawer-btn">&times;</button>
+            </div>
+            <div class="themes-grid">
+                <!-- Tema 1: Classic Dark -->
+                <button class="theme-card active" data-theme="dark-classic">
+                    <span class="theme-name">Classic Dark</span>
+                    <div class="theme-dots">
+                        <span style="background: #030712;"></span>
+                        <span style="background: #6366f1;"></span>
+                        <span style="background: #06b6d4;"></span>
+                    </div>
+                </button>
+                <!-- Tema 2: Cyberpunk Neon -->
+                <button class="theme-card" data-theme="cyberpunk">
+                    <span class="theme-name">Cyberpunk</span>
+                    <div class="theme-dots">
+                        <span style="background: #0f051d;"></span>
+                        <span style="background: #a855f7;"></span>
+                        <span style="background: #ec4899;"></span>
+                    </div>
+                </button>
+                <!-- Tema 3: Sunset Orange -->
+                <button class="theme-card" data-theme="sunset">
+                    <span class="theme-name">Sunset Glow</span>
+                    <div class="theme-dots">
+                        <span style="background: #1a0f0d;"></span>
+                        <span style="background: #f97316;"></span>
+                        <span style="background: #fb7185;"></span>
+                    </div>
+                </button>
+                <!-- Tema 4: Clean Light -->
+                <button class="theme-card" data-theme="light-clean">
+                    <span class="theme-name">Clean Light</span>
+                    <div class="theme-dots">
+                        <span style="background: #f1f5f9;"></span>
+                        <span style="background: #3b82f6;"></span>
+                        <span style="background: #10b981;"></span>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
 
     <!-- CABECERA / HERO SECTION -->
     <header class="hero">
         <div class="hero-content">
-            
             <div class="hero-subtitle-badge">PORTAFOLIO DE PRÁCTICAS</div>
-            
             <h1>Hola, soy <span class="highlight">Sebástian André García Bonilla</span></h1>
             <p class="tagline">Estudiante de 5to Bachillerato en Computación | Apasionado por el Desarrollo Web y la Tecnología</p>
             
@@ -55,7 +103,7 @@
             <p>Actualmente soy un estudiante de 5to bachillerato en ciencias y letras orientado a computación en proceso de graduación (18 años), estudio en el Colegio San José de los Infantes. Soy amante de la programación, la música y el deporte en general. Me considero una persona bastante adaptable en el ámbito del trabajo, me gusta aprender cosas que no sé, investigar y llenarme de conocimiento para resolver problemas. Me gustaría poder formar parte de un equipo para aportar valor mientras sigo creciendo como persona y adquiriendo experiencia laboral y técnica.</p>
         </section>
 
-        <!-- EDUCACIÓN / FORMACIÓN -->
+        <!-- EDUCACIÓN -->
         <section id="educacion" class="section">
             <h2>Educación</h2>
             <div class="timeline">
@@ -67,10 +115,10 @@
             </div>
         </section>
 
-        <!-- HABILIDADES (CARRUSEL INTERACTIVO) -->
+        <!-- HABILIDADES -->
         <section id="habilidades" class="section">
             <h2>Habilidades Técnicas y Blandas</h2>
-           
+            <p class="carousel-hint">💡 Pasa el cursor sobre el carrusel para pausarlo y explorar las habilidades detalladamente.</p>
             
             <div class="carousel-container">
                 <div class="carousel-track">
@@ -81,7 +129,7 @@
                     <div class="skill-card">Trabajo en equipo</div>
                     <div class="skill-card">Comunicación</div>
                     <div class="skill-card">Adaptabilidad Rápida</div>
-                    <!-- Duplicados para bucle infinito -->
+                    <!-- Duplicados bucle -->
                     <div class="skill-card">HTML & CSS</div>
                     <div class="skill-card">JavaScript</div>
                     <div class="skill-card">Idioma Inglés (Intermedio)</div>
@@ -116,7 +164,7 @@
             </div>
         </section>
 
-        <!-- APARTADO DE GITHUB -->
+        <!-- GITHUB -->
         <section id="github" class="section">
             <h2>GitHub</h2>
             <div class="github-card">
@@ -139,34 +187,65 @@
 
     </main>
 
-
+    <!-- BANNER MÓVIL -->
+    <div id="mobile-banner" class="mobile-banner">
+        <span>💡 ¿Estás en un celular? Activa <b>"Sitio para ordenador"</b> si deseas ver la versión extendida.</span>
+        <button onclick="document.getElementById('mobile-banner').style.display='none'" class="close-banner">&times;</button>
+    </div>
 
     <!-- PIE DE PÁGINA -->
     <footer>
         <p>&copy; 2026 - Sebástian André García Bonilla. Hecho con HTML y CSS.</p>
     </footer>
 
-    <!-- SCRIPT MODO OSCURO / CLARO -->
+    <!-- SCRIPT PARA CONTROLAR EL SELECTOR DE TEMAS -->
     <script>
-        const themeToggleBtn = document.getElementById('theme-toggle');
-        const bodyElement = document.body;
+        const themeMenuBtn = document.getElementById('theme-menu-btn');
+        const themeDrawer = document.getElementById('theme-picker-drawer');
+        const closeDrawerBtn = document.getElementById('close-theme-drawer');
+        const themeCards = document.querySelectorAll('.theme-card');
 
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'light') {
-            bodyElement.classList.add('light-mode');
-            themeToggleBtn.textContent = '☀️';
-        }
-
-        themeToggleBtn.addEventListener('click', () => {
-            bodyElement.classList.toggle('light-mode');
-            if (bodyElement.classList.contains('light-mode')) {
-                localStorage.setItem('theme', 'light');
-                themeToggleBtn.textContent = '☀️';
-            } else {
-                localStorage.setItem('theme', 'dark');
-                themeToggleBtn.textContent = '🌙';
-            }
+        // Abrir / Cerrar el panel de temas
+        themeMenuBtn.addEventListener('click', () => {
+            themeDrawer.classList.toggle('open');
         });
+
+        closeDrawerBtn.addEventListener('click', () => {
+            themeDrawer.classList.remove('open');
+        });
+
+        // Aplicar el tema guardado al cargar la página
+        const savedTheme = localStorage.getItem('selected-theme') || 'dark-classic';
+        applyTheme(savedTheme);
+
+        // Cambiar tema al hacer clic en una tarjeta del panel
+        themeCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const themeName = card.getAttribute('data-theme');
+                applyTheme(themeName);
+                localStorage.setItem('selected-theme', themeName);
+                themeDrawer.classList.remove('open'); // Opcional: cierra el panel al elegir
+            });
+        });
+
+        function applyTheme(theme) {
+            // Remover todas las clases de temas anteriores
+            document.body.classList.remove('theme-cyberpunk', 'theme-sunset', 'theme-light-clean');
+            
+            // Agregar la clase correspondiente si no es el clásico oscuro
+            if (theme !== 'dark-classic') {
+                document.body.classList.add(`theme-${theme}`);
+            }
+
+            // Marcar visualmente la tarjeta activa en el panel
+            themeCards.forEach(card => {
+                if (card.getAttribute('data-theme') === theme) {
+                    card.classList.add('active');
+                } else {
+                    card.classList.remove('active');
+                }
+            });
+        }
     </script>
 
 </body>
