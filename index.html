@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <!-- BARRA DE NAVEGACIÓN SUPERIOR -->
     <nav class="navbar">
         <div class="nav-brand">Sebástian.dev</div>
@@ -34,9 +35,12 @@
                 <span class="badge">💻 Desarrollador Junior</span>
             </div>
 
+            <!-- BOTONES DE ACCIÓN (Incluye Descargar CV) -->
             <div class="social-links">
                 <a href="#contacto" class="btn primary">Contáctame</a>
                 <a href="#proyectos" class="btn secondary">Ver Proyectos</a>
+                <!-- Botón para descargar el PDF -->
+                <a href="cv-sebastian.pdf" download="CV_Sebastian_Garcia.pdf" class="btn cv-btn">📄 Descargar CV</a>
             </div>
         </div>
     </header>
@@ -121,6 +125,12 @@
         </section>
 
     </main>
+
+    <!-- BANNER FLOTANTE OPCIONAL PARA MÓVILES -->
+    <div id="mobile-banner" class="mobile-banner">
+        <span>💡 ¿Estás en un celular? Activa <b>"Sitio para ordenador"</b> para ver la versión completa.</span>
+        <button onclick="document.getElementById('mobile-banner').style.display='none'" class="close-banner">&times;</button>
+    </div>
 
     <!-- PIE DE PÁGINA -->
     <footer>
