@@ -1,1 +1,204 @@
+/* --- RESET Y ESTILOS GENERALES --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #0f172a; /* Fondo oscuro moderno */
+    color: #cbd5e1; /* Texto claro */
+    line-height: 1.6;
+}
+
+/* --- HERO SECTION --- */
+.hero {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    padding: 2rem;
+    border-bottom: 1px solid #334155;
+}
+
+.avatar-placeholder {
+    width: 120px;
+    height: 120px;
+    background: #3b82f6;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem auto;
+    font-weight: 600;
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    color: #f8fafc;
+    margin-bottom: 0.5rem;
+}
+
+.highlight {
+    color: #3b82f6;
+}
+
+.tagline {
+    font-size: 1.1rem;
+    color: #94a3b8;
+    margin-bottom: 2rem;
+}
+
+/* --- BOTONES --- */
+.social-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn.primary {
+    background-color: #3b82f6;
+    color: white;
+}
+
+.btn.primary:hover {
+    background-color: #2563eb;
+    transform: translateY(-2px);
+}
+
+.btn.secondary {
+    background-color: transparent;
+    color: #f8fafc;
+    border: 1px solid #475569;
+}
+
+.btn.secondary:hover {
+    background-color: #1e293b;
+    border-color: #64748b;
+}
+
+/* --- CONTENEDOR PRINCIPAL Y SECCIONES --- */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+}
+
+.section {
+    margin-bottom: 4rem;
+}
+
+.section h2 {
+    font-size: 1.8rem;
+    color: #f8fafc;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.section h2::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background-color: #3b82f6;
+    margin-top: 0.5rem;
+    border-radius: 2px;
+}
+
+/* --- HABILIDADES (GRID) --- */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem;
+}
+
+.skill-card {
+    background-color: #1e293b;
+    border: 1px solid #334155;
+    padding: 1rem;
+    text-align: center;
+    border-radius: 8px;
+    font-weight: 600;
+    color: #e2e8f0;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.skill-card:hover {
+    transform: translateY(-4px);
+    border-color: #3b82f6;
+}
+
+/* --- LÍNEA DE TIEMPO (EXPERIENCIA) --- */
+.timeline {
+    border-left: 2px solid #334155;
+    padding-left: 1.5rem;
+    margin-left: 0.5rem;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -1.85rem;
+    top: 5px;
+    width: 12px;
+    height: 12px;
+    background-color: #3b82f6;
+    border-radius: 50%;
+}
+
+.timeline-item h3 {
+    color: #f8fafc;
+    font-size: 1.2rem;
+}
+
+.timeline-item .date {
+    display: block;
+    font-size: 0.85rem;
+    color: #3b82f6;
+    margin-bottom: 0.5rem;
+}
+
+/* --- CONTACTO Y FOOTER --- */
+.contacto {
+    text-align: center;
+}
+
+.email-link {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    color: #3b82f6;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.email-link:hover {
+    text-decoration: underline;
+}
+
+footer {
+    text-align: center;
+    padding: 2rem;
+    background-color: #090d16;
+    color: #64748b;
+    font-size: 0.9rem;
+    border-top: 1px solid #1e293b;
+}
