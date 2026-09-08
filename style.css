@@ -312,7 +312,7 @@ body {
     font-weight: 600;
 }
 
-/* --- BOTONES Y COMPONENTES --- */
+/* --- BOTONES Y COMPONENTES UNIFICADOS CON EFECTO DINÁMICO --- */
 .social-links {
     display: flex;
     gap: 0.7rem;
@@ -320,23 +320,38 @@ body {
     flex-wrap: wrap;
 }
 
-.btn {
+.btn, .github-btn {
     padding: 0.7rem 1.3rem;
     border-radius: 12px;
     text-decoration: none;
     font-weight: 700;
     font-size: 0.85rem;
     display: inline-block;
-    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.btn:hover {
-    transform: translateY(-3px);
+/* Efecto general al pasar el cursor o presionar en móviles */
+.btn:hover, .github-btn:hover,
+.btn:active, .github-btn:active {
+    transform: translateY(-4px);
+    border-color: var(--accent-color);
 }
 
-.btn.primary {
+.btn.primary, .github-btn {
     background: var(--primary-gradient);
     color: white;
+    border: 1px solid transparent;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn.primary:hover, .github-btn:hover,
+.btn.primary:active, .github-btn:active {
+    box-shadow: 0 8px 25px var(--accent-color);
+    filter: brightness(1.1);
 }
 
 .btn.secondary {
@@ -345,10 +360,24 @@ body {
     border: 1px solid var(--border-color);
 }
 
+.btn.secondary:hover, .btn.secondary:active {
+    background: var(--card-bg);
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
 .cv-btn {
     background: var(--badge-bg);
     color: var(--badge-text);
     border: 1px solid var(--border-color);
+}
+
+.cv-btn:hover, .cv-btn:active {
+    background: var(--accent-color);
+    color: #ffffff;
+    border-color: var(--accent-color);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
 /* --- CONTENEDOR Y SECCIONES --- */
@@ -390,7 +419,7 @@ body {
     font-size: 0.92rem;
 }
 
-/* --- CARRUSEL DE HABILIDADES CORREGIDO --- */
+/* --- CARRUSEL DE HABILIDADES --- */
 .carousel-hint {
     font-size: 0.82rem;
     color: var(--text-color);
@@ -435,11 +464,15 @@ body {
     font-size: 0.88rem;
     color: var(--heading-color);
     flex-shrink: 0;
+    transition: all 0.25s ease;
 }
 
 .skill-card:hover {
-    border-color: var(--accent-color);
-    color: var(--accent-color);
+    border-color: var(--border-color);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    background: var(--card-bg);
+    color: var(--heading-color);
 }
 
 /* TIMELINE */
