@@ -390,40 +390,61 @@ footer {
     }
 }
 
-/* --- CORRECCIONES PARA DISPOSITIVOS MÓVILES (RESPONSIVE) --- */
+/* --- CORRECCIONES DEFINITIVAS PARA MÓVILES --- */
 @media (max-width: 768px) {
-    /* Ajusta los márgenes generales en pantallas pequeñas */
-    .container {
-        padding: 2rem 1rem;
+    /* 1. Hace que la barra superior no tape el contenido de arriba */
+    body {
+        padding-top: 75px; 
     }
 
-    /* Reduce un poco el tamaño del título principal para que no se corte */
+    .navbar {
+        padding: 0.8rem 1rem;
+    }
+
+    .nav-brand {
+        font-size: 0.95rem;
+    }
+
+    .nav-status {
+        font-size: 0.75rem;
+        padding: 0.2rem 0.5rem;
+    }
+
+    /* 2. Ajusta los márgenes generales en pantallas pequeñas */
+    .container {
+        padding: 1.5rem 0.8rem;
+    }
+
+    /* 3. Reduce el tamaño del título principal */
     .hero h1 {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
 
     .tagline {
-        font-size: 1rem;
-    }
-
-    /* Permite que correos largos o textos con enlaces se adapten y salten de línea */
-    .contacto p, 
-    .email-link {
-        word-break: break-word;
-        overflow-wrap: break-word;
-        max-width: 100%;
-    }
-
-    /* Hace que el enlace del correo se adapte bien al ancho de la pantalla móvil */
-    .email-link {
         font-size: 0.95rem;
-        display: inline-block;
-        padding: 0 0.5rem;
     }
 
-    /* Asegura que las tarjetas de proyectos o GitHub no se salgan del borde */
+    /* 4. SOLUCIÓN AL CORREO: Fuerza a que se ajuste y quepa perfecto dentro de la tarjeta */
+    .contacto {
+        padding: 2rem 1rem;
+        overflow-hidden: hidden;
+    }
+
+    .email-link {
+        font-size: 0.8rem; /* Reduce el tamaño solo en móviles para que entre bien */
+        word-break: break-all; /* Obliga al texto largo a cortarse y pasar a la siguiente línea */
+        display: inline-block;
+        max-width: 100%;
+        padding: 0.2rem;
+    }
+
+    /* 5. Asegura que las tarjetas y líneas de tiempo no se desborden */
     .timeline {
         padding-left: 1rem;
         margin-left: 0.2rem;
+    }
+
+    .github-card {
+        padding: 1.5rem 1rem;
     }
 }
