@@ -154,7 +154,7 @@ body {
     transform: translateY(-2px);
 }
 
-/* --- PANEL DESPLEGABLE DE TEMAS ESTILO MXB.DEV --- */
+/* --- PANEL DESPLEGABLE DE TEMAS --- */
 .theme-picker-drawer {
     position: fixed;
     top: 65px;
@@ -390,7 +390,7 @@ body {
     font-size: 0.92rem;
 }
 
-/* CARRUSEL */
+/* --- CARRUSEL DE HABILIDADES CORREGIDO --- */
 .carousel-hint {
     font-size: 0.82rem;
     color: var(--text-color);
@@ -402,6 +402,7 @@ body {
     width: 100%;
     position: relative;
     padding: 0.8rem 0;
+    white-space: nowrap;
 }
 
 .carousel-track {
@@ -416,8 +417,12 @@ body {
 }
 
 @keyframes scroll-carousel {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(calc(-50% - 0.45rem)); }
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
 }
 
 .skill-card {
@@ -429,7 +434,7 @@ body {
     font-weight: 700;
     font-size: 0.88rem;
     color: var(--heading-color);
-    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .skill-card:hover {
@@ -559,7 +564,6 @@ footer {
     border-top: 1px solid var(--border-color);
 }
 
-
 /* ========================================================
    ESTILOS PARA COMPUTADORA (Ancho mayor a 992px)
    ======================================================== */
@@ -582,7 +586,7 @@ footer {
     }
 
     .themes-grid {
-        grid-template-columns: repeat(4, 1fr); /* 4 columnas completas en PC */
+        grid-template-columns: repeat(4, 1fr);
     }
 
     .hero {
