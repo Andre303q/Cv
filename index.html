@@ -25,7 +25,7 @@
         </div>
     </nav>
 
-    <!-- PANEL DESPLEGABLE DE SELECCIÓN DE TEMA (Estilo mxb.dev) -->
+    <!-- PANEL DESPLEGABLE DE SELECCIÓN DE TEMA -->
     <div id="theme-picker-drawer" class="theme-picker-drawer">
         <div class="theme-picker-content">
             <div class="theme-picker-header">
@@ -129,7 +129,7 @@
                     <div class="skill-card">Trabajo en equipo</div>
                     <div class="skill-card">Comunicación</div>
                     <div class="skill-card">Adaptabilidad Rápida</div>
-                    <!-- Duplicados bucle -->
+                    <!-- Duplicados para bucle infinito perfecto -->
                     <div class="skill-card">HTML & CSS</div>
                     <div class="skill-card">JavaScript</div>
                     <div class="skill-card">Idioma Inglés (Intermedio)</div>
@@ -198,14 +198,13 @@
         <p>&copy; 2026 - Sebástian André García Bonilla. Hecho con HTML y CSS.</p>
     </footer>
 
-    <!-- SCRIPT PARA CONTROLAR EL SELECTOR DE TEMAS -->
+    <!-- SCRIPT DE INTERACTIVIDAD (TEMAS) -->
     <script>
         const themeMenuBtn = document.getElementById('theme-menu-btn');
         const themeDrawer = document.getElementById('theme-picker-drawer');
         const closeDrawerBtn = document.getElementById('close-theme-drawer');
         const themeCards = document.querySelectorAll('.theme-card');
 
-        // Abrir / Cerrar el panel de temas
         themeMenuBtn.addEventListener('click', () => {
             themeDrawer.classList.toggle('open');
         });
@@ -214,30 +213,24 @@
             themeDrawer.classList.remove('open');
         });
 
-        // Aplicar el tema guardado al cargar la página
         const savedTheme = localStorage.getItem('selected-theme') || 'dark-classic';
         applyTheme(savedTheme);
 
-        // Cambiar tema al hacer clic en una tarjeta del panel
         themeCards.forEach(card => {
             card.addEventListener('click', () => {
                 const themeName = card.getAttribute('data-theme');
                 applyTheme(themeName);
                 localStorage.setItem('selected-theme', themeName);
-                themeDrawer.classList.remove('open'); // Opcional: cierra el panel al elegir
+                themeDrawer.classList.remove('open');
             });
         });
 
         function applyTheme(theme) {
-            // Remover todas las clases de temas anteriores
             document.body.classList.remove('theme-cyberpunk', 'theme-sunset', 'theme-light-clean');
-            
-            // Agregar la clase correspondiente si no es el clásico oscuro
             if (theme !== 'dark-classic') {
                 document.body.classList.add(`theme-${theme}`);
             }
 
-            // Marcar visualmente la tarjeta activa en el panel
             themeCards.forEach(card => {
                 if (card.getAttribute('data-theme') === theme) {
                     card.classList.add('active');
