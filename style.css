@@ -5,56 +5,75 @@
     box-sizing: border-box;
 }
 
-body {
-    font-family: 'Inter', sans-serif;
-    background-color: #0f172a; /* Fondo oscuro moderno */
-    color: #cbd5e1; /* Texto claro */
-    line-height: 1.6;
+html {
+    scroll-behavior: smooth; /* Hace que el desplazamiento al hacer clic en los botones sea suave */
 }
 
-/* --- HERO SECTION --- */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #0b0f19; /* Fondo oscuro elegante */
+    color: #94a3b8;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* --- HERO SECTION (CABECERA) --- */
 .hero {
-    min-height: 70vh;
+    min-height: 75vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    background: radial-gradient(circle at center, #1e293b 0%, #0b0f19 100%);
     padding: 2rem;
-    border-bottom: 1px solid #334155;
+    border-bottom: 1px solid #1e293b;
+    position: relative;
 }
 
 .avatar-placeholder {
-    width: 120px;
-    height: 120px;
-    background: #3b82f6;
+    width: 130px;
+    height: 130px;
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
     color: white;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 auto 1.5rem auto;
-    font-weight: 600;
-    box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+    font-weight: 700;
+    font-size: 1.1rem;
+    box-shadow: 0 0 25px rgba(59, 130, 246, 0.4);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Efecto interactivo en la foto de perfil al pasar el mouse */
+.avatar-placeholder:hover {
+    transform: scale(1.08) rotate(3deg);
+    box-shadow: 0 0 35px rgba(59, 130, 246, 0.7);
 }
 
 .hero h1 {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     color: #f8fafc;
     margin-bottom: 0.5rem;
+    letter-spacing: -0.5px;
 }
 
 .highlight {
     color: #3b82f6;
+    text-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
 }
 
 .tagline {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     color: #94a3b8;
     margin-bottom: 2rem;
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-/* --- BOTONES --- */
+/* --- BOTONES INTERACTIVOS --- */
 .social-links {
     display: flex;
     gap: 1rem;
@@ -62,143 +81,191 @@ body {
 }
 
 .btn {
-    padding: 0.75rem 1.5rem;
-    border-radius: 8px;
+    padding: 0.75rem 1.8rem;
+    border-radius: 50px;
     text-decoration: none;
     font-weight: 600;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-block;
 }
 
 .btn.primary {
     background-color: #3b82f6;
     color: white;
+    box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4);
 }
 
 .btn.primary:hover {
     background-color: #2563eb;
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.6);
 }
 
 .btn.secondary {
-    background-color: transparent;
+    background-color: rgba(30, 41, 59, 0.6);
     color: #f8fafc;
-    border: 1px solid #475569;
+    border: 1px solid #334155;
+    backdrop-filter: blur(5px);
 }
 
 .btn.secondary:hover {
     background-color: #1e293b;
-    border-color: #64748b;
+    border-color: #3b82f6;
+    transform: translateY(-3px);
 }
 
 /* --- CONTENEDOR PRINCIPAL Y SECCIONES --- */
 .container {
-    max-width: 800px;
+    max-width: 850px;
     margin: 0 auto;
-    padding: 3rem 1.5rem;
+    padding: 4rem 1.5rem;
 }
 
 .section {
-    margin-bottom: 4rem;
+    margin-bottom: 5rem;
 }
 
 .section h2 {
-    font-size: 1.8rem;
+    font-size: 2rem;
     color: #f8fafc;
     margin-bottom: 1.5rem;
     position: relative;
+    display: inline-block;
 }
 
+/* Línea decorativa moderna debajo de los títulos */
 .section h2::after {
     content: '';
     display: block;
-    width: 50px;
+    width: 100%;
     height: 3px;
-    background-color: #3b82f6;
+    background: linear-gradient(90deg, #3b82f6, transparent);
     margin-top: 0.5rem;
     border-radius: 2px;
 }
 
-/* --- HABILIDADES (GRID) --- */
+.section p {
+    color: #94a3b8;
+    font-size: 1.05rem;
+}
+
+/* --- HABILIDADES (TARJETAS INTERACTIVAS) --- */
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1.2rem;
 }
 
 .skill-card {
-    background-color: #1e293b;
-    border: 1px solid #334155;
-    padding: 1rem;
+    background-color: #121826;
+    border: 1px solid #1e293b;
+    padding: 1.2rem;
     text-align: center;
-    border-radius: 8px;
+    border-radius: 12px;
     font-weight: 600;
     color: #e2e8f0;
-    transition: transform 0.2s, border-color 0.2s;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
+/* Efecto hover al pasar el cursor sobre las tarjetas de habilidades */
 .skill-card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-6px) scale(1.02);
     border-color: #3b82f6;
+    background-color: #1e293b;
+    box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.25);
+    color: #ffffff;
 }
 
-/* --- LÍNEA DE TIEMPO (EXPERIENCIA) --- */
+/* --- LÍNEA DE TIEMPO / TARJETAS DE PROYECTOS Y EDUCACIÓN --- */
 .timeline {
-    border-left: 2px solid #334155;
-    padding-left: 1.5rem;
+    border-left: 2px solid #1e293b;
+    padding-left: 2rem;
     margin-left: 0.5rem;
 }
 
 .timeline-item {
     position: relative;
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
+    background: #121826;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid #1e293b;
+    transition: all 0.3s ease;
+}
+
+/* Efecto al pasar el cursor por los proyectos o educación */
+.timeline-item:hover {
+    border-color: #3b82f6;
+    transform: translateX(6px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
 }
 
 .timeline-item::before {
     content: '';
     position: absolute;
-    left: -1.85rem;
-    top: 5px;
-    width: 12px;
-    height: 12px;
+    left: -2.6rem;
+    top: 1.8rem;
+    width: 14px;
+    height: 14px;
     background-color: #3b82f6;
     border-radius: 50%;
+    border: 3px solid #0b0f19;
+    box-shadow: 0 0 10px #3b82f6;
 }
 
 .timeline-item h3 {
     color: #f8fafc;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
+    margin-bottom: 0.3rem;
 }
 
 .timeline-item .date {
-    display: block;
+    display: inline-block;
     font-size: 0.85rem;
-    color: #3b82f6;
-    margin-bottom: 0.5rem;
+    color: #60a5fa;
+    background: rgba(59, 130, 246, 0.1);
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    margin-bottom: 0.8rem;
+    font-weight: 500;
 }
 
-/* --- CONTACTO Y FOOTER --- */
+.timeline-item p {
+    color: #94a3b8;
+}
+
+/* --- SECCIÓN DE CONTACTO --- */
 .contacto {
     text-align: center;
+    background: linear-gradient(180deg, #121826 0%, #0b0f19 100%);
+    padding: 3rem;
+    border-radius: 16px;
+    border: 1px solid #1e293b;
 }
 
 .email-link {
     display: inline-block;
-    margin-top: 1rem;
-    font-size: 1.2rem;
-    color: #3b82f6;
+    margin-top: 1.2rem;
+    font-size: 1.15rem;
+    color: #60a5fa;
     text-decoration: none;
     font-weight: 600;
+    transition: color 0.3s ease, transform 0.2s ease;
 }
 
 .email-link:hover {
+    color: #93c5fd;
+    transform: scale(1.05);
     text-decoration: underline;
 }
 
+/* --- PIE DE PÁGINA --- */
 footer {
     text-align: center;
-    padding: 2rem;
-    background-color: #090d16;
-    color: #64748b;
+    padding: 2.5rem;
+    background-color: #07090f;
+    color: #475569;
     font-size: 0.9rem;
-    border-top: 1px solid #1e293b;
+    border-top: 1px solid #121826;
 }
