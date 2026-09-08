@@ -16,10 +16,9 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     padding-top: 70px;
-    /* Fondo con un patrón de malla sutil de alta tecnología */
     background-image: 
-        radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.08) 0px, transparent 50%),
-        radial-gradient(at 100% 100%, rgba(6, 182, 212, 0.08) 0px, transparent 50%);
+        radial-gradient(at 10% 10%, rgba(99, 102, 241, 0.12) 0px, transparent 40%),
+        radial-gradient(at 90% 90%, rgba(6, 182, 212, 0.12) 0px, transparent 40%);
     background-attachment: fixed;
 }
 
@@ -33,19 +32,17 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 3rem;
-    background-color: rgba(3, 7, 18, 0.8);
+    background-color: rgba(3, 7, 18, 0.85);
     backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     z-index: 1000;
 }
 
 .nav-brand {
     font-weight: 800;
     color: #ffffff;
-    font-size: 1.2rem;
-    letter-spacing: -0.5px;
-    background: linear-gradient(135deg, #fff, #94a3b8);
+    font-size: 1.25rem;
+    background: linear-gradient(135deg, #fff, #818cf8);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -56,11 +53,10 @@ body {
     gap: 0.6rem;
     font-size: 0.85rem;
     color: #cbd5e1;
-    background: rgba(15, 23, 42, 0.8);
+    background: rgba(15, 23, 42, 0.9);
     padding: 0.4rem 1rem;
     border-radius: 50px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .status-dot {
@@ -69,14 +65,6 @@ body {
     background-color: #10b981;
     border-radius: 50%;
     box-shadow: 0 0 10px #10b981;
-    display: inline-block;
-    animation: pulse-glow 2s infinite;
-}
-
-@keyframes pulse-glow {
-    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
-    70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
-    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
 }
 
 /* --- HERO SECTION --- */
@@ -86,59 +74,53 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: radial-gradient(circle at 50% 15%, rgba(79, 70, 229, 0.15) 0%, transparent 60%);
+    background: radial-gradient(circle at 50% 20%, rgba(99, 102, 241, 0.2) 0%, transparent 65%);
     padding: 4rem 1.5rem;
-    position: relative;
 }
 
-/* FOTO DE PERFIL CON AURA LUMINOSA */
+/* FOTO DE PERFIL (CORREGIDA Y VISIBLE) */
 .avatar-img {
-    width: 150px;
-    height: 150px;
+    width: 155px;
+    height: 155px;
     border-radius: 50%;
     object-fit: cover;
     margin: 0 auto 1.8rem auto;
-    border: 3px solid transparent;
-    background: linear-gradient(135deg, #6366f1, #06b6d4) border-box;
-    -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    box-shadow: 0 0 40px rgba(99, 102, 241, 0.35);
+    border: 4px solid #6366f1;
+    box-shadow: 0 0 35px rgba(99, 102, 241, 0.6);
     display: block;
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.4s ease;
 }
 
 .avatar-img:hover {
-    transform: scale(1.06) rotate(2deg);
-    box-shadow: 0 0 60px rgba(6, 182, 212, 0.6);
+    transform: scale(1.05) rotate(2deg);
+    border-color: #06b6d4;
+    box-shadow: 0 0 50px rgba(6, 182, 212, 0.8);
 }
 
 .hero h1 {
-    font-size: 3rem;
+    font-size: 3.2rem;
     color: #ffffff;
     margin-bottom: 0.8rem;
-    letter-spacing: -1px;
     font-weight: 800;
+    letter-spacing: -1px;
 }
 
 .highlight {
-    background: linear-gradient(135deg, #818cf8 0%, #06b6d4 100%);
+    background: linear-gradient(135deg, #818cf8 0%, #22d3ee 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 0 25px rgba(99, 102, 241, 0.4));
 }
 
 .tagline {
-    font-size: 1.15rem;
+    font-size: 1.2rem;
     color: #94a3b8;
     margin-bottom: 2rem;
-    max-width: 680px;
+    max-width: 700px;
     margin-left: auto;
     margin-right: auto;
-    font-weight: 400;
 }
 
-/* INSIGNIAS RÁPIDAS */
+/* INSIGNIAS */
 .hero-badges {
     display: flex;
     justify-content: center;
@@ -149,21 +131,15 @@ body {
 
 .badge {
     background: rgba(15, 23, 42, 0.9);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    padding: 0.4rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.45rem 1.1rem;
     border-radius: 8px;
-    font-size: 0.88rem;
+    font-size: 0.9rem;
     color: #e2e8f0;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
-.badge:hover {
-    transform: translateY(-2px);
-    border-color: rgba(99, 102, 241, 0.4);
-}
-
-/* --- BOTONES PREMIUM --- */
+/* --- BOTONES --- */
 .social-links {
     display: flex;
     gap: 1rem;
@@ -177,49 +153,44 @@ body {
     text-decoration: none;
     font-weight: 600;
     font-size: 0.95rem;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.3s ease;
     display: inline-block;
-    cursor: pointer;
 }
 
 .btn.primary {
-    background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
     color: white;
     box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .btn.primary:hover {
-    background: linear-gradient(135deg, #4f46e5, #4338ca);
     transform: translateY(-3px);
-    box-shadow: 0 8px 30px rgba(99, 102, 241, 0.6);
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.7);
 }
 
 .btn.secondary {
-    background-color: rgba(15, 23, 42, 0.8);
+    background-color: rgba(15, 23, 42, 0.9);
     color: #f8fafc;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .btn.secondary:hover {
-    background-color: rgba(30, 41, 59, 0.9);
-    border-color: rgba(99, 102, 241, 0.5);
+    border-color: #6366f1;
     color: #818cf8;
     transform: translateY(-3px);
 }
 
 .cv-btn {
-    background: rgba(6, 182, 212, 0.08);
+    background: rgba(6, 182, 212, 0.1);
     color: #22d3ee;
-    border: 1px solid rgba(6, 182, 212, 0.3);
+    border: 1px solid rgba(6, 182, 212, 0.4);
 }
 
 .cv-btn:hover {
     background: #06b6d4;
     color: #030712;
     transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(6, 182, 212, 0.4);
+    box-shadow: 0 8px 25px rgba(6, 182, 212, 0.5);
 }
 
 /* --- CONTENEDOR Y SECCIONES --- */
@@ -234,12 +205,11 @@ body {
 }
 
 .section h2 {
-    font-size: 2.2rem;
+    font-size: 2.3rem;
     color: #ffffff;
     margin-bottom: 2rem;
     position: relative;
     display: inline-block;
-    letter-spacing: -0.5px;
 }
 
 .section h2::after {
@@ -252,19 +222,19 @@ body {
     border-radius: 4px;
 }
 
-/* TARJETA DE "SOBRE MÍ" ESTILO GLASSMORPHISM */
+/* TARJETA DE "SOBRE MÍ" CON FONDO ESTILO TARJETA */
 #sobre-mi p {
-    background: rgba(15, 23, 42, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    padding: 2.2rem;
-    border-radius: 16px;
+    background: rgba(15, 23, 42, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 2.5rem;
+    border-radius: 18px;
     backdrop-filter: blur(12px);
     color: #cbd5e1;
-    font-size: 1.05rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    font-size: 1.1rem;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
 }
 
-/* --- HABILIDADES --- */
+/* --- HABILIDADES (DISEÑO DE TARJETAS FLOTANTES) --- */
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
@@ -272,28 +242,28 @@ body {
 }
 
 .skill-card {
-    background: rgba(15, 23, 42, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    padding: 1.4rem;
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 1.5rem;
     text-align: center;
     border-radius: 14px;
     font-weight: 600;
     color: #e2e8f0;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .skill-card:hover {
     transform: translateY(-5px);
-    border-color: rgba(6, 182, 212, 0.5);
-    background: rgba(30, 41, 59, 0.8);
+    border-color: #22d3ee;
+    background: rgba(30, 41, 59, 0.95);
     color: #22d3ee;
-    box-shadow: 0 12px 30px rgba(6, 182, 212, 0.2);
+    box-shadow: 0 10px 25px rgba(6, 182, 212, 0.3);
 }
 
-/* --- LÍNEA DE TIEMPO --- */
+/* --- LÍNEA DE TIEMPO (EDUCACIÓN Y PROYECTOS) --- */
 .timeline {
-    border-left: 2px solid rgba(255, 255, 255, 0.08);
+    border-left: 2px solid rgba(99, 102, 241, 0.3);
     padding-left: 2rem;
     margin-left: 0.5rem;
 }
@@ -301,19 +271,18 @@ body {
 .timeline-item {
     position: relative;
     margin-bottom: 2.5rem;
-    background: rgba(15, 23, 42, 0.6);
+    background: rgba(15, 23, 42, 0.8);
     padding: 2rem;
     border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    backdrop-filter: blur(10px);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
 }
 
 .timeline-item:hover {
-    border-color: rgba(99, 102, 241, 0.5);
+    border-color: #6366f1;
     transform: translateX(6px);
-    background: rgba(15, 23, 42, 0.9);
-    box-shadow: 0 15px 35px rgba(99, 102, 241, 0.15);
+    box-shadow: 0 15px 40px rgba(99, 102, 241, 0.25);
 }
 
 .timeline-item::before {
@@ -323,15 +292,15 @@ body {
     top: 2.2rem;
     width: 14px;
     height: 14px;
-    background-color: #06b6d4;
+    background-color: #22d3ee;
     border-radius: 50%;
     border: 3px solid #030712;
-    box-shadow: 0 0 15px #06b6d4;
+    box-shadow: 0 0 12px #22d3ee;
 }
 
 .timeline-item h3 {
     color: #ffffff;
-    font-size: 1.35rem;
+    font-size: 1.4rem;
     margin-bottom: 0.5rem;
 }
 
@@ -350,7 +319,6 @@ body {
     color: #94a3b8;
 }
 
-/* ETIQUETAS DE TECNOLOGÍA */
 .project-tags {
     display: flex;
     gap: 0.6rem;
@@ -359,32 +327,32 @@ body {
 }
 
 .project-tags span {
-    background: rgba(99, 102, 241, 0.1);
+    background: rgba(99, 102, 241, 0.15);
     color: #818cf8;
     font-size: 0.8rem;
     padding: 0.3rem 0.8rem;
     border-radius: 6px;
-    border: 1px solid rgba(99, 102, 241, 0.25);
+    border: 1px solid rgba(99, 102, 241, 0.3);
     font-weight: 500;
 }
 
 /* --- TARJETA DE GITHUB --- */
 .github-card {
-    background: rgba(15, 23, 42, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     padding: 2.5rem;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 1.5rem;
-    backdrop-filter: blur(12px);
-    transition: all 0.4s ease;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
 }
 
 .github-card:hover {
-    border-color: rgba(99, 102, 241, 0.5);
-    box-shadow: 0 15px 40px rgba(99, 102, 241, 0.2);
+    border-color: #6366f1;
+    box-shadow: 0 20px 45px rgba(99, 102, 241, 0.25);
     transform: translateY(-4px);
 }
 
@@ -417,12 +385,11 @@ body {
 /* --- CONTACTO --- */
 .contacto {
     text-align: center;
-    background: linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(3, 7, 18, 0.9) 100%);
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(3, 7, 18, 0.95) 100%);
     padding: 4rem 2rem;
     border-radius: 24px;
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    backdrop-filter: blur(16px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
 }
 
 .email-link {
@@ -437,11 +404,11 @@ body {
 
 .email-link:hover {
     color: #818cf8;
-    transform: scale(1.04);
-    text-shadow: 0 0 20px rgba(34, 211, 238, 0.6);
+    transform: scale(1.05);
+    text-shadow: 0 0 20px rgba(34, 211, 238, 0.7);
 }
 
-/* --- BANNER FLOTANTE MÓVIL --- */
+/* --- BANNER MÓVIL --- */
 .mobile-banner {
     display: none;
 }
@@ -480,10 +447,6 @@ body {
         line-height: 1;
     }
 
-    .close-banner:hover {
-        color: #ffffff;
-    }
-
     .email-link {
         font-size: 0.9rem;
         word-break: break-all;
@@ -494,8 +457,8 @@ body {
 footer {
     text-align: center;
     padding: 3rem;
-    background-color: rgba(2, 4, 10, 0.95);
+    background-color: rgba(2, 4, 10, 0.98);
     color: #64748b;
     font-size: 0.88rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
