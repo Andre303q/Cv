@@ -69,7 +69,7 @@ body {
 
 /* --- HERO SECTION --- */
 .hero {
-    min-height: 85vh;
+    min-height: 80vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -78,23 +78,19 @@ body {
     padding: 4rem 1.5rem;
 }
 
-/* FOTO DE PERFIL (CORREGIDA Y VISIBLE) */
-.avatar-img {
-    width: 155px;
-    height: 155px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin: 0 auto 1.8rem auto;
-    border: 4px solid #6366f1;
-    box-shadow: 0 0 35px rgba(99, 102, 241, 0.6);
-    display: block;
-    transition: all 0.4s ease;
-}
-
-.avatar-img:hover {
-    transform: scale(1.05) rotate(2deg);
-    border-color: #06b6d4;
-    box-shadow: 0 0 50px rgba(6, 182, 212, 0.8);
+/* ESTILO PARA EL TÍTULO SUPERIOR HERO */
+.hero-subtitle-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(6, 182, 212, 0.15));
+    border: 1px solid rgba(99, 102, 241, 0.4);
+    color: #22d3ee;
+    padding: 0.4rem 1.2rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 1.2rem;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 20px rgba(6, 182, 212, 0.15);
 }
 
 .hero h1 {
@@ -222,7 +218,7 @@ body {
     border-radius: 4px;
 }
 
-/* TARJETA DE "SOBRE MÍ" CON FONDO ESTILO TARJETA */
+/* TARJETA DE "SOBRE MÍ" */
 #sobre-mi p {
     background: rgba(15, 23, 42, 0.75);
     border: 1px solid rgba(255, 255, 255, 0.08);
@@ -234,7 +230,7 @@ body {
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
 }
 
-/* --- HABILIDADES (DISEÑO DE TARJETAS FLOTANTES) --- */
+/* --- HABILIDADES --- */
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
@@ -261,7 +257,7 @@ body {
     box-shadow: 0 10px 25px rgba(6, 182, 212, 0.3);
 }
 
-/* --- LÍNEA DE TIEMPO (EDUCACIÓN Y PROYECTOS) --- */
+/* --- LÍNEA DE TIEMPO --- */
 .timeline {
     border-left: 2px solid rgba(99, 102, 241, 0.3);
     padding-left: 2rem;
