@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sebástian García | Portafolio & CV</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Plus Jakarta Sans e Inter para un aspecto moderno y elegante -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <!-- Tu archivo CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
@@ -73,7 +73,7 @@
         <!-- HABILIDADES (CARRUSEL INTERACTIVO) -->
         <section id="habilidades" class="section">
             <h2>Habilidades Técnicas y Blandas</h2>
-            <p class="carousel-hint">💡 Pasa el cursor sobre el carrusel para pausarlo y explorar las habilidades.</p>
+            <p class="carousel-hint">💡 Pasa el cursor sobre el carrusel para pausarlo y explorar las habilidades detalladamente.</p>
             
             <div class="carousel-container">
                 <div class="carousel-track">
@@ -85,7 +85,7 @@
                     <div class="skill-card">Trabajo en equipo</div>
                     <div class="skill-card">Comunicación</div>
                     <div class="skill-card">Adaptabilidad Rápida</div>
-                    <!-- Elementos duplicados para hacer un bucle infinito perfecto -->
+                    <!-- Elementos duplicados para bucle infinito -->
                     <div class="skill-card">HTML & CSS</div>
                     <div class="skill-card">JavaScript</div>
                     <div class="skill-card">Idioma Inglés (Intermedio)</div>
@@ -159,7 +159,6 @@
         const themeToggleBtn = document.getElementById('theme-toggle');
         const bodyElement = document.body;
 
-        // Comprobar si el usuario ya tenía una preferencia guardada
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'light') {
             bodyElement.classList.add('light-mode');
