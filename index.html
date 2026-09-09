@@ -10,9 +10,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Tu archivo CSS base -->
     <link rel="stylesheet" href="style.css">
-    <!-- ESTILOS COMPLETOS DE TEMAS Y ANIMACIONES DINÁMICAS -->
+    
+    <!-- ESTILOS MAESTROS QUE FORZARÁN EL CAMBIO DE COLOR Y ANIMACIÓN EN TODO EL SITIO -->
     <style>
-        /* Contenedor de fondo animado general */
         #animated-bg-container {
             position: fixed;
             top: 0;
@@ -25,83 +25,92 @@
             display: none;
         }
 
-        /* ================= TEMA: OCÉANO CON BALLENAS ================= */
+        /* ================= TEMA: OCÉANO ================= */
         body.theme-ocean {
-            background-color: #021526;
-            color: #e0f2fe;
+            background-color: #021526 !important;
+            color: #e0f2fe !important;
         }
-        body.theme-ocean .hero, body.theme-ocean .section, body.theme-ocean .github-card {
-            background: rgba(3, 37, 65, 0.75);
-            border: 1px solid rgba(56, 189, 248, 0.2);
+        body.theme-ocean header.hero, 
+        body.theme-ocean .section, 
+        body.theme-ocean .github-card {
+            background: rgba(3, 37, 65, 0.85) !important;
+            border: 1px solid rgba(56, 189, 248, 0.4) !important;
             backdrop-filter: blur(12px);
+        }
+        body.theme-ocean h1, body.theme-ocean h2, body.theme-ocean h3 {
+            color: #f0f9ff !important;
         }
         body.theme-ocean .highlight {
             color: #38bdf8 !important;
         }
         body.theme-ocean .btn.primary {
-            background: linear-gradient(135deg, #0284c7, #0369a1);
+            background: linear-gradient(135deg, #0284c7, #0369a1) !important;
         }
         body.theme-ocean #animated-bg-container {
             display: block;
-            background: linear-gradient(to bottom, #020b18, #032d4d, #011627);
+            background: linear-gradient(to bottom, #010b18, #032d4d, #011627) !important;
         }
-        /* Animación de ballenas SVG */
         .animated-whale {
             position: absolute;
-            width: 180px;
-            fill: rgba(56, 189, 248, 0.18);
+            width: 200px;
+            fill: rgba(56, 189, 248, 0.25);
             animation: swimWhale 25s linear infinite;
         }
-        .whale-1 { top: 20%; left: -200px; animation-duration: 28s; }
-        .whale-2 { top: 65%; left: -250px; animation-duration: 38s; animation-delay: -10s; transform: scale(0.7); }
+        .whale-1 { top: 15%; left: -250px; animation-duration: 26s; }
+        .whale-2 { top: 70%; left: -300px; animation-duration: 35s; animation-delay: -8s; transform: scale(0.75); }
 
         @keyframes swimWhale {
             0% { transform: translateX(-250px) translateY(0) scaleX(1); }
-            45% { transform: translateX(calc(100vw + 250px)) translateY(-40px) scaleX(1); }
-            50% { transform: translateX(calc(100vw + 250px)) translateY(-40px) scaleX(-1); }
-            95% { transform: translateX(-250px) translateY(20px) scaleX(-1); }
+            45% { transform: translateX(calc(100vw + 300px)) translateY(-50px) scaleX(1); }
+            50% { transform: translateX(calc(100vw + 300px)) translateY(-50px) scaleX(-1); }
+            95% { transform: translateX(-250px) translateY(30px) scaleX(-1); }
             100% { transform: translateX(-250px) translateY(0) scaleX(1); }
         }
 
         /* ================= TEMA: DESIERTO ================= */
         body.theme-desert {
-            background-color: #1f1007;
-            color: #fef3c7;
+            background-color: #1a0b04 !important;
+            color: #fef3c7 !important;
         }
-        body.theme-desert .hero, body.theme-desert .section, body.theme-desert .github-card {
-            background: rgba(58, 26, 9, 0.75);
-            border: 1px solid rgba(245, 158, 11, 0.25);
+        body.theme-desert header.hero, 
+        body.theme-desert .section, 
+        body.theme-desert .github-card {
+            background: rgba(45, 18, 5, 0.85) !important;
+            border: 1px solid rgba(245, 158, 11, 0.4) !important;
             backdrop-filter: blur(12px);
+        }
+        body.theme-desert h1, body.theme-desert h2, body.theme-desert h3 {
+            color: #fffbeb !important;
         }
         body.theme-desert .highlight {
             color: #f59e0b !important;
         }
         body.theme-desert .btn.primary {
-            background: linear-gradient(135deg, #d97706, #b45309);
+            background: linear-gradient(135deg, #d97706, #b45309) !important;
         }
         body.theme-desert #animated-bg-container {
             display: block;
-            background: radial-gradient(circle at 80% 15%, rgba(245, 158, 11, 0.3) 0%, transparent 50%),
-                        linear-gradient(to bottom, #140803, #2e1205);
+            background: radial-gradient(circle at 85% 15%, rgba(245, 158, 11, 0.35) 0%, transparent 45%),
+                        linear-gradient(to bottom, #110501, #2b1003) !important;
         }
         .desert-sun {
             position: absolute;
-            top: 10%;
-            right: 12%;
-            width: 120px;
-            height: 120px;
+            top: 8%;
+            right: 10%;
+            width: 130px;
+            height: 130px;
             background: radial-gradient(circle, #fde047 0%, #f59e0b 70%, transparent 100%);
             border-radius: 50%;
-            box-shadow: 0 0 80px rgba(245, 158, 11, 0.5);
+            box-shadow: 0 0 90px rgba(245, 158, 11, 0.6);
         }
         .dune-layer {
             position: absolute;
             bottom: 0;
             width: 200%;
-            height: 120px;
-            background: rgba(217, 119, 6, 0.2);
+            height: 140px;
+            background: rgba(217, 119, 6, 0.25);
             border-radius: 50% 50% 0 0;
-            animation: moveDunes 18s linear infinite;
+            animation: moveDunes 16s linear infinite;
         }
         @keyframes moveDunes {
             0% { transform: translateX(0); }
@@ -110,40 +119,44 @@
 
         /* ================= TEMA: JUNGLA ================= */
         body.theme-jungle {
-            background-color: #04120c;
-            color: #ecfdf5;
+            background-color: #02120a !important;
+            color: #ecfdf5 !important;
         }
-        body.theme-jungle .hero, body.theme-jungle .section, body.theme-jungle .github-card {
-            background: rgba(7, 38, 24, 0.75);
-            border: 1px solid rgba(52, 211, 153, 0.25);
+        body.theme-jungle header.hero, 
+        body.theme-jungle .section, 
+        body.theme-jungle .github-card {
+            background: rgba(4, 31, 18, 0.85) !important;
+            border: 1px solid rgba(52, 211, 153, 0.4) !important;
             backdrop-filter: blur(12px);
+        }
+        body.theme-jungle h1, body.theme-jungle h2, body.theme-jungle h3 {
+            color: #f0fdf4 !important;
         }
         body.theme-jungle .highlight {
             color: #34d399 !important;
         }
         body.theme-jungle .btn.primary {
-            background: linear-gradient(135deg, #059669, #047857);
+            background: linear-gradient(135deg, #059669, #047857) !important;
         }
         body.theme-jungle #animated-bg-container {
             display: block;
-            background: linear-gradient(to bottom, #020a06, #062417, #020d08);
+            background: linear-gradient(to bottom, #010804, #042416, #010c05) !important;
         }
         .firefly-particle {
             position: absolute;
-            width: 5px;
-            height: 5px;
+            width: 6px;
+            height: 6px;
             background: #6ee7b7;
             border-radius: 50%;
-            box-shadow: 0 0 12px #34d399;
-            animation: floatFirefly 7s ease-in-out infinite alternate;
+            box-shadow: 0 0 14px #34d399;
+            animation: floatFirefly 6s ease-in-out infinite alternate;
         }
         @keyframes floatFirefly {
-            0% { transform: translate(0, 0) scale(0.8); opacity: 0.2; }
-            50% { opacity: 1; transform: scale(1.2); }
-            100% { transform: translate(90px, -140px) scale(0.6); opacity: 0.2; }
+            0% { transform: translate(0, 0) scale(0.7); opacity: 0.2; }
+            50% { opacity: 1; transform: scale(1.3); }
+            100% { transform: translate(100px, -150px) scale(0.5); opacity: 0.2; }
         }
 
-        /* Estilos del selector de temas en el Drawer */
         .theme-section-title {
             font-size: 0.75rem;
             text-transform: uppercase;
@@ -234,7 +247,7 @@
                 <button class="theme-card" data-theme="desert">
                     <span class="theme-name">Desierto (Dunas)</span>
                     <div class="theme-dots">
-                        <span style="background: #1f1007;"></span>
+                        <span style="background: #1a0b04;"></span>
                         <span style="background: #d97706;"></span>
                         <span style="background: #f59e0b;"></span>
                     </div>
@@ -242,8 +255,8 @@
                 <button class="theme-card" data-theme="jungle">
                     <span class="theme-name">Jungla (Luciérnagas)</span>
                     <div class="theme-dots">
-                        <span style="background: #04120c;"></span>
-                        <span style="background: #072618;"></span>
+                        <span style="background: #02120a;"></span>
+                        <span style="background: #042416;"></span>
                         <span style="background: #34d399;"></span>
                     </div>
                 </button>
@@ -405,7 +418,7 @@
         <p>&copy; 2026 - Sebástian André García Bonilla. Hecho con HTML y CSS.</p>
     </footer>
 
-    <!-- SCRIPT DE GESTIÓN DE TEMAS Y MOTORES DE ANIMACIÓN -->
+    <!-- SCRIPT DE GESTIÓN DE TEMAS -->
     <script>
         const themeMenuBtn = document.getElementById('theme-menu-btn');
         const themeDrawer = document.getElementById('theme-picker-drawer');
@@ -413,7 +426,6 @@
         const themeCards = document.querySelectorAll('.theme-card');
         const bgContainer = document.getElementById('animated-bg-container');
 
-        // SVG de una ballena elegante para el tema Océano
         const whaleSvg = `<svg class="animated-whale" viewBox="0 0 512 512"><path d="M495.9 233.2c-15.3-7.7-36.9-15.5-62.8-21.6-1.1-16.1-3.6-32.2-7.5-48-25.2 2.8-51.5 5.2-78.5 7.2-22.3-31.5-50.6-58.4-83.6-79.3 35.8-22.3 75.8-40.5 118.8-53.5-9.3-5-19.1-9.4-29.3-13.2-57.8 20.3-111 49.6-157.9 86.2C226.7 106.9 196.4 102 165 100c-35-2.3-70 1.2-104 10.4-14.7 3.9-29.1 8.8-43 14.8C10.5 131.6 4.3 141.2 1.3 152c-3.1 11.1-1.3 22.9 5.2 32.2 12 16.9 26 32.2 41.5 45.8-10.7 20-19.2 41.2-25.2 63.3-8.8 32.3-12.3 65.5-10.4 98.7 1.8 30.8 8.1 61.2 18.7 89.6 1.7 4.5 5 8.1 9.4 10.1 4.4 2 9.5 2.1 14 0.3 35.3-14.1 68.8-33.3 99.6-57.2 45.4-8.7 91.3-13.3 137.3-13.8 54.3-.5 108.6 3.6 162.3 12.3 27 4.4 53.7 10.5 79.7 18.2 4.4 1.3 9.2.2 12.7-2.9 3.5-3.1 5.2-7.9 4.3-12.6-6.6-35.3-17.3-69.4-31.8-101.4 18.8-7.7 36.6-16.4 53.3-26 10.4-6 16.7-17.4 15.6-29.2-1.1-11.8-9.1-21.8-20.2-25.3z"/></svg>`;
 
         themeMenuBtn.addEventListener('click', () => {
@@ -437,14 +449,12 @@
         });
 
         function applyTheme(theme) {
-            // Limpiar clases de temas anteriores en el body
             document.body.classList.remove('theme-cyberpunk', 'theme-sunset', 'theme-light-clean', 'theme-desert', 'theme-ocean', 'theme-jungle');
             
             if (theme !== 'dark-classic') {
                 document.body.classList.add(`theme-${theme}`);
             }
 
-            // Gestionar fondos animados avanzados
             bgContainer.innerHTML = '';
             if (theme === 'ocean') {
                 bgContainer.innerHTML = `<div class="whale-1">${whaleSvg}</div><div class="whale-2">${whaleSvg}</div>`;
@@ -452,7 +462,7 @@
                 bgContainer.innerHTML = '<div class="desert-sun"></div><div class="dune-layer"></div>';
             } else if (theme === 'jungle') {
                 let firefliesHTML = '';
-                for(let i = 0; i < 20; i++) {
+                for(let i = 0; i < 22; i++) {
                     const top = Math.random() * 100;
                     const left = Math.random() * 100;
                     const delay = Math.random() * 6;
@@ -462,7 +472,6 @@
                 bgContainer.innerHTML = firefliesHTML;
             }
 
-            // Actualizar tarjeta activa en el menú de temas
             themeCards.forEach(card => {
                 if (card.getAttribute('data-theme') === theme) {
                     card.classList.add('active');
