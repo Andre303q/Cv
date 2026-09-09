@@ -409,7 +409,7 @@ body {
     border-radius: 4px;
 }
 
-/* --- EFECTO INTERACTIVO EN APARTADOS (SOBRE MÍ, EDUCACIÓN, ETC.) --- */
+/* --- EFECTO INTERACTIVO EN APARTADOS (SOBRE MÍ, EDUCACIÓN, CERTIFICACIONES, ETC.) --- */
 #sobre-mi p {
     background: var(--card-bg);
     border: 1px solid var(--border-color);
@@ -426,7 +426,7 @@ body {
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
-/* --- CARRUSEL DE HABILIDADES --- */
+/* --- CARRUSEL DE HABILIDADES MEJORADO --- */
 .carousel-hint {
     font-size: 0.82rem;
     color: var(--text-color);
@@ -437,15 +437,17 @@ body {
     overflow: hidden;
     width: 100%;
     position: relative;
-    padding: 0.8rem 0;
+    padding: 1rem 0;
     white-space: nowrap;
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }
 
 .carousel-track {
     display: flex;
-    gap: 0.9rem;
+    gap: 1.1rem;
     width: max-content;
-    animation: scroll-carousel 25s linear infinite;
+    animation: scroll-carousel 28s linear infinite;
 }
 
 .carousel-container:hover .carousel-track {
@@ -464,24 +466,38 @@ body {
 .skill-card {
     background: var(--card-bg);
     border: 1px solid var(--border-color);
-    padding: 1rem 1.5rem;
+    padding: 0.9rem 1.4rem;
     text-align: center;
-    border-radius: 12px;
+    border-radius: 14px;
     font-weight: 700;
     font-size: 0.88rem;
     color: var(--heading-color);
     flex-shrink: 0;
-    transition: all 0.25s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.skill-card i {
+    color: var(--accent-color);
+    font-size: 1.1rem;
+    transition: transform 0.3s ease;
 }
 
 .skill-card:hover {
     border-color: var(--accent-color);
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    background: var(--card-bg);
     color: var(--accent-color);
 }
 
-/* TIMELINE Y TARJETAS DE EDUCACIÓN/PRÁCTICAS */
+.skill-card:hover i {
+    transform: scale(1.2);
+}
+
+/* TIMELINE Y TARJETAS DE EDUCACIÓN/CERTIFICACIONES/PROYECTOS */
 .timeline {
     border-left: 2px solid var(--border-color);
     padding-left: 1.3rem;
