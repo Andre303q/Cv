@@ -2,45 +2,45 @@
 :root {
     --bg-color: #030712;
     --text-color: #cbd5e1;
-    --card-bg: rgba(15, 23, 42, 0.8);
+    --card-bg: rgba(15, 23, 42, 0.85);
     --border-color: rgba(255, 255, 255, 0.1);
     --heading-color: #ffffff;
-    --nav-bg: rgba(3, 7, 18, 0.88);
+    --nav-bg: rgba(3, 7, 18, 0.9);
     --primary-gradient: linear-gradient(135deg, #6366f1, #06b6d4);
     --accent-color: #06b6d4;
     --badge-bg: rgba(99, 102, 241, 0.15);
     --badge-text: #6366f1;
-    --whale-bg: rgba(6, 182, 212, 0.15);
+    --fish-color: rgba(6, 182, 212, 0.25);
 }
 
 /* --- TEMA 2: CYBERPUNK NEON --- */
 body.theme-cyberpunk {
     --bg-color: #0f051d;
     --text-color: #e2e8f0;
-    --card-bg: rgba(30, 10, 50, 0.85);
+    --card-bg: rgba(30, 10, 50, 0.9);
     --border-color: rgba(168, 85, 247, 0.25);
     --heading-color: #ffffff;
-    --nav-bg: rgba(15, 5, 29, 0.9);
+    --nav-bg: rgba(15, 5, 29, 0.95);
     --primary-gradient: linear-gradient(135deg, #a855f7, #ec4899);
     --accent-color: #ec4899;
     --badge-bg: rgba(168, 85, 247, 0.2);
     --badge-text: #d8b4fe;
-    --whale-bg: rgba(236, 72, 153, 0.15);
+    --fish-color: rgba(236, 72, 153, 0.3);
 }
 
 /* --- TEMA 3: SUNSET GLOW --- */
 body.theme-sunset {
     --bg-color: #1a0f0d;
     --text-color: #fed7aa;
-    --card-bg: rgba(45, 18, 15, 0.85);
+    --card-bg: rgba(45, 18, 15, 0.9);
     --border-color: rgba(249, 115, 22, 0.25);
     --heading-color: #fff7ed;
-    --nav-bg: rgba(26, 15, 13, 0.9);
+    --nav-bg: rgba(26, 15, 13, 0.95);
     --primary-gradient: linear-gradient(135deg, #f97316, #fb7185);
     --accent-color: #fb7185;
     --badge-bg: rgba(249, 115, 22, 0.2);
     --badge-text: #fdba74;
-    --whale-bg: rgba(251, 113, 133, 0.15);
+    --fish-color: rgba(251, 113, 133, 0.3);
 }
 
 /* --- TEMA 4: CLEAN LIGHT --- */
@@ -55,52 +55,52 @@ body.theme-light-clean {
     --accent-color: #059669;
     --badge-bg: rgba(59, 130, 246, 0.12);
     --badge-text: #2563eb;
-    --whale-bg: rgba(5, 150, 105, 0.12);
+    --fish-color: rgba(5, 150, 105, 0.2);
 }
 
 /* --- TEMA 5: OCÉANO (ANIMADO) --- */
 body.theme-ocean {
     --bg-color: #021526;
     --text-color: #e0f2fe;
-    --card-bg: rgba(3, 37, 65, 0.85);
+    --card-bg: rgba(3, 37, 65, 0.9);
     --border-color: rgba(56, 189, 248, 0.35);
     --heading-color: #f0f9ff;
-    --nav-bg: rgba(2, 21, 38, 0.9);
+    --nav-bg: rgba(2, 21, 38, 0.95);
     --primary-gradient: linear-gradient(135deg, #0284c7, #0369a1);
     --accent-color: #38bdf8;
     --badge-bg: rgba(56, 189, 248, 0.15);
     --badge-text: #38bdf8;
-    --whale-bg: rgba(56, 189, 248, 0.2);
+    --fish-color: rgba(56, 189, 248, 0.35);
 }
 
 /* --- TEMA 6: DESIERTO (ANIMADO) --- */
 body.theme-desert {
     --bg-color: #1a0b04;
     --text-color: #fef3c7;
-    --card-bg: rgba(45, 18, 5, 0.85);
+    --card-bg: rgba(45, 18, 5, 0.9);
     --border-color: rgba(245, 158, 11, 0.35);
     --heading-color: #fffbeb;
-    --nav-bg: rgba(26, 11, 4, 0.9);
+    --nav-bg: rgba(26, 11, 4, 0.95);
     --primary-gradient: linear-gradient(135deg, #d97706, #b45309);
     --accent-color: #f59e0b;
     --badge-bg: rgba(245, 158, 11, 0.15);
     --badge-text: #f59e0b;
-    --whale-bg: rgba(245, 158, 11, 0.15);
+    --fish-color: rgba(245, 158, 11, 0.3);
 }
 
 /* --- TEMA 7: JUNGLA (ANIMADO) --- */
 body.theme-jungle {
     --bg-color: #02120a;
     --text-color: #ecfdf5;
-    --card-bg: rgba(4, 31, 18, 0.85);
+    --card-bg: rgba(4, 31, 18, 0.9);
     --border-color: rgba(52, 211, 153, 0.35);
     --heading-color: #f0fdf4;
-    --nav-bg: rgba(2, 18, 10, 0.9);
+    --nav-bg: rgba(2, 18, 10, 0.95);
     --primary-gradient: linear-gradient(135deg, #059669, #047857);
     --accent-color: #34d399;
     --badge-bg: rgba(52, 211, 153, 0.15);
     --badge-text: #34d399;
-    --whale-bg: rgba(52, 211, 153, 0.15);
+    --fish-color: rgba(52, 211, 153, 0.3);
 }
 
 /* --- RESET Y TAMAÑOS BASE --- */
@@ -123,99 +123,96 @@ body {
     overflow-x: hidden;
     padding-top: 65px;
     position: relative;
+    /* Eliminados por completo los radial-gradients difuminados de fondo */
     transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 /* ========================================================
-   BALLENAS FLOTANTES EN EL FONDO (CENTRO Y PANTALLA)
+   BANCOS DE PECES FLOTANTES EN EL CENTRO Y FONDO
    ======================================================== */
-.background-whales-container {
+.background-fish-container {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    pointer-events: none; /* Permite hacer clic a través de ellas */
-    z-index: 0; /* Por debajo del contenido pero visible en el fondo */
+    pointer-events: none;
+    z-index: 0;
     overflow: hidden;
 }
 
-.floating-bg-whale {
+.school-of-fish {
     position: absolute;
-    background-color: var(--whale-bg);
-    /* Silueta vectorial de una ballena nadando */
-    clip-path: path('M120 35c-15-5-30-15-45-15-10 0-20 5-30 10-10 5-25 15-35 25 15 5 30 5 45 5 20 0 35-10 65-25z M90 20c-5-10-15-15-25-15-10 0-15 5-15 10 5 0 15 5 20 10 5 0 15-5 20-5z');
+    display: flex;
+    gap: 12px;
+    pointer-events: none;
+}
+
+/* Forma vectorial de un pez pequeño */
+.fish {
+    width: 32px;
+    height: 16px;
+    background-color: var(--fish-color);
+    clip-path: path('M32 8c-6-4-12-8-20-8-4 0-8 2-12 4 4 2 8 4 12 4 8 0 14-4 20-0z M6 6L0 2v12l6-4z');
     transition: background-color 0.4s ease;
 }
 
-/* Ballena 1: Flotando por el centro-izquierda con animación suave */
-.bg-whale-1 {
-    width: 280px;
-    height: 140px;
-    top: 30%;
-    left: 15%;
-    opacity: 0.5;
-    animation: floatWhaleCenter1 22s ease-in-out infinite alternate;
+/* Posicionamiento y animaciones de los bancos de peces por el centro */
+.school-1 {
+    top: 35%;
+    left: 20%;
+    animation: swimCenter1 25s ease-in-out infinite alternate;
 }
 
-/* Ballena 2: Flotando por el centro-derecha */
-.bg-whale-2 {
-    width: 220px;
-    height: 110px;
-    top: 55%;
-    right: 15%;
-    opacity: 0.4;
-    animation: floatWhaleCenter2 28s ease-in-out infinite alternate;
-    transform: scaleX(-1); /* Mirando hacia el otro lado */
+.school-2 {
+    top: 60%;
+    right: 25%;
+    animation: swimCenter2 30s ease-in-out infinite alternate;
 }
 
-/* Ballena 3: Cruzando el centro superior/inferior */
-.bg-whale-3 {
-    width: 350px;
-    height: 175px;
-    top: 15%;
-    left: 40%;
-    opacity: 0.3;
-    animation: floatWhaleCenter3 35s ease-in-out infinite alternate;
+.school-3 {
+    top: 20%;
+    left: 50%;
+    animation: swimCenter3 20s ease-in-out infinite alternate;
 }
 
-@keyframes floatWhaleCenter1 {
+@keyframes swimCenter1 {
     0% {
-        transform: translate(0, 0) rotate(-5deg) scale(0.9);
+        transform: translate(0, 0) rotate(-10deg);
     }
     50% {
-        transform: translate(120px, -70px) rotate(8deg) scale(1.1);
+        transform: translate(150px, -80px) rotate(15deg);
     }
     100% {
-        transform: translate(-60px, 80px) rotate(-3deg) scale(1);
+        transform: translate(-100px, 100px) rotate(-5deg);
     }
 }
 
-@keyframes floatWhaleCenter2 {
+@keyframes swimCenter2 {
     0% {
-        transform: scaleX(-1) translate(0, 0) rotate(5deg) scale(1);
+        transform: scaleX(-1) translate(0, 0) rotate(10deg);
     }
     50% {
-        transform: scaleX(-1) translate(-140px, 60px) rotate(-6deg) scale(0.9);
+        transform: scaleX(-1) translate(-160px, 90px) rotate(-15deg);
     }
     100% {
-        transform: scaleX(-1) translate(80px, -90px) rotate(4deg) scale(1.15);
+        transform: scaleX(-1) translate(120px, -70px) rotate(5deg);
     }
 }
 
-@keyframes floatWhaleCenter3 {
+@keyframes swimCenter3 {
     0% {
-        transform: translate(0, 0) rotate(2deg) scale(1);
+        transform: translate(0, 0) rotate(5deg);
     }
     50% {
-        transform: translate(-100px, 120px) rotate(-8deg) scale(0.85);
+        transform: translate(-120px, 110px) rotate(-10deg);
     }
     100% {
-        transform: translate(150px, -50px) rotate(6deg) scale(1.1);
+        transform: translate(130px, 60px) rotate(8deg);
     }
 }
 
-/* Asegurar que las secciones y elementos estén por encima del fondo animado */
+/* Asegurar que el contenido esté por encima de los peces */
 .navbar, .theme-picker-drawer, .hero, .container, .mobile-banner, footer {
     position: relative;
     z-index: 1;
