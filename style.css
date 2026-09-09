@@ -10,6 +10,7 @@
     --accent-color: #06b6d4;
     --badge-bg: rgba(99, 102, 241, 0.15);
     --badge-text: #6366f1;
+    --whale-bg: rgba(6, 182, 212, 0.15);
 }
 
 /* --- TEMA 2: CYBERPUNK NEON --- */
@@ -24,6 +25,7 @@ body.theme-cyberpunk {
     --accent-color: #ec4899;
     --badge-bg: rgba(168, 85, 247, 0.2);
     --badge-text: #d8b4fe;
+    --whale-bg: rgba(236, 72, 153, 0.15);
 }
 
 /* --- TEMA 3: SUNSET GLOW --- */
@@ -38,6 +40,7 @@ body.theme-sunset {
     --accent-color: #fb7185;
     --badge-bg: rgba(249, 115, 22, 0.2);
     --badge-text: #fdba74;
+    --whale-bg: rgba(251, 113, 133, 0.15);
 }
 
 /* --- TEMA 4: CLEAN LIGHT --- */
@@ -52,6 +55,7 @@ body.theme-light-clean {
     --accent-color: #059669;
     --badge-bg: rgba(59, 130, 246, 0.12);
     --badge-text: #2563eb;
+    --whale-bg: rgba(5, 150, 105, 0.12);
 }
 
 /* --- TEMA 5: OCÉANO (ANIMADO) --- */
@@ -66,6 +70,7 @@ body.theme-ocean {
     --accent-color: #38bdf8;
     --badge-bg: rgba(56, 189, 248, 0.15);
     --badge-text: #38bdf8;
+    --whale-bg: rgba(56, 189, 248, 0.2);
 }
 
 /* --- TEMA 6: DESIERTO (ANIMADO) --- */
@@ -80,6 +85,7 @@ body.theme-desert {
     --accent-color: #f59e0b;
     --badge-bg: rgba(245, 158, 11, 0.15);
     --badge-text: #f59e0b;
+    --whale-bg: rgba(245, 158, 11, 0.15);
 }
 
 /* --- TEMA 7: JUNGLA (ANIMADO) --- */
@@ -94,6 +100,7 @@ body.theme-jungle {
     --accent-color: #34d399;
     --badge-bg: rgba(52, 211, 153, 0.15);
     --badge-text: #34d399;
+    --whale-bg: rgba(52, 211, 153, 0.15);
 }
 
 /* --- RESET Y TAMAÑOS BASE --- */
@@ -115,11 +122,103 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     padding-top: 65px;
-    background-image: 
-        radial-gradient(at 10% 10%, rgba(99, 102, 241, 0.12) 0px, transparent 40%),
-        radial-gradient(at 90% 90%, rgba(6, 182, 212, 0.12) 0px, transparent 40%);
-    background-attachment: fixed;
+    position: relative;
     transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* ========================================================
+   BALLENAS FLOTANTES EN EL FONDO (CENTRO Y PANTALLA)
+   ======================================================== */
+.background-whales-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none; /* Permite hacer clic a través de ellas */
+    z-index: 0; /* Por debajo del contenido pero visible en el fondo */
+    overflow: hidden;
+}
+
+.floating-bg-whale {
+    position: absolute;
+    background-color: var(--whale-bg);
+    /* Silueta vectorial de una ballena nadando */
+    clip-path: path('M120 35c-15-5-30-15-45-15-10 0-20 5-30 10-10 5-25 15-35 25 15 5 30 5 45 5 20 0 35-10 65-25z M90 20c-5-10-15-15-25-15-10 0-15 5-15 10 5 0 15 5 20 10 5 0 15-5 20-5z');
+    transition: background-color 0.4s ease;
+}
+
+/* Ballena 1: Flotando por el centro-izquierda con animación suave */
+.bg-whale-1 {
+    width: 280px;
+    height: 140px;
+    top: 30%;
+    left: 15%;
+    opacity: 0.5;
+    animation: floatWhaleCenter1 22s ease-in-out infinite alternate;
+}
+
+/* Ballena 2: Flotando por el centro-derecha */
+.bg-whale-2 {
+    width: 220px;
+    height: 110px;
+    top: 55%;
+    right: 15%;
+    opacity: 0.4;
+    animation: floatWhaleCenter2 28s ease-in-out infinite alternate;
+    transform: scaleX(-1); /* Mirando hacia el otro lado */
+}
+
+/* Ballena 3: Cruzando el centro superior/inferior */
+.bg-whale-3 {
+    width: 350px;
+    height: 175px;
+    top: 15%;
+    left: 40%;
+    opacity: 0.3;
+    animation: floatWhaleCenter3 35s ease-in-out infinite alternate;
+}
+
+@keyframes floatWhaleCenter1 {
+    0% {
+        transform: translate(0, 0) rotate(-5deg) scale(0.9);
+    }
+    50% {
+        transform: translate(120px, -70px) rotate(8deg) scale(1.1);
+    }
+    100% {
+        transform: translate(-60px, 80px) rotate(-3deg) scale(1);
+    }
+}
+
+@keyframes floatWhaleCenter2 {
+    0% {
+        transform: scaleX(-1) translate(0, 0) rotate(5deg) scale(1);
+    }
+    50% {
+        transform: scaleX(-1) translate(-140px, 60px) rotate(-6deg) scale(0.9);
+    }
+    100% {
+        transform: scaleX(-1) translate(80px, -90px) rotate(4deg) scale(1.15);
+    }
+}
+
+@keyframes floatWhaleCenter3 {
+    0% {
+        transform: translate(0, 0) rotate(2deg) scale(1);
+    }
+    50% {
+        transform: translate(-100px, 120px) rotate(-8deg) scale(0.85);
+    }
+    100% {
+        transform: translate(150px, -50px) rotate(6deg) scale(1.1);
+    }
+}
+
+/* Asegurar que las secciones y elementos estén por encima del fondo animado */
+.navbar, .theme-picker-drawer, .hero, .container, .mobile-banner, footer {
+    position: relative;
+    z-index: 1;
 }
 
 /* --- BARRA DE NAVEGACIÓN Y BOTÓN DE TEMAS --- */
@@ -381,7 +480,7 @@ body {
     color: var(--accent-color);
 }
 
-/* --- BOTONES Y COMPONENTES UNIFICADOS CON EFECTO DINÁMICO --- */
+/* --- BOTONES Y COMPONENTES UNIFICADOS --- */
 .social-links {
     display: flex;
     gap: 0.7rem;
@@ -490,13 +589,12 @@ body {
     border-radius: 4px;
 }
 
-/* --- EFECTO INTERACTIVO EN APARTADOS --- */
 #sobre-mi p {
     color: var(--text-color);
     font-size: 0.92rem;
 }
 
-/* --- CARRUSEL DE HABILIDADES MEJORADO --- */
+/* --- CARRUSEL DE HABILIDADES --- */
 .carousel-hint {
     font-size: 0.82rem;
     color: var(--text-color);
@@ -566,7 +664,7 @@ body {
     transform: scale(1.2);
 }
 
-/* TIMELINE Y TARJETAS DE EDUCACIÓN/CERTIFICACIONES/PROYECTOS */
+/* TIMELINE Y TARJETAS */
 .timeline {
     border-left: 2px solid var(--border-color);
     padding-left: 1.3rem;
@@ -589,7 +687,6 @@ body {
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
-/* --- INDICADOR DE BALLENA EN LA LÍNEA DE TIEMPO --- */
 .timeline-item::before {
     content: '';
     position: absolute;
@@ -598,7 +695,6 @@ body {
     width: 26px;
     height: 15px;
     background-color: var(--accent-color);
-    /* Silueta vectorial estilizada de una ballena nadando */
     clip-path: path('M26 7.5c-3.2-1.1-6.5-3.2-9.7-3.2-2.2 0-4.3 1.1-6.5 2.2-2.2 1.1-5.4 3.2-7.5 5.4 3.2 1.1 6.5 1.1 9.7 1.1 4.3 0 7.5-2.2 14-5.4z M19.5 4.3c-1.1-2.2-3.2-3.2-5.4-3.2-2.2 0-3.2 1.1-3.2 2.2 1.1 0 3.2 1.1 4.3 2.2 1.1 0 3.2-1.1 4.3-1.2z');
     border: none;
     border-radius: 0;
