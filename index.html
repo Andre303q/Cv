@@ -10,8 +10,127 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Tu archivo CSS -->
     <link rel="stylesheet" href="style.css">
+    <!-- Estilos específicos para los fondos animados y las categorías de temas -->
+    <style>
+        /* Contenedor de fondo animado global */
+        #animated-bg-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -999;
+            pointer-events: none;
+            overflow: hidden;
+            display: none;
+        }
+
+        /* TEMA 1: DESIERTO */
+        body.theme-desert {
+            background: linear-gradient(135deg, #2c160b 0%, #4a220d 50%, #873e13 100%);
+            color: #fef3c7;
+        }
+        body.theme-desert #animated-bg-container {
+            display: block;
+            background: radial-gradient(circle at 80% 20%, rgba(245, 158, 11, 0.2) 0%, transparent 40%),
+                        linear-gradient(to bottom, #1e0c04, #3a1a09);
+        }
+        /* Dunas de arena animadas o sol desértico */
+        .sun-desert {
+            position: absolute;
+            top: 10%;
+            right: 15px;
+            width: 90px;
+            height: 90px;
+            background: #f59e0b;
+            border-radius: 50%;
+            box-shadow: 0 0 50px rgba(245, 158, 11, 0.6);
+        }
+        .dune-wave {
+            position: absolute;
+            bottom: 0;
+            width: 200%;
+            height: 100px;
+            background: rgba(217, 119, 6, 0.15);
+            border-radius: 50% 50% 0 0;
+            animation: moveDunes 15s linear infinite;
+        }
+        @keyframes moveDunes {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* TEMA 2: OCÉANO CON BALLENAS */
+        body.theme-ocean {
+            background: linear-gradient(135deg, #021526 0%, #032d4d 50%, #0a4d68 100%);
+            color: #e2f1f8;
+        }
+        body.theme-ocean #animated-bg-container {
+            display: block;
+            background: linear-gradient(to bottom, #010f1d, #032238);
+        }
+        .whale {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.15);
+            font-size: 70px;
+            animation: swimWhale 22s linear infinite;
+            top: 25%;
+            left: -150px;
+        }
+        .whale.w2 {
+            top: 60%;
+            font-size: 50px;
+            animation-duration: 30s;
+            animation-delay: -8s;
+        }
+        @keyframes swimWhale {
+            0% { transform: translateX(-150px) scaleX(1); }
+            50% { transform: translateX(calc(100vw + 150px)) scaleX(1); }
+            50.1% { transform: translateX(calc(100vw + 150px)) scaleX(-1); }
+            100% { transform: translateX(-150px) scaleX(-1); }
+        }
+
+        /* TEMA 3: JUNGLA */
+        body.theme-jungle {
+            background: linear-gradient(135deg, #061e14 0%, #0b3c25 50%, #135d36 100%);
+            color: #e6f4ed;
+        }
+        body.theme-jungle #animated-bg-container {
+            display: block;
+            background: linear-gradient(to bottom, #04120c, #072618);
+        }
+        .firefly {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: #a3e635;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #84cc16;
+            animation: floatFirefly 6s ease-in-out infinite alternate;
+        }
+        @keyframes floatFirefly {
+            0% { transform: translate(0, 0); opacity: 0.2; }
+            50% { opacity: 0.9; }
+            100% { transform: translate(80px, -120px); opacity: 0.2; }
+        }
+
+        /* Estilos de organización de categorías en el Drawer */
+        .theme-section-title {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #94a3b8;
+            margin: 15px 0 8px 0;
+            font-weight: 700;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 4px;
+        }
+    </style>
 </head>
 <body>
+
+    <!-- CONTENEDOR PARA FONDOS ANIMADOS -->
+    <div id="animated-bg-container"></div>
 
     <!-- BARRA DE NAVEGACIÓN SUPERIOR -->
     <nav class="navbar">
@@ -27,15 +146,17 @@
         </div>
     </nav>
 
-    <!-- PANEL DESPLEGABLE DE SELECCIÓN DE TEMA -->
+    <!-- PANEL DESPLEGABLE DE SELECCIÓN DE TEMA (DIVIDIDO EN SÓLIDOS Y ANIMADOS) -->
     <div id="theme-picker-drawer" class="theme-picker-drawer">
         <div class="theme-picker-content">
             <div class="theme-picker-header">
-                <h3>SELECCIONA UN TEMA</h3>
+                <h3>PERSONALIZA TU TEMA</h3>
                 <button id="close-theme-drawer" class="close-drawer-btn">&times;</button>
             </div>
+            
+            <!-- APARTADO 1: SÓLIDOS -->
+            <div class="theme-section-title">Temas Sólidos</div>
             <div class="themes-grid">
-                <!-- Tema 1: Classic Dark -->
                 <button class="theme-card active" data-theme="dark-classic">
                     <span class="theme-name">Classic Dark</span>
                     <div class="theme-dots">
@@ -44,7 +165,6 @@
                         <span style="background: #06b6d4;"></span>
                     </div>
                 </button>
-                <!-- Tema 2: Cyberpunk Neon -->
                 <button class="theme-card" data-theme="cyberpunk">
                     <span class="theme-name">Cyberpunk</span>
                     <div class="theme-dots">
@@ -53,7 +173,6 @@
                         <span style="background: #ec4899;"></span>
                     </div>
                 </button>
-                <!-- Tema 3: Sunset Orange -->
                 <button class="theme-card" data-theme="sunset">
                     <span class="theme-name">Sunset Glow</span>
                     <div class="theme-dots">
@@ -62,13 +181,41 @@
                         <span style="background: #fb7185;"></span>
                     </div>
                 </button>
-                <!-- Tema 4: Clean Light -->
                 <button class="theme-card" data-theme="light-clean">
                     <span class="theme-name">Clean Light</span>
                     <div class="theme-dots">
                         <span style="background: #f1f5f9;"></span>
                         <span style="background: #3b82f6;"></span>
                         <span style="background: #10b981;"></span>
+                    </div>
+                </button>
+            </div>
+
+            <!-- APARTADO 2: ANIMADOS -->
+            <div class="theme-section-title">Temas Animados 🌊🌵🌴</div>
+            <div class="themes-grid">
+                <button class="theme-card" data-theme="desert">
+                    <span class="theme-name">Desierto 🌵</span>
+                    <div class="theme-dots">
+                        <span style="background: #2c160b;"></span>
+                        <span style="background: #f59e0b;"></span>
+                        <span style="background: #d97706;"></span>
+                    </div>
+                </button>
+                <button class="theme-card" data-theme="ocean">
+                    <span class="theme-name">Océano & Ballenas 🐋</span>
+                    <div class="theme-dots">
+                        <span style="background: #021526;"></span>
+                        <span style="background: #0a4d68;"></span>
+                        <span style="background: #38bdf8;"></span>
+                    </div>
+                </button>
+                <button class="theme-card" data-theme="jungle">
+                    <span class="theme-name">Jungla 🌴</span>
+                    <div class="theme-dots">
+                        <span style="background: #061e14;"></span>
+                        <span style="background: #0b3c25;"></span>
+                        <span style="background: #a3e635;"></span>
                     </div>
                 </button>
             </div>
@@ -229,12 +376,13 @@
         <p>&copy; 2026 - Sebástian André García Bonilla. Hecho con HTML y CSS.</p>
     </footer>
 
-    <!-- SCRIPT DE INTERACTIVIDAD (TEMAS) -->
+    <!-- SCRIPT DE INTERACTIVIDAD Y GENERACIÓN DE ANIMACIONES -->
     <script>
         const themeMenuBtn = document.getElementById('theme-menu-btn');
         const themeDrawer = document.getElementById('theme-picker-drawer');
         const closeDrawerBtn = document.getElementById('close-theme-drawer');
         const themeCards = document.querySelectorAll('.theme-card');
+        const bgContainer = document.getElementById('animated-bg-container');
 
         themeMenuBtn.addEventListener('click', () => {
             themeDrawer.classList.toggle('open');
@@ -257,11 +405,34 @@
         });
 
         function applyTheme(theme) {
-            document.body.classList.remove('theme-cyberpunk', 'theme-sunset', 'theme-light-clean');
+            // Limpiar clases de temas anteriores
+            document.body.classList.remove('theme-cyberpunk', 'theme-sunset', 'theme-light-clean', 'theme-desert', 'theme-ocean', 'theme-jungle');
+            
             if (theme !== 'dark-classic') {
                 document.body.classList.add(`theme-${theme}`);
             }
 
+            // Gestionar elementos visuales animados en el fondo
+            bgContainer.innerHTML = '';
+            if (theme === 'desert') {
+                bgContainer.innerHTML = '<div class="sun-desert"></div><div class="dune-wave"></div>';
+            } else if (theme === 'ocean') {
+                bgContainer.innerHTML = '<i class="fa-solid fa-fish-fins whale"></i><i class="fa-solid fa-fish-fins whale w2"></i>';
+                // Cambiamos el icono a ballena/pez flotando elegantemente
+                const whales = bgContainer.querySelectorAll('.whale');
+                whales.forEach(w => w.className = "fa-solid fa-water whale"); // O un icono de criatura marina
+            } else if (theme === 'jungle') {
+                let firefliesHTML = '';
+                for(let i = 0; i < 15; i++) {
+                    const top = Math.random() * 100;
+                    const left = Math.random() * 100;
+                    const delay = Math.random() * 5;
+                    firefliesHTML += `<div class="firefly" style="top: ${top}%; left: ${left}%; animation-delay: ${delay}s;"></div>`;
+                }
+                bgContainer.innerHTML = firefliesHTML;
+            }
+
+            // Actualizar tarjeta activa en el menú
             themeCards.forEach(card => {
                 if (card.getAttribute('data-theme') === theme) {
                     card.classList.add('active');
