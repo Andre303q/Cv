@@ -250,35 +250,55 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* --- HERO SECTION --- */
+/* --- HERO SECTION MEJORADA --- */
 .hero {
-    min-height: 70vh;
+    min-height: 75vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 2.5rem 1rem;
+    padding: 3rem 1.2rem;
+    position: relative;
+}
+
+.hero-content {
+    max-width: 850px;
+    margin: 0 auto;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 2.5rem 1.5rem;
+    border-radius: 24px;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-content:hover {
+    border-color: var(--accent-color);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
 }
 
 .hero-subtitle-badge {
     display: inline-block;
     background: var(--primary-gradient);
     color: #ffffff;
-    padding: 0.4rem 1.1rem;
+    padding: 0.4rem 1.2rem;
     border-radius: 50px;
     font-size: 0.78rem;
     font-weight: 800;
     margin-bottom: 1.2rem;
-    letter-spacing: 1px;
+    letter-spacing: 1.2px;
     text-transform: uppercase;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
 }
 
 .hero h1 {
     font-size: 1.85rem;
     color: var(--heading-color);
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.9rem;
     font-weight: 800;
-    line-height: 1.2;
+    line-height: 1.25;
 }
 
 .highlight {
@@ -290,26 +310,33 @@ body {
 .tagline {
     font-size: 0.98rem;
     color: var(--text-color);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.6rem;
     font-weight: 500;
 }
 
 .hero-badges {
     display: flex;
     justify-content: center;
-    gap: 0.5rem;
-    margin-bottom: 1.8rem;
+    gap: 0.6rem;
+    margin-bottom: 2rem;
     flex-wrap: wrap;
 }
 
-.badge {
-    background: var(--card-bg);
+.hero-badges .badge {
+    background: var(--bg-color);
     border: 1px solid var(--border-color);
-    padding: 0.35rem 0.9rem;
-    border-radius: 8px;
+    padding: 0.4rem 1rem;
+    border-radius: 10px;
     font-size: 0.78rem;
     color: var(--heading-color);
     font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.hero-badges .badge i {
+    color: var(--accent-color);
 }
 
 /* --- BOTONES Y COMPONENTES UNIFICADOS CON EFECTO DINÁMICO --- */
