@@ -10,16 +10,90 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
+        /* ================= VARIABLES GLOBALES (TEMA POR DEFECTO: CLASSIC DARK) ================= */
         :root {
-            --glass-bg: rgba(255, 255, 255, 0.03);
+            --bg-color: #030712;
+            --text-color: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-color: #38bdf8;
+            --accent-gradient: linear-gradient(135deg, #38bdf8, #818cf8);
+            --glass-bg: rgba(15, 23, 42, 0.65);
             --glass-border: rgba(255, 255, 255, 0.08);
+            --card-inner-bg: rgba(255, 255, 255, 0.02);
             --blur-strength: blur(16px);
             --card-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.3);
             --transition-smooth: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            --bg-color: #030712;
-            --text-color: #f8fafc;
         }
 
+        /* ================= DEFINICIÓN DE TEMAS (DINÁMICOS) ================= */
+        body.theme-cyberpunk {
+            --bg-color: #0b0514;
+            --text-color: #f3e8ff;
+            --text-muted: #d8b4fe;
+            --accent-color: #a855f7;
+            --accent-gradient: linear-gradient(135deg, #a855f7, #ec4899);
+            --glass-bg: rgba(30, 15, 50, 0.7);
+            --glass-border: rgba(168, 85, 247, 0.25);
+            --card-inner-bg: rgba(168, 85, 247, 0.04);
+        }
+
+        body.theme-sunset {
+            --bg-color: #120806;
+            --text-color: #ffedd5;
+            --text-muted: #fed7aa;
+            --accent-color: #f97316;
+            --accent-gradient: linear-gradient(135deg, #f97316, #e11d48);
+            --glass-bg: rgba(40, 18, 12, 0.7);
+            --glass-border: rgba(249, 115, 22, 0.25);
+            --card-inner-bg: rgba(249, 115, 22, 0.04);
+        }
+
+        body.theme-light-clean {
+            --bg-color: #f1f5f9;
+            --text-color: #0f172a;
+            --text-muted: #475569;
+            --accent-color: #0284c7;
+            --accent-gradient: linear-gradient(135deg, #0284c7, #4f46e5);
+            --glass-bg: rgba(255, 255, 255, 0.8);
+            --glass-border: rgba(0, 0, 0, 0.08);
+            --card-inner-bg: rgba(0, 0, 0, 0.02);
+            --card-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.05);
+        }
+
+        body.theme-ocean {
+            --bg-color: #010810;
+            --text-color: #e0f2fe;
+            --text-muted: #7dd3fc;
+            --accent-color: #38bdf8;
+            --accent-gradient: linear-gradient(135deg, #38bdf8, #0284c7);
+            --glass-bg: rgba(3, 45, 77, 0.55);
+            --glass-border: rgba(56, 189, 248, 0.25);
+            --card-inner-bg: rgba(56, 189, 248, 0.04);
+        }
+
+        body.theme-desert {
+            --bg-color: #110501;
+            --text-color: #fef3c7;
+            --text-muted: #fde68a;
+            --accent-color: #f59e0b;
+            --accent-gradient: linear-gradient(135deg, #f59e0b, #d97706);
+            --glass-bg: rgba(43, 16, 3, 0.65);
+            --glass-border: rgba(245, 158, 11, 0.25);
+            --card-inner-bg: rgba(245, 158, 11, 0.04);
+        }
+
+        body.theme-jungle {
+            --bg-color: #010c05;
+            --text-color: #d1fae5;
+            --text-muted: #6ee7b7;
+            --accent-color: #34d399;
+            --accent-gradient: linear-gradient(135deg, #34d399, #059669);
+            --glass-bg: rgba(3, 34, 20, 0.65);
+            --glass-border: rgba(52, 211, 153, 0.25);
+            --card-inner-bg: rgba(52, 211, 153, 0.04);
+        }
+
+        /* ================= ESTILOS GENERALES ================= */
         body {
             font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
             overflow-x: hidden;
@@ -27,7 +101,7 @@
             color: var(--text-color);
             margin: 0;
             padding: 0;
-            transition: background 0.4s ease, color 0.4s ease;
+            transition: background-color 0.4s ease, color 0.4s ease;
         }
 
         #animated-bg-container {
@@ -42,51 +116,7 @@
             display: none;
         }
 
-        /* ================= TEMAS COMPLETOS ================= */
-        body.theme-cyberpunk {
-            --bg-color: #0b0514;
-            --glass-bg: rgba(168, 85, 247, 0.04);
-            --glass-border: rgba(168, 85, 247, 0.15);
-        }
-        body.theme-cyberpunk #animated-bg-container {
-            display: block;
-            background: radial-gradient(circle at 20% 20%, rgba(168, 85, 247, 0.15) 0%, transparent 40%),
-                        radial-gradient(circle at 80% 80%, rgba(236, 72, 153, 0.15) 0%, transparent 40%), #0b0514;
-        }
-
-        body.theme-sunset {
-            --bg-color: #120806;
-            --glass-bg: rgba(249, 115, 22, 0.04);
-            --glass-border: rgba(249, 115, 22, 0.15);
-        }
-        body.theme-sunset #animated-bg-container {
-            display: block;
-            background: radial-gradient(circle at 50% 10%, rgba(249, 115, 22, 0.2) 0%, transparent 50%), #120806;
-        }
-
-        body.theme-light-clean {
-            --bg-color: #f1f5f9;
-            --text-color: #0f172a;
-            --glass-bg: rgba(255, 255, 255, 0.7);
-            --glass-border: rgba(0, 0, 0, 0.08);
-            --card-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.05);
-        }
-        body.theme-light-clean .section h2, 
-        body.theme-light-clean .hero h1, 
-        body.theme-light-clean .timeline-item h3,
-        body.theme-light-clean .project-card h3,
-        body.theme-light-clean .skill-card,
-        body.theme-light-clean .school-link {
-            color: #0f172a !important;
-        }
-        body.theme-light-clean .timeline-item p,
-        body.theme-light-clean .project-card p,
-        body.theme-light-clean .hero .tagline,
-        body.theme-light-clean .github-info p,
-        body.theme-light-clean .contacto p {
-            color: #475569 !important;
-        }
-
+        /* Fondos animados específicos */
         body.theme-ocean #animated-bg-container {
             display: block;
             background: radial-gradient(circle at 50% 20%, #032d4d 0%, #011627 50%, #010810 100%);
@@ -123,6 +153,17 @@
             background: linear-gradient(to bottom, #010f07, #032214, #010c05);
         }
 
+        body.theme-cyberpunk #animated-bg-container {
+            display: block;
+            background: radial-gradient(circle at 20% 20%, rgba(168, 85, 247, 0.15) 0%, transparent 40%),
+                        radial-gradient(circle at 80% 80%, rgba(236, 72, 153, 0.15) 0%, transparent 40%), #0b0514;
+        }
+
+        body.theme-sunset #animated-bg-container {
+            display: block;
+            background: radial-gradient(circle at 50% 10%, rgba(249, 115, 22, 0.2) 0%, transparent 50%), #120806;
+        }
+
         /* ================= BARRA DE NAVEGACIÓN ================= */
         .navbar {
             display: flex;
@@ -135,12 +176,13 @@
             top: 0;
             z-index: 1000;
             border-bottom: 1px solid var(--glass-border);
+            transition: var(--transition-smooth);
         }
 
         .nav-brand {
             font-size: 1.25rem;
             font-weight: 800;
-            background: linear-gradient(135deg, #38bdf8, #818cf8);
+            background: var(--accent-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -180,9 +222,9 @@
         }
 
         .theme-menu-btn {
-            background: rgba(255, 255, 255, 0.08);
+            background: var(--card-inner-bg);
             border: 1px solid var(--glass-border);
-            color: inherit;
+            color: var(--text-color);
             padding: 8px 16px;
             border-radius: 12px;
             cursor: pointer;
@@ -194,11 +236,10 @@
         }
 
         .theme-menu-btn:hover {
-            background: rgba(56, 189, 248, 0.15);
-            border-color: rgba(56, 189, 248, 0.4);
+            border-color: var(--accent-color);
         }
 
-        /* ================= CONTENEDOR GENERAL ================= */
+        /* ================= CONTENEDOR GENERAL & SECCIONES ================= */
         .container {
             max-width: 900px;
             margin: 40px auto;
@@ -219,7 +260,7 @@
         }
 
         .section:hover {
-            border-color: rgba(255, 255, 255, 0.18);
+            border-color: var(--accent-color);
             box-shadow: 0 20px 40px 0 rgba(0, 0, 0, 0.4);
             transform: translateY(-2px);
         }
@@ -230,6 +271,7 @@
             margin-bottom: 25px;
             font-size: 1.8rem;
             font-weight: 700;
+            color: var(--text-color);
             letter-spacing: -0.5px;
         }
 
@@ -240,8 +282,13 @@
             bottom: -8px;
             width: 40px;
             height: 3px;
-            background: linear-gradient(90deg, #38bdf8, #818cf8);
+            background: var(--accent-gradient);
             border-radius: 2px;
+        }
+
+        /* Textos explicativos estándar */
+        .section p, .hero .tagline, .timeline-item p, .project-card p, .github-info p, .contacto p {
+            color: var(--text-muted);
         }
 
         /* ================= HERO SECTION ================= */
@@ -252,9 +299,9 @@
 
         .hero-subtitle-badge {
             display: inline-block;
-            background: rgba(56, 189, 248, 0.1);
-            border: 1px solid rgba(56, 189, 248, 0.25);
-            color: #38bdf8;
+            background: var(--card-inner-bg);
+            border: 1px solid var(--glass-border);
+            color: var(--accent-color);
             padding: 6px 16px;
             border-radius: 20px;
             font-size: 0.85rem;
@@ -268,16 +315,16 @@
             font-weight: 800;
             margin-bottom: 15px;
             letter-spacing: -1px;
+            color: var(--text-color);
         }
 
         .hero h1 .highlight {
-            background: linear-gradient(135deg, #38bdf8, #818cf8, #c084fc);
+            background: var(--accent-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .hero .tagline {
-            color: #94a3b8;
             font-size: 1.1rem;
             max-width: 700px;
             margin: 0 auto 25px auto;
@@ -293,12 +340,12 @@
         }
 
         .badge {
-            background: rgba(255, 255, 255, 0.05);
+            background: var(--card-inner-bg);
             border: 1px solid var(--glass-border);
             padding: 8px 14px;
             border-radius: 10px;
             font-size: 0.9rem;
-            color: inherit;
+            color: var(--text-color);
             display: inline-flex;
             align-items: center;
             gap: 8px;
@@ -325,25 +372,25 @@
         }
 
         .btn.primary {
-            background: linear-gradient(135deg, #38bdf8, #6366f1);
+            background: var(--accent-gradient);
             color: #fff;
-            box-shadow: 0 4px 20px rgba(56, 189, 248, 0.3);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
             border: none;
         }
 
         .btn.primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 25px rgba(56, 189, 248, 0.5);
+            opacity: 0.9;
         }
 
         .btn.secondary {
-            background: rgba(255, 255, 255, 0.05);
+            background: var(--card-inner-bg);
             border: 1px solid var(--glass-border);
-            color: inherit;
+            color: var(--text-color);
         }
 
         .btn.secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--accent-color);
             transform: translateY(-2px);
         }
 
@@ -358,27 +405,27 @@
             transform: translateY(-2px);
         }
 
-        /* ================= DISEÑO LIMPIO PARA TIMELINES (EDUCACIÓN Y CERTIFICACIONES) ================= */
+        /* ================= TIMELINES (EDUCACIÓN Y CERTIFICACIONES) ================= */
         .timeline {
             position: relative;
-            padding-left: 28px;
+            padding-left: 35px;
             margin-top: 15px;
         }
 
         .timeline::before {
             content: '';
             position: absolute;
-            left: 7px;
+            left: 11px;
             top: 8px;
             bottom: 8px;
             width: 2px;
-            background: linear-gradient(to bottom, #38bdf8, #818cf8, rgba(255, 255, 255, 0.05));
+            background: var(--accent-gradient);
             border-radius: 2px;
         }
 
         .timeline-item {
             position: relative;
-            background: rgba(15, 23, 42, 0.4);
+            background: var(--card-inner-bg);
             border: 1px solid var(--glass-border);
             backdrop-filter: blur(10px);
             border-radius: 16px;
@@ -390,28 +437,26 @@
         .timeline-item::before {
             content: '';
             position: absolute;
-            left: -32.5px;
-            top: 26px;
+            left: -30px;
+            top: 28px;
             width: 12px;
             height: 12px;
-            background-color: #38bdf8;
-            border: 3px solid #030712;
+            background-color: var(--accent-color);
+            border: 3px solid var(--bg-color);
             border-radius: 50%;
-            box-shadow: 0 0 12px #38bdf8, 0 0 4px #38bdf8;
+            box-shadow: 0 0 10px var(--accent-color);
             z-index: 2;
-            transition: transform 0.3s ease;
         }
 
         .timeline-item:hover {
-            border-color: rgba(56, 189, 248, 0.35);
+            border-color: var(--accent-color);
             transform: translateX(4px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
         }
 
         .timeline-item h3 {
             font-size: 1.15rem;
             font-weight: 700;
-            color: #f8fafc;
+            color: var(--text-color);
             margin-bottom: 6px;
         }
 
@@ -419,23 +464,16 @@
             display: inline-block;
             font-size: 0.82rem;
             font-weight: 600;
-            color: #38bdf8;
+            color: var(--accent-color);
             margin-bottom: 12px;
-            background: rgba(56, 189, 248, 0.08);
+            background: var(--card-inner-bg);
             padding: 3px 10px;
             border-radius: 6px;
-            border: 1px solid rgba(56, 189, 248, 0.15);
-        }
-
-        .timeline-item p {
-            color: #94a3b8;
-            font-size: 0.93rem;
-            line-height: 1.6;
-            margin: 0;
+            border: 1px solid var(--glass-border);
         }
 
         .school-link {
-            color: #f8fafc;
+            color: var(--text-color);
             text-decoration: none;
             display: inline-flex;
             align-items: center;
@@ -443,11 +481,11 @@
             transition: color 0.2s ease;
         }
 
-        .school-link:hover { color: #38bdf8; }
+        .school-link:hover { color: var(--accent-color); }
 
         /* ================= PROYECTOS ================= */
         .project-card {
-            background: rgba(15, 23, 42, 0.4);
+            background: var(--card-inner-bg);
             border: 1px solid var(--glass-border);
             backdrop-filter: blur(12px);
             border-radius: 20px;
@@ -465,14 +503,14 @@
             left: 0;
             width: 4px;
             height: 100%;
-            background: linear-gradient(to bottom, #38bdf8, #818cf8);
-            opacity: 0.7;
+            background: var(--accent-gradient);
+            opacity: 0.8;
         }
 
         .project-card:hover {
-            border-color: rgba(56, 189, 248, 0.35);
+            border-color: var(--accent-color);
             transform: translateY(-4px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
         }
 
         .project-header {
@@ -493,37 +531,30 @@
         .project-icon-box {
             width: 48px;
             height: 48px;
-            background: rgba(56, 189, 248, 0.1);
-            border: 1px solid rgba(56, 189, 248, 0.25);
+            background: var(--card-inner-bg);
+            border: 1px solid var(--glass-border);
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #38bdf8;
+            color: var(--accent-color);
             font-size: 1.25rem;
         }
 
         .project-card h3 {
             font-size: 1.25rem;
             font-weight: 700;
-            color: #f8fafc;
+            color: var(--text-color);
         }
 
         .project-year-badge {
-            background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(129, 140, 248, 0.15));
-            border: 1px solid rgba(56, 189, 248, 0.3);
-            color: #38bdf8;
+            background: var(--card-inner-bg);
+            border: 1px solid var(--glass-border);
+            color: var(--accent-color);
             padding: 5px 12px;
             border-radius: 20px;
             font-size: 0.8rem;
             font-weight: 600;
-        }
-
-        .project-card p {
-            color: #94a3b8;
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 18px;
         }
 
         .project-tags {
@@ -533,9 +564,9 @@
         }
 
         .project-tags span {
-            background: rgba(255, 255, 255, 0.05);
+            background: var(--card-inner-bg);
             border: 1px solid var(--glass-border);
-            color: inherit;
+            color: var(--text-color);
             padding: 5px 12px;
             border-radius: 8px;
             font-size: 0.8rem;
@@ -545,7 +576,7 @@
             gap: 6px;
         }
 
-        /* ================= CARRUSEL INFINITO DE HABILIDADES ================= */
+        /* ================= CARRUSEL DE HABILIDADES ================= */
         .carousel-container {
             position: relative;
             width: 100%;
@@ -557,8 +588,6 @@
             mask-image: linear-gradient(90deg, transparent, rgba(0,0,0,1) 12%, rgba(0,0,0,1) 88%, transparent);
         }
 
-        .carousel-container:active { cursor: grabbing; }
-
         .carousel-track {
             display: flex;
             gap: 20px;
@@ -569,7 +598,7 @@
         .skill-card {
             flex-shrink: 0;
             width: 210px;
-            background: rgba(255, 255, 255, 0.04);
+            background: var(--card-inner-bg);
             border: 1px solid var(--glass-border);
             backdrop-filter: blur(12px);
             border-radius: 16px;
@@ -577,29 +606,28 @@
             display: flex;
             align-items: center;
             gap: 14px;
-            color: #f8fafc;
+            color: var(--text-color);
             font-weight: 600;
             font-size: 0.95rem;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
             transition: var(--transition-smooth);
             user-select: none;
         }
 
         .skill-card i {
             font-size: 1.8rem;
-            background: linear-gradient(135deg, #38bdf8, #818cf8);
+            background: var(--accent-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .skill-card:hover {
-            border-color: rgba(56, 189, 248, 0.35);
+            border-color: var(--accent-color);
             transform: translateY(-4px);
         }
 
-        /* ================= GITHUB & CONTACTO ================= */
+        /* ================= GITHUB Y CONTACTO ================= */
         .github-card {
-            background: rgba(15, 23, 42, 0.4);
+            background: var(--card-inner-bg);
             border: 1px solid var(--glass-border);
             border-radius: 16px;
             padding: 30px;
@@ -610,21 +638,20 @@
             gap: 20px;
         }
 
-        .github-info h3 { font-size: 1.2rem; margin-bottom: 8px; }
-        .github-info p, .contacto p { color: #94a3b8; font-size: 0.92rem; margin: 0; }
+        .github-info h3 { font-size: 1.2rem; margin-bottom: 8px; color: var(--text-color); }
         .contact-links { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
-        .email-link, .phone-link { color: #38bdf8; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 10px; }
+        .email-link, .phone-link { color: var(--accent-color); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 10px; }
 
-        /* ================= MENÚ DESPLEGABLE DE TEMAS (CON APARTADOS COMPLETOS) ================= */
+        /* ================= MENÚ DESPLEGABLE DE TEMAS ================= */
         .theme-picker-drawer {
             position: fixed;
             top: 0;
             right: -360px;
             width: 340px;
             height: 100vh;
-            background: rgba(10, 15, 30, 0.95);
+            background: var(--glass-bg);
             backdrop-filter: blur(20px);
-            border-left: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 1px solid var(--glass-border);
             z-index: 2000;
             transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             padding: 30px;
@@ -641,26 +668,26 @@
             margin-bottom: 15px;
         }
 
-        .theme-picker-header h3 { font-size: 0.95rem; letter-spacing: 1px; color: #fff; margin: 0; }
-        .close-drawer-btn { background: transparent; border: none; color: #94a3b8; font-size: 1.5rem; cursor: pointer; }
-        .close-drawer-btn:hover { color: #fff; }
+        .theme-picker-header h3 { font-size: 0.95rem; letter-spacing: 1px; color: var(--text-color); margin: 0; }
+        .close-drawer-btn { background: transparent; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer; }
+        .close-drawer-btn:hover { color: var(--text-color); }
 
         .theme-section-title {
             font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: #94a3b8;
+            color: var(--text-muted);
             margin: 20px 0 10px 0;
             font-weight: 700;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+            border-bottom: 1px solid var(--glass-border);
             padding-bottom: 5px;
         }
 
         .themes-grid { display: flex; flex-direction: column; gap: 10px; }
 
         .theme-card-picker {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: var(--card-inner-bg);
+            border: 1px solid var(--glass-border);
             border-radius: 12px;
             padding: 12px 16px;
             display: flex;
@@ -672,16 +699,16 @@
             text-align: left;
         }
 
-        .theme-card-picker:hover { background: rgba(255, 255, 255, 0.08); border-color: rgba(56, 189, 248, 0.4); }
-        .theme-card-picker.active { border-color: #38bdf8; background: rgba(56, 189, 248, 0.1); }
-        .theme-card-picker .theme-name { color: #f8fafc; font-weight: 600; font-size: 0.9rem; }
+        .theme-card-picker:hover { border-color: var(--accent-color); }
+        .theme-card-picker.active { border-color: var(--accent-color); background: var(--card-inner-bg); }
+        .theme-card-picker .theme-name { color: var(--text-color); font-weight: 600; font-size: 0.9rem; }
         .theme-dots { display: flex; gap: 5px; }
         .theme-dots span { width: 10px; height: 10px; border-radius: 50%; }
 
         footer {
             text-align: center;
             padding: 30px;
-            color: #64748b;
+            color: var(--text-muted);
             font-size: 0.85rem;
             border-top: 1px solid var(--glass-border);
             margin-top: 60px;
@@ -705,7 +732,7 @@
         </div>
     </nav>
 
-    <!-- PANEL DESPLEGABLE DE TEMAS CON AMBAS CATEGORÍAS -->
+    <!-- PANEL DESPLEGABLE DE TEMAS -->
     <div id="theme-picker-drawer" class="theme-picker-drawer">
         <div class="theme-picker-header">
             <h3>PERSONALIZAR TEMA</h3>
@@ -775,7 +802,7 @@
         <!-- SOBRE MÍ -->
         <section id="sobre-mi" class="section">
             <h2>Sobre mí</h2>
-            <p style="color: #94a3b8; line-height: 1.7;">Actualmente soy un estudiante de 5to bachillerato en ciencias y letras orientado a computación en proceso de graduación, estudio en el Colegio San José de los Infantes. Me apasiona profundamente el desarrollo web, la lógica de programación y la integración de la inteligencia artificial, disfrutando crear prompts avanzados y optimizar soluciones con herramientas de IA.</p>
+            <p>Actualmente soy un estudiante de 5to bachillerato en ciencias y letras orientado a computación en proceso de graduación, estudio en el Colegio San José de los Infantes. Me apasiona profundamente el desarrollo web, la lógica de programación y la integración de la inteligencia artificial, disfrutando crear prompts avanzados y optimizar soluciones con herramientas de IA.</p>
         </section>
 
         <!-- EDUCACIÓN -->
@@ -816,10 +843,10 @@
             </div>
         </section>
 
-        <!-- HABILIDADES (CARRUSEL INFINITO) -->
+        <!-- HABILIDADES -->
         <section id="habilidades" class="section">
             <h2>Habilidades Técnicas y Blandas</h2>
-            <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 10px;">
+            <p style="font-size: 0.9rem; margin-bottom: 10px;">
                 <i class="fa-solid fa-arrows-left-right"></i> Desliza o arrastra libremente. El movimiento es continuo e infinito.
             </p>
             
@@ -907,7 +934,7 @@
         <p>&copy; 2026 - Sebástian André García Bonilla. Todos los derechos reservados.</p>
     </footer>
 
-    <!-- SCRIPTS COMPLETOS -->
+    <!-- SCRIPTS -->
     <script>
         const themeMenuBtn = document.getElementById('theme-menu-btn');
         const themeDrawer = document.getElementById('theme-picker-drawer');
@@ -918,7 +945,6 @@
         themeMenuBtn.addEventListener('click', () => themeDrawer.classList.toggle('open'));
         closeDrawerBtn.addEventListener('click', () => themeDrawer.classList.remove('open'));
 
-        // Cargar tema guardado
         const savedTheme = localStorage.getItem('selected-theme') || 'dark-classic';
         applyTheme(savedTheme);
 
