@@ -16,15 +16,18 @@
             --blur-strength: blur(16px);
             --card-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.3);
             --transition-smooth: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            --bg-color: #030712;
+            --text-color: #f8fafc;
         }
 
         body {
             font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
             overflow-x: hidden;
-            background-color: #030712;
-            color: #f8fafc;
+            background-color: var(--bg-color);
+            color: var(--text-color);
             margin: 0;
             padding: 0;
+            transition: background 0.4s ease, color 0.4s ease;
         }
 
         #animated-bg-container {
@@ -39,18 +42,99 @@
             display: none;
         }
 
+        /* ================= TEMAS COMPLETOS ================= */
+        body.theme-cyberpunk {
+            --bg-color: #0b0514;
+            --glass-bg: rgba(168, 85, 247, 0.04);
+            --glass-border: rgba(168, 85, 247, 0.15);
+        }
+        body.theme-cyberpunk #animated-bg-container {
+            display: block;
+            background: radial-gradient(circle at 20% 20%, rgba(168, 85, 247, 0.15) 0%, transparent 40%),
+                        radial-gradient(circle at 80% 80%, rgba(236, 72, 153, 0.15) 0%, transparent 40%), #0b0514;
+        }
+
+        body.theme-sunset {
+            --bg-color: #120806;
+            --glass-bg: rgba(249, 115, 22, 0.04);
+            --glass-border: rgba(249, 115, 22, 0.15);
+        }
+        body.theme-sunset #animated-bg-container {
+            display: block;
+            background: radial-gradient(circle at 50% 10%, rgba(249, 115, 22, 0.2) 0%, transparent 50%), #120806;
+        }
+
+        body.theme-light-clean {
+            --bg-color: #f1f5f9;
+            --text-color: #0f172a;
+            --glass-bg: rgba(255, 255, 255, 0.7);
+            --glass-border: rgba(0, 0, 0, 0.08);
+            --card-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.05);
+        }
+        body.theme-light-clean .section h2, 
+        body.theme-light-clean .hero h1, 
+        body.theme-light-clean .timeline-item h3,
+        body.theme-light-clean .project-card h3,
+        body.theme-light-clean .skill-card,
+        body.theme-light-clean .school-link {
+            color: #0f172a !important;
+        }
+        body.theme-light-clean .timeline-item p,
+        body.theme-light-clean .project-card p,
+        body.theme-light-clean .hero .tagline,
+        body.theme-light-clean .github-info p,
+        body.theme-light-clean .contacto p {
+            color: #475569 !important;
+        }
+
+        body.theme-ocean #animated-bg-container {
+            display: block;
+            background: radial-gradient(circle at 50% 20%, #032d4d 0%, #011627 50%, #010810 100%);
+        }
+        .ocean-bubble {
+            position: absolute;
+            bottom: -50px;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(56, 189, 248, 0.15));
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: floatBubble linear infinite;
+        }
+        @keyframes floatBubble {
+            0% { transform: translateY(0) translateX(0) scale(0.8); opacity: 0; }
+            20% { opacity: 0.7; }
+            80% { opacity: 0.7; }
+            100% { transform: translateY(calc(-100vh - 100px)) translateX(30px) scale(1.2); opacity: 0; }
+        }
+
+        body.theme-desert #animated-bg-container {
+            display: block;
+            background: radial-gradient(circle at 85% 15%, rgba(245, 158, 11, 0.35) 0%, transparent 45%), linear-gradient(to bottom, #110501, #2b1003);
+        }
+        .desert-sun {
+            position: absolute;
+            top: 8%; right: 10%; width: 120px; height: 120px;
+            background: radial-gradient(circle, #fde047 0%, #f59e0b 70%, transparent 100%);
+            border-radius: 50%;
+            box-shadow: 0 0 80px rgba(245, 158, 11, 0.6);
+        }
+
+        body.theme-jungle #animated-bg-container {
+            display: block;
+            background: linear-gradient(to bottom, #010f07, #032214, #010c05);
+        }
+
         /* ================= BARRA DE NAVEGACIÓN ================= */
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 20px 8%;
-            background: rgba(3, 7, 18, 0.75);
+            background: var(--glass-bg);
             backdrop-filter: blur(12px);
             position: sticky;
             top: 0;
             z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid var(--glass-border);
         }
 
         .nav-brand {
@@ -97,8 +181,8 @@
 
         .theme-menu-btn {
             background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            color: #fff;
+            border: 1px solid var(--glass-border);
+            color: inherit;
             padding: 8px 16px;
             border-radius: 12px;
             cursor: pointer;
@@ -210,11 +294,11 @@
 
         .badge {
             background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--glass-border);
             padding: 8px 14px;
             border-radius: 10px;
             font-size: 0.9rem;
-            color: #cbd5e1;
+            color: inherit;
             display: inline-flex;
             align-items: center;
             gap: 8px;
@@ -254,13 +338,12 @@
 
         .btn.secondary {
             background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: #fff;
+            border: 1px solid var(--glass-border);
+            color: inherit;
         }
 
         .btn.secondary:hover {
             background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.2);
             transform: translateY(-2px);
         }
 
@@ -275,14 +358,13 @@
             transform: translateY(-2px);
         }
 
-        /* ================= NUEVO DISEÑO LIMPIO PARA TIMELINES (EDUCACIÓN Y CERTIFICACIONES) ================= */
+        /* ================= DISEÑO LIMPIO PARA TIMELINES (EDUCACIÓN Y CERTIFICACIONES) ================= */
         .timeline {
             position: relative;
             padding-left: 28px;
             margin-top: 15px;
         }
 
-        /* La línea vertical central de la cronología */
         .timeline::before {
             content: '';
             position: absolute;
@@ -297,7 +379,7 @@
         .timeline-item {
             position: relative;
             background: rgba(15, 23, 42, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.07);
+            border: 1px solid var(--glass-border);
             backdrop-filter: blur(10px);
             border-radius: 16px;
             padding: 24px;
@@ -305,7 +387,6 @@
             transition: var(--transition-smooth);
         }
 
-        /* El nodo circular brillante en la línea de tiempo */
         .timeline-item::before {
             content: '';
             position: absolute;
@@ -322,16 +403,9 @@
         }
 
         .timeline-item:hover {
-            background: rgba(30, 41, 59, 0.6);
             border-color: rgba(56, 189, 248, 0.35);
             transform: translateX(4px);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-        }
-
-        .timeline-item:hover::before {
-            transform: scale(1.3);
-            background-color: #818cf8;
-            box-shadow: 0 0 16px #818cf8;
         }
 
         .timeline-item h3 {
@@ -369,25 +443,12 @@
             transition: color 0.2s ease;
         }
 
-        .school-link:hover {
-            color: #38bdf8;
-        }
-
-        .school-link i {
-            font-size: 0.8rem;
-            opacity: 0.7;
-            transition: transform 0.2s ease;
-        }
-
-        .school-link:hover i {
-            transform: translate(2px, -2px);
-            opacity: 1;
-        }
+        .school-link:hover { color: #38bdf8; }
 
         /* ================= PROYECTOS ================= */
         .project-card {
             background: rgba(15, 23, 42, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.07);
+            border: 1px solid var(--glass-border);
             backdrop-filter: blur(12px);
             border-radius: 20px;
             padding: 28px;
@@ -409,7 +470,6 @@
         }
 
         .project-card:hover {
-            background: rgba(30, 41, 59, 0.6);
             border-color: rgba(56, 189, 248, 0.35);
             transform: translateY(-4px);
             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
@@ -441,11 +501,6 @@
             justify-content: center;
             color: #38bdf8;
             font-size: 1.25rem;
-            transition: transform 0.3s ease;
-        }
-
-        .project-card:hover .project-icon-box {
-            transform: scale(1.1) rotate(5deg);
         }
 
         .project-card h3 {
@@ -479,8 +534,8 @@
 
         .project-tags span {
             background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            color: #e2e8f0;
+            border: 1px solid var(--glass-border);
+            color: inherit;
             padding: 5px 12px;
             border-radius: 8px;
             font-size: 0.8rem;
@@ -502,9 +557,7 @@
             mask-image: linear-gradient(90deg, transparent, rgba(0,0,0,1) 12%, rgba(0,0,0,1) 88%, transparent);
         }
 
-        .carousel-container:active {
-            cursor: grabbing;
-        }
+        .carousel-container:active { cursor: grabbing; }
 
         .carousel-track {
             display: flex;
@@ -517,7 +570,7 @@
             flex-shrink: 0;
             width: 210px;
             background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--glass-border);
             backdrop-filter: blur(12px);
             border-radius: 16px;
             padding: 18px;
@@ -540,7 +593,6 @@
         }
 
         .skill-card:hover {
-            background: rgba(56, 189, 248, 0.08);
             border-color: rgba(56, 189, 248, 0.35);
             transform: translateY(-4px);
         }
@@ -548,7 +600,7 @@
         /* ================= GITHUB & CONTACTO ================= */
         .github-card {
             background: rgba(15, 23, 42, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.07);
+            border: 1px solid var(--glass-border);
             border-radius: 16px;
             padding: 30px;
             display: flex;
@@ -558,53 +610,19 @@
             gap: 20px;
         }
 
-        .github-info h3 {
-            font-size: 1.2rem;
-            margin-bottom: 8px;
-            color: #f8fafc;
-        }
+        .github-info h3 { font-size: 1.2rem; margin-bottom: 8px; }
+        .github-info p, .contacto p { color: #94a3b8; font-size: 0.92rem; margin: 0; }
+        .contact-links { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
+        .email-link, .phone-link { color: #38bdf8; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 10px; }
 
-        .github-info p {
-            color: #94a3b8;
-            font-size: 0.92rem;
-            margin: 0;
-        }
-
-        .contacto p {
-            color: #94a3b8;
-            margin-bottom: 20px;
-        }
-
-        .contact-links {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            align-items: flex-start;
-        }
-
-        .email-link, .phone-link {
-            color: #38bdf8;
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            transition: opacity 0.2s;
-        }
-
-        .email-link:hover, .phone-link:hover {
-            opacity: 0.8;
-            text-decoration: underline;
-        }
-
-        /* ================= MENÚ DESPLEGABLE DE TEMAS ================= */
+        /* ================= MENÚ DESPLEGABLE DE TEMAS (CON APARTADOS COMPLETOS) ================= */
         .theme-picker-drawer {
             position: fixed;
             top: 0;
             right: -360px;
             width: 340px;
             height: 100vh;
-            background: rgba(10, 15, 30, 0.92);
+            background: rgba(10, 15, 30, 0.95);
             backdrop-filter: blur(20px);
             border-left: 1px solid rgba(255, 255, 255, 0.1);
             z-index: 2000;
@@ -614,32 +632,17 @@
             overflow-y: auto;
         }
 
-        .theme-picker-drawer.open {
-            right: 0;
-        }
+        .theme-picker-drawer.open { right: 0; }
 
         .theme-picker-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
-        .theme-picker-header h3 {
-            font-size: 0.95rem;
-            letter-spacing: 1px;
-            color: #fff;
-            margin: 0;
-        }
-
-        .close-drawer-btn {
-            background: transparent;
-            border: none;
-            color: #94a3b8;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
+        .theme-picker-header h3 { font-size: 0.95rem; letter-spacing: 1px; color: #fff; margin: 0; }
+        .close-drawer-btn { background: transparent; border: none; color: #94a3b8; font-size: 1.5rem; cursor: pointer; }
         .close-drawer-btn:hover { color: #fff; }
 
         .theme-section-title {
@@ -653,11 +656,7 @@
             padding-bottom: 5px;
         }
 
-        .themes-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
+        .themes-grid { display: flex; flex-direction: column; gap: 10px; }
 
         .theme-card-picker {
             background: rgba(255, 255, 255, 0.04);
@@ -673,76 +672,18 @@
             text-align: left;
         }
 
-        .theme-card-picker:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(56, 189, 248, 0.4);
-        }
-
-        .theme-card-picker.active {
-            border-color: #38bdf8;
-            background: rgba(56, 189, 248, 0.1);
-        }
-
-        .theme-card-picker .theme-name {
-            color: #f8fafc;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        .theme-dots {
-            display: flex;
-            gap: 5px;
-        }
-
-        .theme-dots span {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-        }
-
-        /* ================= FONDOS DINÁMICOS ================= */
-        body.theme-ocean #animated-bg-container {
-            display: block;
-            background: radial-gradient(circle at 50% 20%, #032d4d 0%, #011627 50%, #010810 100%);
-        }
-        .ocean-bubble {
-            position: absolute;
-            bottom: -50px;
-            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(56, 189, 248, 0.15));
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            animation: floatBubble linear infinite;
-        }
-        @keyframes floatBubble {
-            0% { transform: translateY(0) translateX(0) scale(0.8); opacity: 0; }
-            20% { opacity: 0.7; }
-            80% { opacity: 0.7; }
-            100% { transform: translateY(calc(-100vh - 100px)) translateX(30px) scale(1.2); opacity: 0; }
-        }
-
-        body.theme-desert #animated-bg-container {
-            display: block;
-            background: radial-gradient(circle at 85% 15%, rgba(245, 158, 11, 0.35) 0%, transparent 45%), linear-gradient(to bottom, #110501, #2b1003);
-        }
-        .desert-sun {
-            position: absolute;
-            top: 8%; right: 10%; width: 120px; height: 120px;
-            background: radial-gradient(circle, #fde047 0%, #f59e0b 70%, transparent 100%);
-            border-radius: 50%;
-            box-shadow: 0 0 80px rgba(245, 158, 11, 0.6);
-        }
-
-        body.theme-jungle #animated-bg-container {
-            display: block;
-            background: linear-gradient(to bottom, #010f07, #032214, #010c05);
-        }
+        .theme-card-picker:hover { background: rgba(255, 255, 255, 0.08); border-color: rgba(56, 189, 248, 0.4); }
+        .theme-card-picker.active { border-color: #38bdf8; background: rgba(56, 189, 248, 0.1); }
+        .theme-card-picker .theme-name { color: #f8fafc; font-weight: 600; font-size: 0.9rem; }
+        .theme-dots { display: flex; gap: 5px; }
+        .theme-dots span { width: 10px; height: 10px; border-radius: 50%; }
 
         footer {
             text-align: center;
             padding: 30px;
             color: #64748b;
             font-size: 0.85rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-top: 1px solid var(--glass-border);
             margin-top: 60px;
         }
     </style>
@@ -764,7 +705,7 @@
         </div>
     </nav>
 
-    <!-- PANEL DESPLEGABLE DE TEMAS -->
+    <!-- PANEL DESPLEGABLE DE TEMAS CON AMBAS CATEGORÍAS -->
     <div id="theme-picker-drawer" class="theme-picker-drawer">
         <div class="theme-picker-header">
             <h3>PERSONALIZAR TEMA</h3>
@@ -777,6 +718,22 @@
                 <span class="theme-name">Classic Dark</span>
                 <div class="theme-dots"><span style="background: #030712;"></span><span style="background: #6366f1;"></span></div>
             </button>
+            <button class="theme-card-picker" data-theme="cyberpunk">
+                <span class="theme-name">Cyberpunk</span>
+                <div class="theme-dots"><span style="background: #0b0514;"></span><span style="background: #a855f7;"></span></div>
+            </button>
+            <button class="theme-card-picker" data-theme="sunset">
+                <span class="theme-name">Sunset Glow</span>
+                <div class="theme-dots"><span style="background: #120806;"></span><span style="background: #f97316;"></span></div>
+            </button>
+            <button class="theme-card-picker" data-theme="light-clean">
+                <span class="theme-name">Clean Light</span>
+                <div class="theme-dots"><span style="background: #f1f5f9;"></span><span style="background: #3b82f6;"></span></div>
+            </button>
+        </div>
+
+        <div class="theme-section-title">Temas Animados Dinámicos</div>
+        <div class="themes-grid">
             <button class="theme-card-picker" data-theme="ocean">
                 <span class="theme-name">Océano</span>
                 <div class="theme-dots"><span style="background: #011627;"></span><span style="background: #38bdf8;"></span></div>
@@ -950,9 +907,8 @@
         <p>&copy; 2026 - Sebástian André García Bonilla. Todos los derechos reservados.</p>
     </footer>
 
-    <!-- SCRIPTS -->
+    <!-- SCRIPTS COMPLETOS -->
     <script>
-        // Drawer de temas
         const themeMenuBtn = document.getElementById('theme-menu-btn');
         const themeDrawer = document.getElementById('theme-picker-drawer');
         const closeDrawerBtn = document.getElementById('close-theme-drawer');
@@ -962,16 +918,48 @@
         themeMenuBtn.addEventListener('click', () => themeDrawer.classList.toggle('open'));
         closeDrawerBtn.addEventListener('click', () => themeDrawer.classList.remove('open'));
 
+        // Cargar tema guardado
+        const savedTheme = localStorage.getItem('selected-theme') || 'dark-classic';
+        applyTheme(savedTheme);
+
         themeCards.forEach(card => {
             card.addEventListener('click', () => {
                 const themeName = card.getAttribute('data-theme');
-                document.body.className = themeName !== 'dark-classic' ? `theme-${themeName}` : '';
-                bgContainer.innerHTML = themeName === 'ocean' ? '<div class="ocean-bubble" style="left:20%; width:15px; height:15px; animation-duration: 7s;"></div>' : (themeName === 'desert' ? '<div class="desert-sun"></div>' : '');
-                themeCards.forEach(c => c.classList.remove('active'));
-                card.classList.add('active');
+                applyTheme(themeName);
+                localStorage.setItem('selected-theme', themeName);
                 themeDrawer.classList.remove('open');
             });
         });
+
+        function applyTheme(theme) {
+            document.body.className = '';
+            if (theme !== 'dark-classic') {
+                document.body.classList.add(`theme-${theme}`);
+            }
+
+            bgContainer.innerHTML = '';
+            if (theme === 'ocean') {
+                let bubbles = '';
+                for (let i = 0; i < 20; i++) {
+                    const left = Math.random() * 100;
+                    const size = 8 + Math.random() * 20;
+                    const delay = Math.random() * 5;
+                    const duration = 5 + Math.random() * 5;
+                    bubbles += `<div class="ocean-bubble" style="left:${left}%; width:${size}px; height:${size}px; animation-delay:${delay}s; animation-duration:${duration}s;"></div>`;
+                }
+                bgContainer.innerHTML = bubbles;
+            } else if (theme === 'desert') {
+                bgContainer.innerHTML = '<div class="desert-sun"></div>';
+            }
+
+            themeCards.forEach(card => {
+                if (card.getAttribute('data-theme') === theme) {
+                    card.classList.add('active');
+                } else {
+                    card.classList.remove('active');
+                }
+            });
+        }
 
         // Carrusel infinito suave
         const track = document.getElementById('carousel-track');
