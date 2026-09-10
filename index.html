@@ -11,7 +11,7 @@
     <!-- Tu archivo CSS base -->
     <link rel="stylesheet" href="style.css">
     
-    <!-- ESTILOS MAESTROS QUE FORZARÁN EL CAMBIO DE COLOR Y ANIMACIÓN EN TODO EL SITIO -->
+    <!-- ESTILOS MAESTROS DE ANIMACIONES Y TEMAS -->
     <style>
         #animated-bg-container {
             position: fixed;
@@ -25,69 +25,36 @@
             display: none;
         }
 
-        /* ================= TEMA: OCÉANO ================= */
-        body.theme-ocean {
-            background-color: #021526 !important;
-            color: #e0f2fe !important;
-        }
-        body.theme-ocean header.hero, 
-        body.theme-ocean .section, 
-        body.theme-ocean .github-card {
-            background: rgba(3, 37, 65, 0.85) !important;
-            border: 1px solid rgba(56, 189, 248, 0.4) !important;
-            backdrop-filter: blur(12px);
-        }
-        body.theme-ocean h1, body.theme-ocean h2, body.theme-ocean h3 {
-            color: #f0f9ff !important;
-        }
-        body.theme-ocean .highlight {
-            color: #38bdf8 !important;
-        }
-        body.theme-ocean .btn.primary {
-            background: linear-gradient(135deg, #0284c7, #0369a1) !important;
-        }
+        /* ================= TEMA: OCÉANO INTERACTIVO ================= */
         body.theme-ocean #animated-bg-container {
             display: block;
-            background: linear-gradient(to bottom, #010b18, #032d4d, #011627) !important;
+            background: radial-gradient(circle at 50% 20%, #032d4d 0%, #011627 50%, #010810 100%) !important;
         }
-        .animated-whale {
+        .ocean-bubble {
             position: absolute;
-            width: 200px;
-            fill: rgba(56, 189, 248, 0.25);
-            animation: swimWhale 25s linear infinite;
+            bottom: -50px;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(56, 189, 248, 0.15));
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.5), 0 0 10px rgba(56, 189, 248, 0.2);
+            animation: floatBubble linear infinite;
+            transition: transform 0.2s ease, background 0.2s ease;
+            pointer-events: auto;
+            cursor: pointer;
         }
-        .whale-1 { top: 15%; left: -250px; animation-duration: 26s; }
-        .whale-2 { top: 70%; left: -300px; animation-duration: 35s; animation-delay: -8s; transform: scale(0.75); }
-
-        @keyframes swimWhale {
-            0% { transform: translateX(-250px) translateY(0) scaleX(1); }
-            45% { transform: translateX(calc(100vw + 300px)) translateY(-50px) scaleX(1); }
-            50% { transform: translateX(calc(100vw + 300px)) translateY(-50px) scaleX(-1); }
-            95% { transform: translateX(-250px) translateY(30px) scaleX(-1); }
-            100% { transform: translateX(-250px) translateY(0) scaleX(1); }
+        .ocean-bubble:hover {
+            transform: scale(1.6) !important;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 1), rgba(56, 189, 248, 0.5));
+            box-shadow: 0 0 20px #38bdf8;
+        }
+        @keyframes floatBubble {
+            0% { transform: translateY(0) translateX(0) scale(0.8); opacity: 0; }
+            20% { opacity: 0.7; }
+            80% { opacity: 0.7; }
+            100% { transform: translateY(calc(-100vh - 100px)) translateX(30px) scale(1.2); opacity: 0; }
         }
 
         /* ================= TEMA: DESIERTO ================= */
-        body.theme-desert {
-            background-color: #1a0b04 !important;
-            color: #fef3c7 !important;
-        }
-        body.theme-desert header.hero, 
-        body.theme-desert .section, 
-        body.theme-desert .github-card {
-            background: rgba(45, 18, 5, 0.85) !important;
-            border: 1px solid rgba(245, 158, 11, 0.4) !important;
-            backdrop-filter: blur(12px);
-        }
-        body.theme-desert h1, body.theme-desert h2, body.theme-desert h3 {
-            color: #fffbeb !important;
-        }
-        body.theme-desert .highlight {
-            color: #f59e0b !important;
-        }
-        body.theme-desert .btn.primary {
-            background: linear-gradient(135deg, #d97706, #b45309) !important;
-        }
         body.theme-desert #animated-bg-container {
             display: block;
             background: radial-gradient(circle at 85% 15%, rgba(245, 158, 11, 0.35) 0%, transparent 45%),
@@ -118,26 +85,6 @@
         }
 
         /* ================= TEMA: JUNGLA ================= */
-        body.theme-jungle {
-            background-color: #02120a !important;
-            color: #ecfdf5 !important;
-        }
-        body.theme-jungle header.hero, 
-        body.theme-jungle .section, 
-        body.theme-jungle .github-card {
-            background: rgba(4, 31, 18, 0.85) !important;
-            border: 1px solid rgba(52, 211, 153, 0.4) !important;
-            backdrop-filter: blur(12px);
-        }
-        body.theme-jungle h1, body.theme-jungle h2, body.theme-jungle h3 {
-            color: #f0fdf4 !important;
-        }
-        body.theme-jungle .highlight {
-            color: #34d399 !important;
-        }
-        body.theme-jungle .btn.primary {
-            background: linear-gradient(135deg, #059669, #047857) !important;
-        }
         body.theme-jungle #animated-bg-container {
             display: block;
             background: linear-gradient(to bottom, #010804, #042416, #010c05) !important;
@@ -237,9 +184,9 @@
             <div class="theme-section-title">Temas Animados Dinámicos</div>
             <div class="themes-grid">
                 <button class="theme-card" data-theme="ocean">
-                    <span class="theme-name">Océano (Ballenas)</span>
+                    <span class="theme-name">Océano (Burbujas)</span>
                     <div class="theme-dots">
-                        <span style="background: #021526;"></span>
+                        <span style="background: #010a15;"></span>
                         <span style="background: #032d4d;"></span>
                         <span style="background: #38bdf8;"></span>
                     </div>
@@ -426,8 +373,6 @@
         const themeCards = document.querySelectorAll('.theme-card');
         const bgContainer = document.getElementById('animated-bg-container');
 
-        const whaleSvg = `<svg class="animated-whale" viewBox="0 0 512 512"><path d="M495.9 233.2c-15.3-7.7-36.9-15.5-62.8-21.6-1.1-16.1-3.6-32.2-7.5-48-25.2 2.8-51.5 5.2-78.5 7.2-22.3-31.5-50.6-58.4-83.6-79.3 35.8-22.3 75.8-40.5 118.8-53.5-9.3-5-19.1-9.4-29.3-13.2-57.8 20.3-111 49.6-157.9 86.2C226.7 106.9 196.4 102 165 100c-35-2.3-70 1.2-104 10.4-14.7 3.9-29.1 8.8-43 14.8C10.5 131.6 4.3 141.2 1.3 152c-3.1 11.1-1.3 22.9 5.2 32.2 12 16.9 26 32.2 41.5 45.8-10.7 20-19.2 41.2-25.2 63.3-8.8 32.3-12.3 65.5-10.4 98.7 1.8 30.8 8.1 61.2 18.7 89.6 1.7 4.5 5 8.1 9.4 10.1 4.4 2 9.5 2.1 14 0.3 35.3-14.1 68.8-33.3 99.6-57.2 45.4-8.7 91.3-13.3 137.3-13.8 54.3-.5 108.6 3.6 162.3 12.3 27 4.4 53.7 10.5 79.7 18.2 4.4 1.3 9.2.2 12.7-2.9 3.5-3.1 5.2-7.9 4.3-12.6-6.6-35.3-17.3-69.4-31.8-101.4 18.8-7.7 36.6-16.4 53.3-26 10.4-6 16.7-17.4 15.6-29.2-1.1-11.8-9.1-21.8-20.2-25.3z"/></svg>`;
-
         themeMenuBtn.addEventListener('click', () => {
             themeDrawer.classList.toggle('open');
         });
@@ -457,7 +402,17 @@
 
             bgContainer.innerHTML = '';
             if (theme === 'ocean') {
-                bgContainer.innerHTML = `<div class="whale-1">${whaleSvg}</div><div class="whale-2">${whaleSvg}</div>`;
+                // Generador de burbujas flotantes interactivas
+                let bubblesHTML = '';
+                for(let i = 0; i < 25; i++) {
+                    const left = Math.random() * 100;
+                    const size = 8 + Math.random() * 22;
+                    const delay = Math.random() * 8;
+                    const duration = 6 + Math.random() * 8;
+                    bubblesHTML += `<div class="ocean-bubble" style="left: ${left}%; width: ${size}px; height: ${size}px; animation-delay: ${delay}s; animation-duration: ${duration}s;"></div>`;
+                }
+                bgContainer.innerHTML = bubblesHTML;
+
             } else if (theme === 'desert') {
                 bgContainer.innerHTML = '<div class="desert-sun"></div><div class="dune-layer"></div>';
             } else if (theme === 'jungle') {
