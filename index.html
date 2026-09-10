@@ -99,7 +99,32 @@
             transform: translateX(5px);
         }
 
-        /* ================= NUEVO DISEÑO PARA PROYECTOS ================= */
+        /* Enlace interactivo para el Colegio */
+        .school-link {
+            color: #f8fafc;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+
+        .school-link:hover {
+            color: #38bdf8;
+        }
+
+        .school-link i {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        .school-link:hover i {
+            opacity: 1;
+            transform: translate(2px, -2px);
+        }
+
+        /* ================= DISEÑO PARA PROYECTOS ================= */
         .project-card {
             background: rgba(15, 23, 42, 0.4);
             border: 1px solid rgba(255, 255, 255, 0.07);
@@ -593,7 +618,11 @@
             <h2>Educación</h2>
             <div class="timeline">
                 <div class="timeline-item">
-                    <h3>Colegio San José de los Infantes</h3>
+                    <h3>
+                        <a href="https://sitio.colegiodeinfantes.edu.gt/" target="_blank" class="school-link">
+                            Colegio San José de los Infantes <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </h3>
                     <span class="date">5to Bachillerato en Computación • En proceso de Graduación</span>
                     <p>Cursando los últimos grados de formación académica con enfoque en el desarrollo personal, disciplina y bases sólidas en computación y sistemas.</p>
                 </div>
@@ -642,7 +671,7 @@
             </div>
         </section>
 
-        <!-- PROYECTOS Y PRÁCTICAS (NUEVO DISEÑO CON ICONOS Y PÍLDORAS) -->
+        <!-- PROYECTOS Y PRÁCTICAS -->
         <section id="proyectos" class="section">
             <h2>Proyectos y Prácticas</h2>
             
