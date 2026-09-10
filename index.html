@@ -89,47 +89,57 @@
             display: block;
             background: linear-gradient(to bottom, #010f07, #032214, #010c05) !important;
         }
+        /* Tronco del árbol */
         .jungle-tree {
             position: absolute;
             bottom: 0;
-            width: 140px;
-            height: 350px;
-            background: #043d22;
-            clip-path: polygon(
-                45% 100%, 55% 100%, 
-                52% 45%, 70% 35%, 95% 40%, 100% 25%, 85% 15%, 
-                95% 5%, 70% 0%, 50% 15%, 30% 0%, 5% 5%, 
-                15% 15%, 0% 25%, 5% 40%, 30% 35%, 48% 45%
-            );
+            width: 32px;
+            height: 380px;
+            background: linear-gradient(to top, #01140a, #032b17);
+            border-radius: 20px 20px 0 0;
             transform-origin: bottom center;
-            animation: swayTree 7s ease-in-out infinite alternate;
+            animation: swayTree 8s ease-in-out infinite alternate;
         }
+        /* Copa ancha y ramificada natural */
+        .jungle-tree::before {
+            content: '';
+            position: absolute;
+            top: -110px;
+            left: -90px;
+            width: 210px;
+            height: 150px;
+            background: #043d22;
+            border-radius: 100px 100px 60px 60px;
+            box-shadow: 0 0 40px rgba(52, 211, 153, 0.08);
+        }
+        /* Follaje secundario superior para darle volumen asimétrico */
         .jungle-tree::after {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 44px;
-            width: 52px;
-            height: 220px;
-            background: #01140a;
-            clip-path: polygon(30% 100%, 70% 100%, 65% 0%, 35% 0%);
+            top: -160px;
+            left: -40px;
+            width: 120px;
+            height: 90px;
+            background: #054d2a;
+            border-radius: 60px 60px 40px 40px;
         }
+        /* Lianas colgantes */
         .jungle-vine {
             position: absolute;
-            top: 40px;
+            top: -20px;
             width: 2px;
-            background: #011c0f;
-            opacity: 0.8;
+            background: #021f11;
+            opacity: 0.85;
             animation: swayVine 5s ease-in-out infinite alternate;
             transform-origin: top center;
         }
         @keyframes swayTree {
             0% { transform: rotate(0deg); }
-            100% { transform: rotate(1.5deg); }
+            100% { transform: rotate(1.2deg); }
         }
         @keyframes swayVine {
-            0% { transform: rotate(-4deg); }
-            100% { transform: rotate(4deg); }
+            0% { transform: rotate(-3deg); }
+            100% { transform: rotate(3deg); }
         }
 
         .firefly-particle {
@@ -457,16 +467,16 @@
             } else if (theme === 'jungle') {
                 let jungleHTML = '';
                 const treeConfigs = [
-                    { left: 4, height: 350, scale: 0.9 },
-                    { left: 26, height: 410, scale: 1.2 },
-                    { left: 65, height: 370, scale: 1.0 },
-                    { left: 85, height: 430, scale: 1.3 }
+                    { left: 3, height: 380, scale: 0.85 },
+                    { left: 24, height: 440, scale: 1.15 },
+                    { left: 68, height: 400, scale: 0.95 },
+                    { left: 88, height: 460, scale: 1.25 }
                 ];
                 
                 treeConfigs.forEach((cfg, t) => {
-                    jungleHTML += `<div class="jungle-tree" style="left: ${cfg.left}%; height: ${cfg.height}px; transform: scale(${cfg.scale}); animation-delay: ${t * 1.2}s;">`;
-                    jungleHTML += `<div class="jungle-vine" style="left: 30px; height: ${cfg.height * 0.6}px; animation-delay: ${t}s;"></div>`;
-                    jungleHTML += `<div class="jungle-vine" style="left: 90px; height: ${cfg.height * 0.75}px; animation-delay: ${t * 1.5}s;"></div>`;
+                    jungleHTML += `<div class="jungle-tree" style="left: ${cfg.left}%; height: ${cfg.height}px; transform: scale(${cfg.scale}); animation-delay: ${t * 1.3}s;">`;
+                    jungleHTML += `<div class="jungle-vine" style="left: 10px; height: ${cfg.height * 0.55}px; animation-delay: ${t}s;"></div>`;
+                    jungleHTML += `<div class="jungle-vine" style="left: 22px; height: ${cfg.height * 0.7}px; animation-delay: ${t * 1.4}s;"></div>`;
                     jungleHTML += `</div>`;
                 });
 
