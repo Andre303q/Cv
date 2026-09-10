@@ -355,6 +355,7 @@
             flex-wrap: wrap;
         }
 
+        /* ================= BOTONES PRINCIPALES CON ANIMACIÓN E ILUMINACIÓN ================= */
         .btn {
             padding: 12px 24px;
             border-radius: 14px;
@@ -368,6 +369,16 @@
             font-size: 0.95rem;
         }
 
+        /* Transición suave para los iconos dentro de los botones */
+        .btn i {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Movimiento del icono hacia la derecha e iluminación general al pasar el cursor */
+        .btn:hover i {
+            transform: translateX(6px);
+        }
+
         .btn.primary {
             background: var(--accent-gradient);
             color: #fff;
@@ -376,8 +387,9 @@
         }
 
         .btn.primary:hover {
-            transform: translateY(-2px);
-            opacity: 0.9;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px var(--accent-color);
+            opacity: 0.95;
         }
 
         .btn.secondary {
@@ -388,7 +400,9 @@
 
         .btn.secondary:hover {
             border-color: var(--accent-color);
-            transform: translateY(-2px);
+            background: var(--card-inner-bg);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(56, 189, 248, 0.2);
         }
 
         .btn.cv-btn {
@@ -399,7 +413,9 @@
 
         .btn.cv-btn:hover {
             background: rgba(16, 185, 129, 0.2);
-            transform: translateY(-2px);
+            border-color: #34d399;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(52, 211, 153, 0.25);
         }
 
         /* ================= TIMELINES (EDUCACIÓN Y CERTIFICACIONES) ================= */
@@ -505,7 +521,6 @@
             opacity: 0.8;
         }
 
-        /* Animación al pasar el cursor por encima de la tarjeta */
         .project-card:hover {
             border-color: var(--accent-color);
             transform: translateY(-6px) scale(1.01);
@@ -538,11 +553,9 @@
             justify-content: center;
             color: var(--accent-color);
             font-size: 1.25rem;
-            /* Transición fluida para que el icono se mueva con suavidad */
             transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease;
         }
 
-        /* El icono se desplaza hacia la derecha cuando el cursor está sobre la tarjeta */
         .project-card:hover .project-icon-box {
             transform: translateX(10px);
             background: var(--glass-border);
