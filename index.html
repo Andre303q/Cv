@@ -113,14 +113,15 @@
             z-index: -999;
             pointer-events: none;
             overflow: hidden;
-            display: none;
+            display: block; /* Habilitado para mostrar los fondos animados en todo momento */
+            opacity: 0.7;
         }
 
         /* Fondos animados específicos */
-        body.theme-ocean #animated-bg-container {
-            display: block;
+        body.theme-ocean #animated-bg-container, body:not([class]) #animated-bg-container {
             background: radial-gradient(circle at 50% 20%, #032d4d 0%, #011627 50%, #010810 100%);
         }
+        
         .ocean-bubble {
             position: absolute;
             bottom: -50px;
@@ -137,7 +138,6 @@
         }
 
         body.theme-desert #animated-bg-container {
-            display: block;
             background: radial-gradient(circle at 85% 15%, rgba(245, 158, 11, 0.35) 0%, transparent 45%), linear-gradient(to bottom, #110501, #2b1003);
         }
         .desert-sun {
@@ -149,18 +149,15 @@
         }
 
         body.theme-jungle #animated-bg-container {
-            display: block;
             background: linear-gradient(to bottom, #010f07, #032214, #010c05);
         }
 
         body.theme-cyberpunk #animated-bg-container {
-            display: block;
             background: radial-gradient(circle at 20% 20%, rgba(168, 85, 247, 0.15) 0%, transparent 40%),
                         radial-gradient(circle at 80% 80%, rgba(236, 72, 153, 0.15) 0%, transparent 40%), #0b0514;
         }
 
         body.theme-sunset #animated-bg-container {
-            display: block;
             background: radial-gradient(circle at 50% 10%, rgba(249, 115, 22, 0.2) 0%, transparent 50%), #120806;
         }
 
@@ -964,13 +961,13 @@
             }
 
             bgContainer.innerHTML = '';
-            if (theme === 'ocean') {
+            if (theme === 'ocean' || theme === 'dark-classic') {
                 let bubbles = '';
-                for (let i = 0; i < 20; i++) {
+                for (let i = 0; i < 15; i++) {
                     const left = Math.random() * 100;
-                    const size = 8 + Math.random() * 20;
+                    const size = 6 + Math.random() * 18;
                     const delay = Math.random() * 5;
-                    const duration = 5 + Math.random() * 5;
+                    const duration = 6 + Math.random() * 6;
                     bubbles += `<div class="ocean-bubble" style="left:${left}%; width:${size}px; height:${size}px; animation-delay:${delay}s; animation-duration:${duration}s;"></div>`;
                 }
                 bgContainer.innerHTML = bubbles;
