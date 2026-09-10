@@ -113,7 +113,7 @@
             z-index: -999;
             pointer-events: none;
             overflow: hidden;
-            display: block; /* Habilitado para mostrar los fondos animados en todo momento */
+            display: block;
             opacity: 0.7;
         }
 
@@ -491,6 +491,7 @@
             transition: var(--transition-smooth);
             position: relative;
             overflow: hidden;
+            cursor: pointer;
         }
 
         .project-card::before {
@@ -504,10 +505,11 @@
             opacity: 0.8;
         }
 
+        /* Animación al pasar el cursor por encima de la tarjeta */
         .project-card:hover {
             border-color: var(--accent-color);
-            transform: translateY(-4px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+            transform: translateY(-6px) scale(1.01);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
         }
 
         .project-header {
@@ -536,6 +538,14 @@
             justify-content: center;
             color: var(--accent-color);
             font-size: 1.25rem;
+            /* Transición fluida para que el icono se mueva con suavidad */
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease;
+        }
+
+        /* El icono se desplaza hacia la derecha cuando el cursor está sobre la tarjeta */
+        .project-card:hover .project-icon-box {
+            transform: translateX(10px);
+            background: var(--glass-border);
         }
 
         .project-card h3 {
