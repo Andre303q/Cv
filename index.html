@@ -419,7 +419,7 @@
             box-shadow: 0 8px 25px rgba(52, 211, 153, 0.25);
         }
 
-        /* Botón para ver certificados */
+        /* Botón para ver certificados en PDF */
         .btn-cert {
             background: var(--card-inner-bg);
             border: 1px solid var(--glass-border);
@@ -432,6 +432,7 @@
             display: inline-flex;
             align-items: center;
             gap: 6px;
+            text-decoration: none;
             transition: var(--transition-smooth);
         }
         .btn-cert:hover {
@@ -668,65 +669,6 @@
             transform: translateY(-4px);
         }
 
-        /* ================= MODAL PARA CERTIFICADOS ================= */
-        .cert-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: rgba(3, 7, 18, 0.8);
-            backdrop-filter: blur(12px);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 3000;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-        }
-
-        .cert-modal.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .cert-modal-content {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            padding: 25px;
-            border-radius: 20px;
-            max-width: 700px;
-            width: 90%;
-            text-align: center;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
-            transform: scale(0.9);
-            transition: transform 0.3s ease;
-        }
-
-        .cert-modal.active .cert-modal-content {
-            transform: scale(1);
-        }
-
-        .cert-modal-content img {
-            width: 100%;
-            border-radius: 12px;
-            border: 1px solid var(--glass-border);
-            max-height: 450px;
-            object-fit: contain;
-            margin-top: 15px;
-        }
-
-        .close-modal-btn {
-            background: transparent;
-            border: none;
-            color: var(--text-muted);
-            font-size: 1.8rem;
-            cursor: pointer;
-            float: right;
-        }
-        .close-modal-btn:hover { color: var(--text-color); }
-
         /* ================= GITHUB Y CONTACTO ================= */
         .github-card {
             background: var(--card-inner-bg);
@@ -923,7 +865,7 @@
             </div>
         </section>
 
-        <!-- CERTIFICACIONES (CON LOS 4 CERTIFICADOS OFICIALES AÑADIDOS) -->
+        <!-- CERTIFICACIONES (ENLAZADAS A LOS ARCHIVOS PDF) -->
         <section id="certificaciones" class="section">
             <h2>Certificaciones</h2>
             <div class="timeline">
@@ -931,33 +873,33 @@
                     <h3>Microsoft Certified: Azure Fundamentals</h3>
                     <span class="date"><i class="fa-brands fa-microsoft"></i> Microsoft</span>
                     <p>Validación de conocimientos fundamentales sobre los conceptos de la nube, servicios de Azure, seguridad, privacidad, conformidad y precios.</p>
-                    <button class="btn-cert" onclick="openCertModal('img/azure-cert.png', 'Microsoft Certified: Azure Fundamentals')">
+                    <a href="Azure Fundamentals.pdf" target="_blank" class="btn-cert">
                         <i class="fa-solid fa-eye"></i> Ver Certificado
-                    </button>
+                    </a>
                 </div>
                 <div class="timeline-item">
                     <h3>Generative AI Foundations</h3>
                     <span class="date"><i class="fa-solid fa-brain"></i> Pearson / Certiport</span>
                     <p>Conocimientos esenciales sobre los fundamentos, principios y aplicaciones prácticas de la Inteligencia Artificial Generativa.</p>
-                    <button class="btn-cert" onclick="openCertModal('img/genai-cert.png', 'Generative AI Foundations')">
+                    <a href="Generative AI Foundations.pdf" target="_blank" class="btn-cert">
                         <i class="fa-solid fa-eye"></i> Ver Certificado
-                    </button>
+                    </a>
                 </div>
                 <div class="timeline-item">
                     <h3>Microsoft Office Specialist: Word 2019 Expert</h3>
                     <span class="date"><i class="fa-brands fa-microsoft"></i> Microsoft / Certiport</span>
                     <p>Acreditación de nivel experto en el manejo avanzado de documentos, formatos complejos y herramientas profesionales en Microsoft Word.</p>
-                    <button class="btn-cert" onclick="openCertModal('img/word-expert-cert.png', 'Microsoft Office Specialist: Word 2019 Expert')">
+                    <a href="Word 2019 Expert.pdf" target="_blank" class="btn-cert">
                         <i class="fa-solid fa-eye"></i> Ver Certificado
-                    </button>
+                    </a>
                 </div>
                 <div class="timeline-item">
-                    <h3>Microsoft PowerPoint 2019 Associate</h3>
-                    <span class="date"><i class="fa-brands fa-microsoft"></i> Microsoft</span>
+                    <h3>Microsoft Office Specialist: PowerPoint 2019 Associate</h3>
+                    <span class="date"><i class="fa-brands fa-microsoft"></i> Microsoft / Certiport</span>
                     <p>Certificación que acredita el dominio avanzado en el diseño, formato y presentación eficiente de información con herramientas ofimáticas.</p>
-                    <button class="btn-cert" onclick="openCertModal('img/powerpoint-cert.png', 'Microsoft PowerPoint 2019 Associate')">
+                    <a href="PowerPoint 2019 Associate.pdf" target="_blank" class="btn-cert">
                         <i class="fa-solid fa-eye"></i> Ver Certificado
-                    </button>
+                    </a>
                 </div>
             </div>
         </section>
@@ -1049,43 +991,12 @@
 
     </main>
 
-    <!-- VENTANA MODAL PARA VISUALIZAR LOS CERTIFICADOS -->
-    <div id="certModal" class="cert-modal">
-        <div class="cert-modal-content">
-            <button class="close-modal-btn" onclick="closeCertModal()">&times;</button>
-            <h3 id="modalCertTitle" style="margin-top: 0; color: var(--text-color); font-size: 1.2rem;">Título del Certificado</h3>
-            <img id="modalCertImg" src="" alt="Imagen del Certificado">
-        </div>
-    </div>
-
     <footer>
         <p>&copy; 2026 - Sebástian André García Bonilla. Todos los derechos reservados.</p>
     </footer>
 
     <!-- SCRIPTS -->
     <script>
-        // Funciones del Modal de Certificados
-        const modal = document.getElementById('certModal');
-        const modalImg = document.getElementById('modalCertImg');
-        const modalTitle = document.getElementById('modalCertTitle');
-
-        function openCertModal(imgSrc, title) {
-            modalImg.src = imgSrc;
-            modalTitle.textContent = title;
-            modal.classList.add('active');
-        }
-
-        function closeCertModal() {
-            modal.classList.remove('active');
-            modalImg.src = '';
-        }
-
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                closeCertModal();
-            }
-        });
-
         const themeMenuBtn = document.getElementById('theme-menu-btn');
         const themeDrawer = document.getElementById('theme-picker-drawer');
         const closeDrawerBtn = document.getElementById('close-theme-drawer');
