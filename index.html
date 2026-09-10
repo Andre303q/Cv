@@ -84,7 +84,7 @@
             100% { transform: translateX(-50%); }
         }
 
-        /* ================= TEMA: JUNGLA (CON ÁRBOLES Y LUCIÉRNAGAS) ================= */
+        /* ================= TEMA: JUNGLA (ÁRBOLES ORGÁNICOS Y LIANAS) ================= */
         body.theme-jungle #animated-bg-container {
             display: block;
             background: linear-gradient(to bottom, #010f07, #032214, #010c05) !important;
@@ -92,27 +92,40 @@
         .jungle-tree {
             position: absolute;
             bottom: 0;
-            width: 90px;
+            width: 110px;
+            height: 320px;
             background: linear-gradient(to top, #01140a, #043d22);
-            border-radius: 30px 30px 0 0;
-            box-shadow: inset -10px 0 20px rgba(0, 0, 0, 0.6);
-            animation: swayTree 6s ease-in-out infinite alternate;
+            clip-path: polygon(40% 100%, 60% 100%, 58% 40%, 65% 15%, 75% 0%, 25% 0%, 35% 15%, 42% 40%);
             transform-origin: bottom center;
+            animation: swayTree 7s ease-in-out infinite alternate;
         }
         .jungle-tree::before {
             content: '';
             position: absolute;
-            top: -60px;
-            left: -40px;
-            right: -40px;
-            height: 120px;
-            background: radial-gradient(circle, #054f2c 0%, #022c17 70%, transparent 100%);
-            border-radius: 50%;
-            box-shadow: 0 0 25px rgba(52, 211, 153, 0.15);
+            top: -90px;
+            left: -80px;
+            right: -80px;
+            height: 140px;
+            background: #043d22;
+            clip-path: polygon(0% 60%, 15% 30%, 30% 50%, 45% 15%, 60% 40%, 75% 20%, 90% 45%, 100% 60%, 85% 90%, 50% 100%, 15% 90%);
+            box-shadow: 0 0 30px rgba(52, 211, 153, 0.1);
+        }
+        .jungle-vine {
+            position: absolute;
+            top: 50px;
+            width: 2px;
+            background: #022c17;
+            opacity: 0.8;
+            animation: swayVine 5s ease-in-out infinite alternate;
+            transform-origin: top center;
         }
         @keyframes swayTree {
             0% { transform: rotate(0deg); }
-            100% { transform: rotate(1.5deg); }
+            100% { transform: rotate(1deg); }
+        }
+        @keyframes swayVine {
+            0% { transform: rotate(-3deg); }
+            100% { transform: rotate(3deg); }
         }
 
         .firefly-particle {
@@ -441,15 +454,21 @@
             } else if (theme === 'desert') {
                 bgContainer.innerHTML = '<div class="desert-sun"></div><div class="dune-layer"></div>';
             } else if (theme === 'jungle') {
-                // Generador dinámico de árboles de jungla + luciérnagas
                 let jungleHTML = '';
-                // 4 árboles de jungla estilizados en el fondo
-                const treeLefts = [5, 28, 70, 88];
-                const treeHeights = [220, 310, 260, 340];
-                for(let t = 0; t < 4; t++) {
-                    jungleHTML += `<div class="jungle-tree" style="left: ${treeLefts[t]}%; height: ${treeHeights[t]}px; animation-delay: ${t * 1.5}s;"></div>`;
-                }
-                // Luciérnagas flotantes
+                const treeConfigs = [
+                    { left: 4, height: 340, scale: 0.9 },
+                    { left: 26, height: 400, scale: 1.2 },
+                    { left: 65, height: 360, scale: 1.0 },
+                    { left: 85, height: 420, scale: 1.3 }
+                ];
+                
+                treeConfigs.forEach((cfg, t) => {
+                    jungleHTML += `<div class="jungle-tree" style="left: ${cfg.left}%; height: ${cfg.height}px; transform: scale(${cfg.scale}); animation-delay: ${t * 1.2}s;">`;
+                    jungleHTML += `<div class="jungle-vine" style="left: 20px; height: ${cfg.height * 0.6}px; animation-delay: ${t}s;"></div>`;
+                    jungleHTML += `<div class="jungle-vine" style="left: 70px; height: ${cfg.height * 0.75}px; animation-delay: ${t * 1.5}s;"></div>`;
+                    jungleHTML += `</div>`;
+                });
+
                 for(let i = 0; i < 18; i++) {
                     const top = Math.random() * 100;
                     const left = Math.random() * 100;
