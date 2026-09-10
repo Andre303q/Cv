@@ -99,21 +99,26 @@
             transform: translateX(5px);
         }
 
-        /* ================= MEJORA AVANZADA DEL CARRUSEL ================= */
+        /* ================= CARRUSEL GRANDE E INTERACTIVO ================= */
         .carousel-container {
             position: relative;
             width: 100%;
             overflow: hidden;
-            padding: 15px 0;
-            -webkit-mask-image: linear-gradient(90deg, transparent, #000 15%, #000 85%, transparent);
-            mask-image: linear-gradient(90deg, transparent, #000 15%, #000 85%, transparent);
+            padding: 25px 0;
+            cursor: grab;
+            -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+            mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+        }
+
+        .carousel-container:active {
+            cursor: grabbing;
         }
 
         .carousel-track {
             display: flex;
-            gap: 16px;
+            gap: 24px;
             width: max-content;
-            animation: scrollCarousel 30s linear infinite;
+            animation: scrollCarousel 35s linear infinite;
         }
 
         .carousel-container:hover .carousel-track {
@@ -121,35 +126,49 @@
         }
 
         @keyframes scrollCarousel {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-50%);
-            }
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
 
         .carousel-track .skill-card {
             flex-shrink: 0;
+            width: 220px; /* Tarjeta más ancha y grande */
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(10px);
-            border-radius: 14px;
-            padding: 14px 20px;
+            backdrop-filter: blur(12px);
+            border-radius: 18px;
+            padding: 24px 20px;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 10px;
+            justify-content: center;
+            gap: 14px;
             color: #f8fafc;
-            font-weight: 500;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            font-weight: 600;
+            font-size: 1.05rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            user-select: none;
+        }
+
+        .carousel-track .skill-card i {
+            font-size: 2.5rem; /* Iconos grandes y llamativos */
+            background: linear-gradient(135deg, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 4px;
+            transition: transform 0.3s ease;
         }
 
         .carousel-track .skill-card:hover {
-            background: rgba(56, 189, 248, 0.1);
+            background: rgba(56, 189, 248, 0.08);
             border-color: rgba(56, 189, 248, 0.4);
-            transform: translateY(-4px) scale(1.03);
-            box-shadow: 0 8px 25px rgba(56, 189, 248, 0.2);
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 12px 35px rgba(56, 189, 248, 0.25);
+        }
+
+        .carousel-track .skill-card:hover i {
+            transform: scale(1.15) rotate(5deg);
         }
 
         /* ================= MENÚ DE TEMAS ================= */
@@ -490,13 +509,15 @@
             </div>
         </section>
 
-        <!-- HABILIDADES (CARRUSEL MEJORADO) -->
+        <!-- HABILIDADES (CARRUSEL GRANDE E INTERACTIVO MEJORADO) -->
         <section id="habilidades" class="section">
             <h2>Habilidades Técnicas y Blandas</h2>
-            <p class="carousel-hint">💡 Pasa el cursor sobre el carrusel para pausarlo y explorar las habilidades detalladamente.</p>
+            <p class="carousel-hint" style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 15px;">
+                <i class="fa-solid fa-hand-pointer"></i> Puedes arrastrar el carrusel con el ratón / dedo o mantener el cursor encima para pausarlo.
+            </p>
             
-            <div class="carousel-container">
-                <div class="carousel-track">
+            <div class="carousel-container" id="draggable-carousel">
+                <div class="carousel-track" id="carousel-track">
                     <div class="skill-card"><i class="fa-solid fa-code"></i> HTML & CSS</div>
                     <div class="skill-card"><i class="fa-brands fa-js"></i> JavaScript</div>
                     <div class="skill-card"><i class="fa-solid fa-language"></i> Inglés (Intermedio)</div>
@@ -580,7 +601,7 @@
         <p>&copy; 2026 - Sebástian André García Bonilla. Hecho con HTML y CSS.</p>
     </footer>
 
-    <!-- SCRIPT DE GESTIÓN DE TEMAS -->
+    <!-- SCRIPT DE GESTIÓN DE TEMAS Y CARRUSEL INTERACTIVO -->
     <script>
         const themeMenuBtn = document.getElementById('theme-menu-btn');
         const themeDrawer = document.getElementById('theme-picker-drawer');
@@ -660,6 +681,59 @@
                 }
             });
         }
+
+        // ================= SCRIPT DE ARRASTRE PARA EL CARRUSEL (DRAG TO SCROLL) =================
+        const slider = document.getElementById('draggable-carousel');
+        const track = document.getElementById('carousel-track');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        slider.addEventListener('mousedown', (e) => {
+            isDown = true;
+            slider.style.cursor = 'grabbing';
+            track.style.animationPlayState = 'paused';
+            startX = e.pageX - slider.offsetLeft;
+            scrollLeft = slider.scrollLeft;
+        });
+
+        slider.addEventListener('mouseleave', () => {
+            if(!isDown) return;
+            isDown = false;
+            slider.style.cursor = 'grab';
+            track.style.animationPlayState = 'running';
+        });
+
+        slider.addEventListener('mouseup', () => {
+            isDown = false;
+            slider.style.cursor = 'grab';
+            track.style.animationPlayState = 'running';
+        });
+
+        slider.addEventListener('mousemove', (e) => {
+            if(!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const walk = (x - startX) * 2;
+            slider.scrollLeft = scrollLeft - walk;
+        });
+
+        // Soporte Táctil (Móviles / Tablets)
+        slider.addEventListener('touchstart', (e) => {
+            track.style.animationPlayState = 'paused';
+            startX = e.touches[0].pageX - slider.offsetLeft;
+            scrollLeft = slider.scrollLeft;
+        });
+
+        slider.addEventListener('touchend', () => {
+            track.style.animationPlayState = 'running';
+        });
+
+        slider.addEventListener('touchmove', (e) => {
+            const x = e.touches[0].pageX - slider.offsetLeft;
+            const walk = (x - startX) * 2;
+            slider.scrollLeft = scrollLeft - walk;
+        });
     </script>
 
 </body>
