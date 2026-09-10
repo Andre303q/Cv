@@ -84,11 +84,37 @@
             100% { transform: translateX(-50%); }
         }
 
-        /* ================= TEMA: JUNGLA ================= */
+        /* ================= TEMA: JUNGLA (CON ÁRBOLES Y LUCIÉRNAGAS) ================= */
         body.theme-jungle #animated-bg-container {
             display: block;
-            background: linear-gradient(to bottom, #010804, #042416, #010c05) !important;
+            background: linear-gradient(to bottom, #010f07, #032214, #010c05) !important;
         }
+        .jungle-tree {
+            position: absolute;
+            bottom: 0;
+            width: 90px;
+            background: linear-gradient(to top, #01140a, #043d22);
+            border-radius: 30px 30px 0 0;
+            box-shadow: inset -10px 0 20px rgba(0, 0, 0, 0.6);
+            animation: swayTree 6s ease-in-out infinite alternate;
+            transform-origin: bottom center;
+        }
+        .jungle-tree::before {
+            content: '';
+            position: absolute;
+            top: -60px;
+            left: -40px;
+            right: -40px;
+            height: 120px;
+            background: radial-gradient(circle, #054f2c 0%, #022c17 70%, transparent 100%);
+            border-radius: 50%;
+            box-shadow: 0 0 25px rgba(52, 211, 153, 0.15);
+        }
+        @keyframes swayTree {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(1.5deg); }
+        }
+
         .firefly-particle {
             position: absolute;
             width: 6px;
@@ -200,7 +226,7 @@
                     </div>
                 </button>
                 <button class="theme-card" data-theme="jungle">
-                    <span class="theme-name">Jungla (Luciérnagas)</span>
+                    <span class="theme-name">Jungla (Árboles)</span>
                     <div class="theme-dots">
                         <span style="background: #02120a;"></span>
                         <span style="background: #042416;"></span>
@@ -402,7 +428,6 @@
 
             bgContainer.innerHTML = '';
             if (theme === 'ocean') {
-                // Generador de burbujas flotantes interactivas
                 let bubblesHTML = '';
                 for(let i = 0; i < 25; i++) {
                     const left = Math.random() * 100;
@@ -416,15 +441,23 @@
             } else if (theme === 'desert') {
                 bgContainer.innerHTML = '<div class="desert-sun"></div><div class="dune-layer"></div>';
             } else if (theme === 'jungle') {
-                let firefliesHTML = '';
-                for(let i = 0; i < 22; i++) {
+                // Generador dinámico de árboles de jungla + luciérnagas
+                let jungleHTML = '';
+                // 4 árboles de jungla estilizados en el fondo
+                const treeLefts = [5, 28, 70, 88];
+                const treeHeights = [220, 310, 260, 340];
+                for(let t = 0; t < 4; t++) {
+                    jungleHTML += `<div class="jungle-tree" style="left: ${treeLefts[t]}%; height: ${treeHeights[t]}px; animation-delay: ${t * 1.5}s;"></div>`;
+                }
+                // Luciérnagas flotantes
+                for(let i = 0; i < 18; i++) {
                     const top = Math.random() * 100;
                     const left = Math.random() * 100;
                     const delay = Math.random() * 6;
                     const duration = 4 + Math.random() * 6;
-                    firefliesHTML += `<div class="firefly-particle" style="top: ${top}%; left: ${left}%; animation-delay: ${delay}s; animation-duration: ${duration}s;"></div>`;
+                    jungleHTML += `<div class="firefly-particle" style="top: ${top}%; left: ${left}%; animation-delay: ${delay}s; animation-duration: ${duration}s;"></div>`;
                 }
-                bgContainer.innerHTML = firefliesHTML;
+                bgContainer.innerHTML = jungleHTML;
             }
 
             themeCards.forEach(card => {
