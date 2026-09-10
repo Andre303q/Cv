@@ -84,7 +84,7 @@
             100% { transform: translateX(-50%); }
         }
 
-        /* ================= TEMA: JUNGLA (ÁRBOLES ORGÁNICOS Y LIANAS) ================= */
+        /* ================= TEMA: JUNGLA (ÁRBOLES LIMPIOS Y ORGÁNICOS) ================= */
         body.theme-jungle #animated-bg-container {
             display: block;
             background: linear-gradient(to bottom, #010f07, #032214, #010c05) !important;
@@ -93,53 +93,39 @@
         .jungle-tree {
             position: absolute;
             bottom: 0;
-            width: 32px;
-            height: 380px;
+            width: 28px;
+            height: 360px;
             background: linear-gradient(to top, #01140a, #032b17);
-            border-radius: 20px 20px 0 0;
+            border-radius: 15px 15px 0 0;
             transform-origin: bottom center;
             animation: swayTree 8s ease-in-out infinite alternate;
         }
-        /* Copa ancha y ramificada natural */
+        /* Copa principal del árbol (amplia y suave) */
         .jungle-tree::before {
             content: '';
             position: absolute;
-            top: -110px;
-            left: -90px;
-            width: 210px;
-            height: 150px;
+            top: -100px;
+            left: -85px;
+            width: 200px;
+            height: 140px;
             background: #043d22;
             border-radius: 100px 100px 60px 60px;
-            box-shadow: 0 0 40px rgba(52, 211, 153, 0.08);
+            box-shadow: 0 0 30px rgba(52, 211, 153, 0.05);
         }
-        /* Follaje secundario superior para darle volumen asimétrico */
+        /* Copa superior secundaria */
         .jungle-tree::after {
             content: '';
             position: absolute;
-            top: -160px;
-            left: -40px;
-            width: 120px;
-            height: 90px;
+            top: -150px;
+            left: -35px;
+            width: 110px;
+            height: 85px;
             background: #054d2a;
-            border-radius: 60px 60px 40px 40px;
-        }
-        /* Lianas colgantes */
-        .jungle-vine {
-            position: absolute;
-            top: -20px;
-            width: 2px;
-            background: #021f11;
-            opacity: 0.85;
-            animation: swayVine 5s ease-in-out infinite alternate;
-            transform-origin: top center;
+            border-radius: 50px 50px 30px 30px;
         }
         @keyframes swayTree {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(1.2deg); }
-        }
-        @keyframes swayVine {
-            0% { transform: rotate(-3deg); }
-            100% { transform: rotate(3deg); }
         }
 
         .firefly-particle {
@@ -474,10 +460,7 @@
                 ];
                 
                 treeConfigs.forEach((cfg, t) => {
-                    jungleHTML += `<div class="jungle-tree" style="left: ${cfg.left}%; height: ${cfg.height}px; transform: scale(${cfg.scale}); animation-delay: ${t * 1.3}s;">`;
-                    jungleHTML += `<div class="jungle-vine" style="left: 10px; height: ${cfg.height * 0.55}px; animation-delay: ${t}s;"></div>`;
-                    jungleHTML += `<div class="jungle-vine" style="left: 22px; height: ${cfg.height * 0.7}px; animation-delay: ${t * 1.4}s;"></div>`;
-                    jungleHTML += `</div>`;
+                    jungleHTML += `<div class="jungle-tree" style="left: ${cfg.left}%; height: ${cfg.height}px; transform: scale(${cfg.scale}); animation-delay: ${t * 1.3}s;"></div>`;
                 });
 
                 for(let i = 0; i < 18; i++) {
