@@ -498,62 +498,54 @@
 
         .school-link:hover { color: var(--accent-color); }
 
-        /* ================= VISTA PREVIA DE CERTIFICADOS (MINIATURA PDF) ================= */
-        .cert-preview-card {
-            margin-top: 12px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 10px 14px;
-            background: var(--card-inner-bg);
-            border: 1px solid var(--glass-border);
+        /* ================= VISTA PREVIA CON IMAGEN DE CERTIFICADO ================= */
+        .cert-image-card {
+            position: relative;
+            width: 100%;
+            max-width: 280px;
+            height: 150px;
             border-radius: 12px;
+            overflow: hidden;
             cursor: pointer;
-            width: fit-content;
-            max-width: 100%;
+            border: 1px solid var(--glass-border);
+            margin-top: 12px;
             transition: var(--transition-smooth);
         }
 
-        .cert-preview-card:hover {
-            border-color: var(--accent-color);
-            background: rgba(56, 189, 248, 0.05);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        .cert-image-card img.cert-thumb {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
         }
 
-        .cert-icon-box {
-            width: 36px;
-            height: 36px;
-            background: rgba(239, 68, 68, 0.1);
-            border: 1px solid rgba(239, 68, 68, 0.2);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #ef4444;
-            font-size: 1.1rem;
-            flex-shrink: 0;
-        }
-
-        .cert-preview-info {
+        .cert-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(3, 7, 18, 0.75);
             display: flex;
             flex-direction: column;
-            text-align: left;
-        }
-
-        .cert-preview-title {
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            color: #fff;
             font-size: 0.85rem;
             font-weight: 600;
-            color: var(--text-color);
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
-        .cert-preview-action {
-            font-size: 0.73rem;
-            color: var(--accent-color);
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 4px;
+        .cert-image-card:hover .cert-overlay {
+            opacity: 1;
+        }
+
+        .cert-image-card:hover img.cert-thumb {
+            transform: scale(1.05);
+        }
+
+        .cert-image-card:hover {
+            border-color: var(--accent-color);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
         }
 
         /* MODAL / VISOR EXPANDIDO EN PANTALLA COMPLETA PARA PDF */
@@ -1014,12 +1006,11 @@
                     <span class="date"><i class="fa-brands fa-microsoft"></i> Microsoft</span>
                     <p>Validación de conocimientos fundamentales sobre los conceptos de la nube, servicios de Azure, seguridad, privacidad, conformidad y precios.</p>
                     
-                    <!-- Miniatura interactiva de PDF -->
-                    <div class="cert-preview-card" onclick="openCertModal('Azure Fundamentals.pdf')">
-                        <div class="cert-icon-box"><i class="fa-solid fa-file-pdf"></i></div>
-                        <div class="cert-preview-info">
-                            <span class="cert-preview-title">Azure Fundamentals.pdf</span>
-                            <span class="cert-preview-action"><i class="fa-solid fa-magnifying-glass-plus"></i> Click para ampliar</span>
+                    <!-- Tarjeta con imagen previa que abre el PDF en el Modal -->
+                    <div class="cert-image-card" onclick="openCertModal('Azure Fundamentals.pdf')">
+                        <img src="azure-preview.png" alt="Azure Fundamentals" class="cert-thumb">
+                        <div class="cert-overlay">
+                            <i class="fa-solid fa-magnifying-glass-plus"></i> Ver certificado
                         </div>
                     </div>
                 </div>
@@ -1029,11 +1020,10 @@
                     <span class="date"><i class="fa-solid fa-brain"></i> Pearson / Certiport</span>
                     <p>Conocimientos esenciales sobre los fundamentos, principios y aplicaciones prácticas de la Inteligencia Artificial Generativa.</p>
                     
-                    <div class="cert-preview-card" onclick="openCertModal('Generative AI Foundations.pdf')">
-                        <div class="cert-icon-box"><i class="fa-solid fa-file-pdf"></i></div>
-                        <div class="cert-preview-info">
-                            <span class="cert-preview-title">Generative AI Foundations.pdf</span>
-                            <span class="cert-preview-action"><i class="fa-solid fa-magnifying-glass-plus"></i> Click para ampliar</span>
+                    <div class="cert-image-card" onclick="openCertModal('Generative AI Foundations.pdf')">
+                        <img src="ai-preview.png" alt="Generative AI Foundations" class="cert-thumb">
+                        <div class="cert-overlay">
+                            <i class="fa-solid fa-magnifying-glass-plus"></i> Ver certificado
                         </div>
                     </div>
                 </div>
@@ -1043,11 +1033,10 @@
                     <span class="date"><i class="fa-brands fa-microsoft"></i> Microsoft / Certiport</span>
                     <p>Acreditación de nivel experto en el manejo avanzado de documentos, formatos complejos y herramientas profesionales en Microsoft Word.</p>
                     
-                    <div class="cert-preview-card" onclick="openCertModal('Word 2019 Expert.pdf')">
-                        <div class="cert-icon-box"><i class="fa-solid fa-file-pdf"></i></div>
-                        <div class="cert-preview-info">
-                            <span class="cert-preview-title">Word 2019 Expert.pdf</span>
-                            <span class="cert-preview-action"><i class="fa-solid fa-magnifying-glass-plus"></i> Click para ampliar</span>
+                    <div class="cert-image-card" onclick="openCertModal('Word 2019 Expert.pdf')">
+                        <img src="word-preview.png" alt="Word 2019 Expert" class="cert-thumb">
+                        <div class="cert-overlay">
+                            <i class="fa-solid fa-magnifying-glass-plus"></i> Ver certificado
                         </div>
                     </div>
                 </div>
@@ -1057,11 +1046,10 @@
                     <span class="date"><i class="fa-brands fa-microsoft"></i> Microsoft / Certiport</span>
                     <p>Certificación que acredita el dominio avanzado en el diseño, formato y presentación eficiente de información con herramientas ofimáticas.</p>
                     
-                    <div class="cert-preview-card" onclick="openCertModal('PowerPoint 2019 Associate.pdf')">
-                        <div class="cert-icon-box"><i class="fa-solid fa-file-pdf"></i></div>
-                        <div class="cert-preview-info">
-                            <span class="cert-preview-title">PowerPoint 2019 Associate.pdf</span>
-                            <span class="cert-preview-action"><i class="fa-solid fa-magnifying-glass-plus"></i> Click para ampliar</span>
+                    <div class="cert-image-card" onclick="openCertModal('PowerPoint 2019 Associate.pdf')">
+                        <img src="ppt-preview.png" alt="PowerPoint 2019 Associate" class="cert-thumb">
+                        <div class="cert-overlay">
+                            <i class="fa-solid fa-magnifying-glass-plus"></i> Ver certificado
                         </div>
                     </div>
                 </div>
@@ -1233,7 +1221,6 @@
             const modal = document.getElementById('certModal');
             const modalEmbed = document.getElementById('modalCertEmbed');
             modal.classList.remove('active');
-            // Limpiamos el src para liberar memoria del visor PDF
             setTimeout(() => { modalEmbed.src = ''; }, 300);
         }
 
