@@ -121,6 +121,7 @@ body.theme-ocean #animated-bg-container {
     border-radius: 50%;
     animation: floatBubble linear infinite;
 }
+
 @keyframes floatBubble {
     0% { transform: translateY(0) translateX(0) scale(0.8); opacity: 0; }
     20% { opacity: 0.7; }
@@ -131,6 +132,7 @@ body.theme-ocean #animated-bg-container {
 body.theme-desert #animated-bg-container {
     background: radial-gradient(circle at 85% 15%, rgba(245, 158, 11, 0.35) 0%, transparent 45%), linear-gradient(to bottom, #110501, #2b1003);
 }
+
 .desert-sun {
     position: absolute;
     top: 8%; right: 10%; width: 120px; height: 120px;
@@ -236,22 +238,21 @@ body.theme-sunset #animated-bg-container {
 }
 
 .section {
-    background: var(--glass-bg);
+    background: rgba(15, 23, 42, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     backdrop-filter: var(--blur-strength);
     -webkit-backdrop-filter: var(--blur-strength);
-    border: 1px solid var(--glass-border);
     border-radius: 20px;
-    padding: 24px 20px;
-    margin-bottom: 24px;
-    box-shadow: var(--card-shadow);
-    transition: var(--transition-smooth);
+    padding: 40px;
+    margin-bottom: 35px;
+    box-shadow: 0 12px 35px -10px rgba(0, 0, 0, 0.6);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
     position: relative;
 }
 
 .section:hover {
-    border-color: var(--accent-color);
-    box-shadow: 0 20px 40px 0 rgba(0, 0, 0, 0.4);
-    transform: translateY(-2px);
+    border-color: rgba(99, 102, 241, 0.35);
+    box-shadow: 0 18px 40px -10px rgba(99, 102, 241, 0.18);
 }
 
 .section h2 {
@@ -283,7 +284,11 @@ body.theme-sunset #animated-bg-container {
 
 /* ================= HERO SECTION ================= */
 .hero {
-    padding: 35px 15px;
+    padding-top: 130px;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
 }
 
@@ -474,101 +479,41 @@ body.theme-sunset #animated-bg-container {
 
 .school-link:hover { color: var(--accent-color); }
 
-/* ================= MINIATURAS DE CERTIFICADOS PDF & MODAL ================= */
-.cert-img-container {
-    position: relative;
+/* ================= PDF BOX & MODALS ================= */
+.cert-pdf-box {
     width: 100%;
-    max-width: 450px;
-    height: 240px;
-    border-radius: 10px;
+    height: 380px;
+    border-radius: 12px;
     overflow: hidden;
-    cursor: pointer;
-    border: 1px solid var(--glass-border);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.2);
     margin-top: 15px;
-    background: #000;
-    transition: transform 0.2s ease, border-color 0.2s ease;
-}
-
-.cert-thumbnail {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: opacity 0.2s ease;
-}
-
-.cert-zoom-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6);
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
-    font-size: 0.9rem;
-    font-weight: 600;
-    opacity: 0;
-    transition: opacity 0.2s ease;
-    gap: 8px;
 }
 
-.cert-zoom-overlay i {
-    font-size: 1.5rem;
-    color: var(--accent-color);
-}
-
-.cert-img-container:hover .cert-zoom-overlay {
-    opacity: 1;
-}
-
-.cert-img-container:hover {
-    border-color: var(--accent-color);
-    transform: translateY(-2px);
-}
-
-.cert-modal {
-    display: none;
-    position: fixed;
-    z-index: 2000;
-    left: 0;
-    top: 0;
+.cert-pdf-box iframe {
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(5px);
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+    border: none;
 }
 
-.modal-content {
-    max-width: 90%;
-    max-height: 90vh;
-    border-radius: 8px;
-    box-shadow: 0 5px 25px rgba(0,0,0,0.5);
-    animation: zoomIn 0.25s ease;
+.cert-pdf-actions {
+    padding: 8px 12px;
+    background: rgba(0, 0, 0, 0.4);
+    text-align: right;
 }
 
-.close-modal {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    color: #f1f1f1;
-    font-size: 40px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.close-modal:hover {
+.btn-pdf-view {
     color: #fff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: opacity 0.2s;
 }
 
-@keyframes zoomIn {
-    from { transform: scale(0.8); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
+.btn-pdf-view:hover {
+    opacity: 0.7;
 }
 
 /* ================= PROYECTOS ================= */
@@ -577,15 +522,6 @@ body.theme-sunset #animated-bg-container {
     color: inherit;
     display: block;
     transition: transform 0.2s ease, border-color 0.2s ease;
-}
-
-.project-card-link:hover {
-    text-decoration: none;
-}
-
-.project-card-link h3,
-.project-card-link p {
-    text-decoration: none !important;
 }
 
 .project-card {
@@ -746,7 +682,7 @@ body.theme-sunset #animated-bg-container {
 
 .github-info h3 { font-size: 1.1rem; margin-bottom: 6px; color: var(--text-color); }
 .contact-links { display: flex; flex-direction: column; gap: 10px; align-items: flex-start; margin-top: 10px; }
-.email-link, .phone-link { color: var(--accent-color); text-decoration: none; font-weight: 600; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 8px; word-break: break-all; }
+.email-link { color: var(--accent-color); text-decoration: none; font-weight: 600; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 8px; word-break: break-all; }
 
 /* ================= MENÚ DESPLEGABLE DE TEMAS ================= */
 .theme-picker-drawer {
@@ -820,6 +756,23 @@ footer {
     margin-top: 40px;
 }
 
+/* ================= EFECTO SMOOTH SCROLL BIDIRECCIONAL (NATURAL Y FLUIDO) ================= */
+.scroll-animate {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateY(20px);
+    transition: opacity 1s cubic-bezier(0.25, 1, 0.5, 1), 
+                transform 1s cubic-bezier(0.25, 1, 0.5, 1), 
+                filter 1s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: opacity, transform, filter;
+}
+
+.scroll-animate.is-visible {
+    opacity: 1;
+    filter: blur(0px);
+    transform: translateY(0);
+}
+
 /* ================= MEDIA QUERIES PARA CELULARES ================= */
 @media (max-width: 480px) {
     .navbar { padding: 12px 12px; }
@@ -831,160 +784,4 @@ footer {
     .social-links .btn { width: 100%; justify-content: center; }
     .github-card { flex-direction: column; align-items: flex-start; }
     .github-card .btn { width: 100%; justify-content: center; }
-}
-
-.cert-pdf-box {
-    width: 100%;
-    height: 380px;
-    border-radius: 12px;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(0, 0, 0, 0.2);
-    margin-top: 15px;
-    display: flex;
-    flex-direction: column;
-}
-.cert-pdf-box iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-}
-.cert-pdf-actions {
-    padding: 8px 12px;
-    background: rgba(0, 0, 0, 0.4);
-    text-align: right;
-}
-.btn-pdf-view {
-    color: #fff;
-    text-decoration: none;
-    font-size: 0.85rem;
-    font-weight: 500;
-    transition: opacity 0.2s;
-}
-.btn-pdf-view:hover {
-    opacity: 0.7;
-}
-
-/* Corrección para que el Header no choque con la barra de navegación fija */
-.hero {
-    padding-top: 120px; /* Asegura espacio suficiente debajo de la nav */
-    min-height: 85vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-/* Efecto Scroll Reveal (Aparición fluida desde abajo) */
-.reveal {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    will-change: opacity, transform;
-}
-
-.reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Mejoras estéticas en sombras y bordes de las secciones */
-.section {
-    background: rgba(15, 23, 42, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    backdrop-filter: blur(12px);
-    border-radius: 20px;
-    padding: 35px;
-    margin-bottom: 30px;
-    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.section:hover {
-    border-color: rgba(99, 102, 241, 0.3);
-    box-shadow: 0 15px 35px -10px rgba(99, 102, 241, 0.15);
-}
-
-/* Corrección para que el Header no choque con la barra de navegación fija */
-.hero {
-    padding-top: 120px; /* Asegura espacio suficiente debajo de la nav */
-    min-height: 85vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-/* Efecto Scroll Reveal (Aparición fluida desde abajo) */
-.reveal {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    will-change: opacity, transform;
-}
-
-.reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Mejoras estéticas en sombras y bordes de las secciones */
-.section {
-    background: rgba(15, 23, 42, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    backdrop-filter: blur(12px);
-    border-radius: 20px;
-    padding: 35px;
-    margin-bottom: 30px;
-    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.section:hover {
-    border-color: rgba(99, 102, 241, 0.3);
-    box-shadow: 0 15px 35px -10px rgba(99, 102, 241, 0.15);
-}
-
-/* Corrección de espacio inicial en la sección Hero */
-.hero {
-    padding-top: 130px;
-    min-height: 85vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-/* Efecto de surgimiento y defuminación bidireccional (Scroll Fade, Blur & Slide) */
-.scroll-animate {
-    opacity: 0;
-    filter: blur(12px);
-    transform: translateY(50px);
-    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), 
-                transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), 
-                filter 0.85s cubic-bezier(0.16, 1, 0.3, 1);
-    will-change: opacity, transform, filter;
-}
-
-.scroll-animate.is-visible {
-    opacity: 1;
-    filter: blur(0px);
-    transform: translateY(0);
-}
-
-/* Estilo estético de las tarjetas y secciones */
-.section {
-    background: rgba(15, 23, 42, 0.65);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(14px);
-    border-radius: 20px;
-    padding: 40px;
-    margin-bottom: 35px;
-    box-shadow: 0 12px 35px -10px rgba(0, 0, 0, 0.6);
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.section:hover {
-    border-color: rgba(99, 102, 241, 0.35);
-    box-shadow: 0 18px 40px -10px rgba(99, 102, 241, 0.18);
 }
