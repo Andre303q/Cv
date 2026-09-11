@@ -498,18 +498,18 @@
 
         .school-link:hover { color: var(--accent-color); }
 
-        /* ================= VISTA PREVIA CON IMAGEN DE CERTIFICADO & MODAL ================= */
+        /* ================= VISTA PREVIA LIMPIA DE CERTIFICADO & MODAL ================= */
         .cert-image-card {
             position: relative;
             width: 100%;
-            max-width: 280px;
-            height: 150px;
+            max-width: 320px;
+            height: 180px;
             border-radius: 10px;
             overflow: hidden;
             cursor: pointer;
             border: 1px solid var(--glass-border);
             margin-top: 12px;
-            background-color: rgba(255, 255, 255, 0.05); /* Respaldo visual si carga lento o falla */
+            background-color: rgba(255, 255, 255, 0.03);
             transition: var(--transition-smooth);
         }
 
@@ -517,31 +517,12 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            display: block;
             transition: transform 0.3s ease;
         }
 
-        .cert-overlay {
-            position: absolute;
-            inset: 0;
-            background: rgba(3, 7, 18, 0.75);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            color: #fff;
-            font-size: 0.85rem;
-            font-weight: 600;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .cert-image-card:hover .cert-overlay {
-            opacity: 1;
-        }
-
         .cert-image-card:hover img {
-            transform: scale(1.05);
+            transform: scale(1.03);
         }
 
         .cert-image-card:hover {
@@ -951,12 +932,9 @@
                     <span class="date"><i class="fa-brands fa-microsoft"></i> Microsoft</span>
                     <p>Validación de conocimientos fundamentales sobre los conceptos de la nube, servicios de Azure, seguridad, privacidad, conformidad y precios.</p>
                     
-                    <!-- Tarjeta con miniatura de imagen -->
+                    <!-- Tarjeta limpia solo con la imagen -->
                     <div class="cert-image-card" onclick="openModal('azure-preview.png')">
                         <img src="azure-preview.png" alt="Azure Fundamentals">
-                        <div class="cert-overlay">
-                            <i class="fa-solid fa-magnifying-glass-plus"></i> Ampliar certificado
-                        </div>
                     </div>
                 </div>
 
@@ -967,9 +945,6 @@
                     
                     <div class="cert-image-card" onclick="openModal('ai-preview.png')">
                         <img src="ai-preview.png" alt="Generative AI Foundations">
-                        <div class="cert-overlay">
-                            <i class="fa-solid fa-magnifying-glass-plus"></i> Ampliar certificado
-                        </div>
                     </div>
                 </div>
 
@@ -980,9 +955,6 @@
                     
                     <div class="cert-image-card" onclick="openModal('word-preview.png')">
                         <img src="word-preview.png" alt="Word 2019 Expert">
-                        <div class="cert-overlay">
-                            <i class="fa-solid fa-magnifying-glass-plus"></i> Ampliar certificado
-                        </div>
                     </div>
                 </div>
 
@@ -993,9 +965,6 @@
                     
                     <div class="cert-image-card" onclick="openModal('ppt-preview.png')">
                         <img src="ppt-preview.png" alt="PowerPoint 2019 Associate">
-                        <div class="cert-overlay">
-                            <i class="fa-solid fa-magnifying-glass-plus"></i> Ampliar certificado
-                        </div>
                     </div>
                 </div>
             </div>
