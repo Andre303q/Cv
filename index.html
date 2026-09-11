@@ -119,95 +119,71 @@
         <section id="certificaciones" class="section">
             <h2>Certificaciones</h2>
             <div class="timeline">
+                
+                <!-- Certificado 1 -->
                 <div class="timeline-item">
                     <h3>Microsoft Certified: Azure Fundamentals</h3>
                     <span class="date"><i class="fa-brands fa-microsoft"></i> Microsoft</span>
                     <p>Validación de conocimientos fundamentales sobre los conceptos de la nube, servicios de Azure, seguridad, privacidad, conformidad y precios.</p>
                     
-                    <div class="cert-preview-box">
-                        <object data="azure-preview.pdf" type="application/pdf" width="100%" height="100%">
-                            <div class="pdf-fallback">
-                                <i class="fa-solid fa-file-pdf"></i>
-                                <p>Ver documento PDF</p>
-                            </div>
-                        </object>
-                        <a href="azure-preview.pdf" target="_blank" class="mobile-cert-overlay">
-                            <div class="mobile-cert-content">
-                                <i class="fa-solid fa-file-pdf"></i>
-                                <span>Ver Certificado PDF</span>
-                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                            </div>
-                        </a>
+                    <div class="cert-img-container" onclick="openModal('azure-cert.jpg')">
+                        <img src="azure-cert.jpg" alt="Certificado Azure Fundamentals" class="cert-thumbnail">
+                        <div class="cert-zoom-overlay">
+                            <i class="fa-solid fa-magnifying-glass-plus"></i> Ver certificado ampliado
+                        </div>
                     </div>
                 </div>
 
+                <!-- Certificado 2 -->
                 <div class="timeline-item">
                     <h3>Generative AI Foundations</h3>
                     <span class="date"><i class="fa-solid fa-brain"></i> Pearson / Certiport</span>
                     <p>Conocimientos esenciales sobre los fundamentos, principios y aplicaciones prácticas de la Inteligencia Artificial Generativa.</p>
                     
-                    <div class="cert-preview-box">
-                        <object data="ai-preview.pdf" type="application/pdf" width="100%" height="100%">
-                            <div class="pdf-fallback">
-                                <i class="fa-solid fa-file-pdf"></i>
-                                <p>Ver documento PDF</p>
-                            </div>
-                        </object>
-                        <a href="ai-preview.pdf" target="_blank" class="mobile-cert-overlay">
-                            <div class="mobile-cert-content">
-                                <i class="fa-solid fa-file-pdf"></i>
-                                <span>Ver Certificado PDF</span>
-                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                            </div>
-                        </a>
+                    <div class="cert-img-container" onclick="openModal('ai-cert.jpg')">
+                        <img src="ai-cert.jpg" alt="Certificado Generative AI" class="cert-thumbnail">
+                        <div class="cert-zoom-overlay">
+                            <i class="fa-solid fa-magnifying-glass-plus"></i> Ver certificado ampliado
+                        </div>
                     </div>
                 </div>
 
+                <!-- Certificado 3 -->
                 <div class="timeline-item">
                     <h3>Microsoft Office Specialist: Word 2019 Expert</h3>
                     <span class="date"><i class="fa-brands fa-microsoft"></i> Microsoft / Certiport</span>
                     <p>Acreditación de nivel experto en el manejo avanzado de documentos, formatos complejos y herramientas profesionales en Microsoft Word.</p>
                     
-                    <div class="cert-preview-box">
-                        <object data="word-preview.pdf" type="application/pdf" width="100%" height="100%">
-                            <div class="pdf-fallback">
-                                <i class="fa-solid fa-file-pdf"></i>
-                                <p>Ver documento PDF</p>
-                            </div>
-                        </object>
-                        <a href="word-preview.pdf" target="_blank" class="mobile-cert-overlay">
-                            <div class="mobile-cert-content">
-                                <i class="fa-solid fa-file-pdf"></i>
-                                <span>Ver Certificado PDF</span>
-                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                            </div>
-                        </a>
+                    <div class="cert-img-container" onclick="openModal('word-cert.jpg')">
+                        <img src="word-cert.jpg" alt="Certificado Word Expert" class="cert-thumbnail">
+                        <div class="cert-zoom-overlay">
+                            <i class="fa-solid fa-magnifying-glass-plus"></i> Ver certificado ampliado
+                        </div>
                     </div>
                 </div>
 
+                <!-- Certificado 4 -->
                 <div class="timeline-item">
                     <h3>Microsoft Office Specialist: PowerPoint 2019 Associate</h3>
                     <span class="date"><i class="fa-brands fa-microsoft"></i> Microsoft / Certiport</span>
                     <p>Certificación que acredita el dominio avanzado en el diseño, formato y presentación eficiente de información con herramientas ofimáticas.</p>
                     
-                    <div class="cert-preview-box">
-                        <object data="ppt-preview.pdf" type="application/pdf" width="100%" height="100%">
-                            <div class="pdf-fallback">
-                                <i class="fa-solid fa-file-pdf"></i>
-                                <p>Ver documento PDF</p>
-                            </div>
-                        </object>
-                        <a href="ppt-preview.pdf" target="_blank" class="mobile-cert-overlay">
-                            <div class="mobile-cert-content">
-                                <i class="fa-solid fa-file-pdf"></i>
-                                <span>Ver Certificado PDF</span>
-                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                            </div>
-                        </a>
+                    <div class="cert-img-container" onclick="openModal('ppt-cert.jpg')">
+                        <img src="ppt-cert.jpg" alt="Certificado PowerPoint Associate" class="cert-thumbnail">
+                        <div class="cert-zoom-overlay">
+                            <i class="fa-solid fa-magnifying-glass-plus"></i> Ver certificado ampliado
+                        </div>
                     </div>
                 </div>
+
             </div>
         </section>
+
+        <!-- MODAL PARA AMPLIAR IMAGEN -->
+        <div id="certModal" class="cert-modal" onclick="closeModal()">
+            <span class="close-modal">&times;</span>
+            <img class="modal-content" id="imgModalExpanded">
+        </div>
 
         <!-- HABILIDADES -->
         <section id="habilidades" class="section">
@@ -363,6 +339,19 @@
             if (Math.abs(currentX) >= singleWidth * 2) { currentX = -singleWidth; previousX = currentX; startXCoord = e.pageX; }
         });
         window.addEventListener('mouseup', () => { isDragging = false; });
+
+        // Funciones para el modal de certificados
+        function openModal(imageSrc) {
+            const modal = document.getElementById('certModal');
+            const modalImg = document.getElementById('imgModalExpanded');
+            modal.style.display = "flex";
+            modalImg.src = imageSrc;
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('certModal');
+            modal.style.display = "none";
+        }
     </script>
 </body>
 </html>
