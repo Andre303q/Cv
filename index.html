@@ -72,7 +72,7 @@
         </div>
     </div>
 
-    <!-- HERO SECTION -->
+    <!-- HERO SECTION (Con margen superior corregido para que no choque con la nav) -->
     <header class="hero">
         <div class="hero-content">
             <div class="hero-subtitle-badge">PORTAFOLIO PROFESIONAL</div>
@@ -94,13 +94,13 @@
     <main class="container">
 
         <!-- SOBRE MÍ -->
-        <section id="sobre-mi" class="section">
+        <section id="sobre-mi" class="section reveal">
             <h2>Sobre mí</h2>
             <p>Desarrollador junior con sólida base en lógica de programación, diseño de interfaces funcionales y optimización mediante herramientas de Inteligencia Artificial. Apasionado por transformar requerimientos técnicos en soluciones digitales limpias, eficientes y escalables.</p>
         </section>
 
         <!-- EDUCACIÓN -->
-        <section id="educacion" class="section">
+        <section id="educacion" class="section reveal">
             <h2>Educación</h2>
             <div class="timeline">
                 <div class="timeline-item">
@@ -115,17 +115,15 @@
             </div>
         </section>
 
-        <!-- CERTIFICACIONES (Con nombres exactos del repositorio) -->
-        <section id="certificaciones" class="section">
+        <!-- CERTIFICACIONES -->
+        <section id="certificaciones" class="section reveal">
             <h2>Certificaciones</h2>
             <div class="timeline">
                 
-                <!-- Certificado 1 -->
                 <div class="timeline-item">
                     <h3>Microsoft Certified: Azure Fundamentals</h3>
                     <span class="date"><i class="fa-brands fa-microsoft"></i> Microsoft</span>
                     <p>Validación de conocimientos fundamentales sobre los conceptos de la nube, servicios de Azure, seguridad, privacidad, conformidad y precios.</p>
-                    
                     <div class="cert-pdf-box">
                         <iframe src="azure-preview.pdf" title="Certificado Azure Fundamentals" loading="lazy"></iframe>
                         <div class="cert-pdf-actions">
@@ -134,12 +132,10 @@
                     </div>
                 </div>
 
-                <!-- Certificado 2 -->
                 <div class="timeline-item">
                     <h3>Generative AI Foundations</h3>
                     <span class="date"><i class="fa-solid fa-brain"></i> Pearson / Certiport</span>
                     <p>Conocimientos esenciales sobre los fundamentos, principios y aplicaciones prácticas de la Inteligencia Artificial Generativa.</p>
-                    
                     <div class="cert-pdf-box">
                         <iframe src="ai-preview.pdf" title="Certificado Generative AI" loading="lazy"></iframe>
                         <div class="cert-pdf-actions">
@@ -148,12 +144,10 @@
                     </div>
                 </div>
 
-                <!-- Certificado 3 -->
                 <div class="timeline-item">
                     <h3>Microsoft Office Specialist: Word 2019 Expert</h3>
                     <span class="date"><i class="fa-brands fa-microsoft"></i> Microsoft / Certiport</span>
                     <p>Acreditación de nivel experto en el manejo avanzado de documentos, formatos complejos y herramientas profesionales en Microsoft Word.</p>
-                    
                     <div class="cert-pdf-box">
                         <iframe src="word-preview.pdf" title="Certificado Word Expert" loading="lazy"></iframe>
                         <div class="cert-pdf-actions">
@@ -162,12 +156,10 @@
                     </div>
                 </div>
 
-                <!-- Certificado 4 -->
                 <div class="timeline-item">
                     <h3>Microsoft Office Specialist: PowerPoint 2019 Associate</h3>
                     <span class="date"><i class="fa-brands fa-microsoft"></i> Microsoft / Certiport</span>
                     <p>Certificación que acredita el dominio avanzado en el diseño, formato y presentación eficiente de información con herramientas ofimáticas.</p>
-                    
                     <div class="cert-pdf-box">
                         <iframe src="ppt-preview.pdf" title="Certificado PowerPoint Associate" loading="lazy"></iframe>
                         <div class="cert-pdf-actions">
@@ -180,9 +172,9 @@
         </section>
 
         <!-- HABILIDADES -->
-        <section id="habilidades" class="section">
+        <section id="habilidades" class="section reveal">
             <h2>Habilidades Técnicas y Blandas</h2>
-            <p style="font-size: 0.85rem; margin-bottom: 8px;">
+            <p style="font-size: 0.85rem; margin-bottom: 12px; opacity: 0.8;">
                 <i class="fa-solid fa-arrows-left-right"></i> Desliza o arrastra libremente. Movimiento continuo e infinito.
             </p>
             
@@ -200,9 +192,8 @@
         </section>
 
         <!-- PROYECTOS -->
-        <section id="proyectos" class="section">
+        <section id="proyectos" class="section reveal">
             <h2>Proyectos Destacados</h2>
-            
             <a href="https://andre303q.github.io/rgpracticas/" target="_blank" class="project-card-link">
                 <div class="project-card">
                     <div class="project-header">
@@ -223,7 +214,7 @@
         </section>
 
         <!-- GITHUB -->
-        <section id="github" class="section">
+        <section id="github" class="section reveal">
             <h2>GitHub</h2>
             <div class="github-card">
                 <div class="github-info">
@@ -237,7 +228,7 @@
         </section>
 
         <!-- CONTACTO -->
-        <section id="contacto" class="section contacto">
+        <section id="contacto" class="section contacto reveal">
             <h2>Contáctame</h2>
             <p>¿Interesado en colaborar o en sumar talento a tu equipo? Escríbeme directamente por correo:</p>
             <div class="contact-links">
@@ -255,6 +246,27 @@
 
     <!-- SCRIPTS -->
     <script>
+        // Animación Scroll Reveal con IntersectionObserver
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); // Se activa solo una vez por sección
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Control de Temas
         const themeMenuBtn = document.getElementById('theme-menu-btn');
         const themeDrawer = document.getElementById('theme-picker-drawer');
         const closeDrawerBtn = document.getElementById('close-theme-drawer');
