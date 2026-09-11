@@ -246,18 +246,19 @@
 
     <!-- SCRIPTS -->
     <script>
-        // Script perfeccionado para que el efecto aparezca dinámicamente al hacer scroll
+        // IntersectionObserver Bidireccional (Funciona bajando y subiendo)
         const observerOptions = {
             root: null,
-            threshold: 0.1, // Se activa cuando al menos el 10% del elemento entra en pantalla
-            rootMargin: "0px 0px -50px 0px"
+            threshold: 0.1,
+            rootMargin: "0px 0px -40px 0px"
         };
 
-        const observer = new IntersectionObserver((entries, observer) => {
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target);
+                } else {
+                    entry.target.classList.remove('is-visible');
                 }
             });
         }, observerOptions);
