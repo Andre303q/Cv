@@ -474,7 +474,7 @@ body.theme-sunset #animated-bg-container {
 
 .school-link:hover { color: var(--accent-color); }
 
-/* ================= MINIATURAS DE CERTIFICADOS & MODAL ================= */
+/* ================= MINIATURAS DE CERTIFICADOS PDF & MODAL ================= */
 .cert-img-container {
     position: relative;
     width: 100%;
