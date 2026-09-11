@@ -486,24 +486,46 @@ body.theme-sunset #animated-bg-container {
 
 .school-link:hover { color: var(--accent-color); }
 
-/* ================= VISOR INTEGRADO DE CERTIFICADOS (PDF) ================= */
+/* ================= VISOR DE CERTIFICADOS (OBJECT PDF) ================= */
 .cert-preview-box {
     width: 100%;
-    max-width: 400px;
-    height: 240px;
+    max-width: 450px;
+    height: 300px;
     border-radius: 12px;
     overflow: hidden;
     border: 1px solid var(--glass-border);
     margin-top: 14px;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.6);
     box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
 
-.cert-preview-box iframe {
+.cert-preview-box object {
     width: 100%;
     height: 100%;
     border: none;
     display: block;
+}
+
+.pdf-fallback {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 20px;
+    text-align: center;
+    color: var(--text-muted);
+    gap: 10px;
+}
+
+.pdf-fallback i {
+    font-size: 2.5rem;
+    color: var(--accent-color);
+}
+
+.pdf-fallback p {
+    font-size: 0.85rem;
+    margin: 0;
 }
 
 /* ================= PROYECTOS ================= */
