@@ -72,7 +72,7 @@
         </div>
     </div>
 
-    <!-- HERO SECTION (Con margen superior corregido para que no choque con la nav) -->
+    <!-- HERO SECTION -->
     <header class="hero">
         <div class="hero-content">
             <div class="hero-subtitle-badge">PORTAFOLIO PROFESIONAL</div>
@@ -94,13 +94,13 @@
     <main class="container">
 
         <!-- SOBRE MÍ -->
-        <section id="sobre-mi" class="section reveal">
+        <section id="sobre-mi" class="section scroll-animate">
             <h2>Sobre mí</h2>
             <p>Desarrollador junior con sólida base en lógica de programación, diseño de interfaces funcionales y optimización mediante herramientas de Inteligencia Artificial. Apasionado por transformar requerimientos técnicos en soluciones digitales limpias, eficientes y escalables.</p>
         </section>
 
         <!-- EDUCACIÓN -->
-        <section id="educacion" class="section reveal">
+        <section id="educacion" class="section scroll-animate">
             <h2>Educación</h2>
             <div class="timeline">
                 <div class="timeline-item">
@@ -116,7 +116,7 @@
         </section>
 
         <!-- CERTIFICACIONES -->
-        <section id="certificaciones" class="section reveal">
+        <section id="certificaciones" class="section scroll-animate">
             <h2>Certificaciones</h2>
             <div class="timeline">
                 
@@ -172,7 +172,7 @@
         </section>
 
         <!-- HABILIDADES -->
-        <section id="habilidades" class="section reveal">
+        <section id="habilidades" class="section scroll-animate">
             <h2>Habilidades Técnicas y Blandas</h2>
             <p style="font-size: 0.85rem; margin-bottom: 12px; opacity: 0.8;">
                 <i class="fa-solid fa-arrows-left-right"></i> Desliza o arrastra libremente. Movimiento continuo e infinito.
@@ -192,7 +192,7 @@
         </section>
 
         <!-- PROYECTOS -->
-        <section id="proyectos" class="section reveal">
+        <section id="proyectos" class="section scroll-animate">
             <h2>Proyectos Destacados</h2>
             <a href="https://andre303q.github.io/rgpracticas/" target="_blank" class="project-card-link">
                 <div class="project-card">
@@ -214,7 +214,7 @@
         </section>
 
         <!-- GITHUB -->
-        <section id="github" class="section reveal">
+        <section id="github" class="section scroll-animate">
             <h2>GitHub</h2>
             <div class="github-card">
                 <div class="github-info">
@@ -228,7 +228,7 @@
         </section>
 
         <!-- CONTACTO -->
-        <section id="contacto" class="section contacto reveal">
+        <section id="contacto" class="section contacto scroll-animate">
             <h2>Contáctame</h2>
             <p>¿Interesado en colaborar o en sumar talento a tu equipo? Escríbeme directamente por correo:</p>
             <div class="contact-links">
@@ -246,23 +246,23 @@
 
     <!-- SCRIPTS -->
     <script>
-        // Animación Scroll Reveal con IntersectionObserver
+        // Script perfeccionado para que el efecto aparezca dinámicamente al hacer scroll
         const observerOptions = {
             root: null,
-            rootMargin: '0px',
-            threshold: 0.15
+            threshold: 0.1, // Se activa cuando al menos el 10% del elemento entra en pantalla
+            rootMargin: "0px 0px -50px 0px"
         };
 
         const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target); // Se activa solo una vez por sección
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
 
-        document.querySelectorAll('.reveal').forEach(section => {
+        document.querySelectorAll('.scroll-animate').forEach(section => {
             observer.observe(section);
         });
 
