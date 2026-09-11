@@ -944,3 +944,47 @@ footer {
     border-color: rgba(99, 102, 241, 0.3);
     box-shadow: 0 15px 35px -10px rgba(99, 102, 241, 0.15);
 }
+
+/* Corrección de espacio inicial en la sección Hero */
+.hero {
+    padding-top: 130px;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Efecto de surgimiento y defuminación bidireccional (Scroll Fade, Blur & Slide) */
+.scroll-animate {
+    opacity: 0;
+    filter: blur(12px);
+    transform: translateY(50px);
+    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), 
+                filter 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform, filter;
+}
+
+.scroll-animate.is-visible {
+    opacity: 1;
+    filter: blur(0px);
+    transform: translateY(0);
+}
+
+/* Estilo estético de las tarjetas y secciones */
+.section {
+    background: rgba(15, 23, 42, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(14px);
+    border-radius: 20px;
+    padding: 40px;
+    margin-bottom: 35px;
+    box-shadow: 0 12px 35px -10px rgba(0, 0, 0, 0.6);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.section:hover {
+    border-color: rgba(99, 102, 241, 0.35);
+    box-shadow: 0 18px 40px -10px rgba(99, 102, 241, 0.18);
+}
