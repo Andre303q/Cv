@@ -773,3 +773,27 @@ footer {
     .github-card { flex-direction: column; align-items: flex-start; }
     .github-card .btn { width: 100%; justify-content: center; }
 }
+
+/* Quita el subrayado predeterminado de los enlaces en las tarjetas de proyectos */
+.project-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+/* Evita que los textos internos se subrayen */
+.project-card-link:hover {
+    text-decoration: none;
+}
+
+.project-card-link h3,
+.project-card-link p {
+    text-decoration: none !important;
+}
+
+/* Efecto visual al pasar el cursor por encima */
+.project-card-link:hover .project-card {
+    border-color: var(--accent-color, #6366f1);
+    transform: translateY(-3px);
+}
