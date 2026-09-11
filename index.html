@@ -115,7 +115,7 @@
             </div>
         </section>
 
-        <!-- CERTIFICACIONES -->
+        <!-- CERTIFICACIONES (Visores PDF directos en cuadrados interactivos) -->
         <section id="certificaciones" class="section">
             <h2>Certificaciones</h2>
             <div class="timeline">
@@ -126,10 +126,10 @@
                     <span class="date"><i class="fa-brands fa-microsoft"></i> Microsoft</span>
                     <p>Validación de conocimientos fundamentales sobre los conceptos de la nube, servicios de Azure, seguridad, privacidad, conformidad y precios.</p>
                     
-                    <div class="cert-img-container" onclick="openModal('azure-cert.jpg')">
-                        <img src="azure-cert.jpg" alt="Certificado Azure Fundamentals" class="cert-thumbnail">
-                        <div class="cert-zoom-overlay">
-                            <i class="fa-solid fa-magnifying-glass-plus"></i> Ver certificado ampliado
+                    <div class="cert-pdf-box">
+                        <iframe src="azure-cert.pdf" title="Certificado Azure Fundamentals" loading="lazy"></iframe>
+                        <div class="cert-pdf-actions">
+                            <a href="azure-cert.pdf" target="_blank" class="btn-pdf-view"><i class="fa-solid fa-expand"></i> Pantalla completa</a>
                         </div>
                     </div>
                 </div>
@@ -140,10 +140,10 @@
                     <span class="date"><i class="fa-solid fa-brain"></i> Pearson / Certiport</span>
                     <p>Conocimientos esenciales sobre los fundamentos, principios y aplicaciones prácticas de la Inteligencia Artificial Generativa.</p>
                     
-                    <div class="cert-img-container" onclick="openModal('ai-cert.jpg')">
-                        <img src="ai-cert.jpg" alt="Certificado Generative AI" class="cert-thumbnail">
-                        <div class="cert-zoom-overlay">
-                            <i class="fa-solid fa-magnifying-glass-plus"></i> Ver certificado ampliado
+                    <div class="cert-pdf-box">
+                        <iframe src="ai-cert.pdf" title="Certificado Generative AI" loading="lazy"></iframe>
+                        <div class="cert-pdf-actions">
+                            <a href="ai-cert.pdf" target="_blank" class="btn-pdf-view"><i class="fa-solid fa-expand"></i> Pantalla completa</a>
                         </div>
                     </div>
                 </div>
@@ -154,10 +154,10 @@
                     <span class="date"><i class="fa-brands fa-microsoft"></i> Microsoft / Certiport</span>
                     <p>Acreditación de nivel experto en el manejo avanzado de documentos, formatos complejos y herramientas profesionales en Microsoft Word.</p>
                     
-                    <div class="cert-img-container" onclick="openModal('word-cert.jpg')">
-                        <img src="word-cert.jpg" alt="Certificado Word Expert" class="cert-thumbnail">
-                        <div class="cert-zoom-overlay">
-                            <i class="fa-solid fa-magnifying-glass-plus"></i> Ver certificado ampliado
+                    <div class="cert-pdf-box">
+                        <iframe src="word-cert.pdf" title="Certificado Word Expert" loading="lazy"></iframe>
+                        <div class="cert-pdf-actions">
+                            <a href="word-cert.pdf" target="_blank" class="btn-pdf-view"><i class="fa-solid fa-expand"></i> Pantalla completa</a>
                         </div>
                     </div>
                 </div>
@@ -168,22 +168,16 @@
                     <span class="date"><i class="fa-brands fa-microsoft"></i> Microsoft / Certiport</span>
                     <p>Certificación que acredita el dominio avanzado en el diseño, formato y presentación eficiente de información con herramientas ofimáticas.</p>
                     
-                    <div class="cert-img-container" onclick="openModal('ppt-cert.jpg')">
-                        <img src="ppt-cert.jpg" alt="Certificado PowerPoint Associate" class="cert-thumbnail">
-                        <div class="cert-zoom-overlay">
-                            <i class="fa-solid fa-magnifying-glass-plus"></i> Ver certificado ampliado
+                    <div class="cert-pdf-box">
+                        <iframe src="ppt-cert.pdf" title="Certificado PowerPoint Associate" loading="lazy"></iframe>
+                        <div class="cert-pdf-actions">
+                            <a href="ppt-cert.pdf" target="_blank" class="btn-pdf-view"><i class="fa-solid fa-expand"></i> Pantalla completa</a>
                         </div>
                     </div>
                 </div>
 
             </div>
         </section>
-
-        <!-- MODAL PARA AMPLIAR IMAGEN -->
-        <div id="certModal" class="cert-modal" onclick="closeModal()">
-            <span class="close-modal">&times;</span>
-            <img class="modal-content" id="imgModalExpanded">
-        </div>
 
         <!-- HABILIDADES -->
         <section id="habilidades" class="section">
@@ -339,19 +333,6 @@
             if (Math.abs(currentX) >= singleWidth * 2) { currentX = -singleWidth; previousX = currentX; startXCoord = e.pageX; }
         });
         window.addEventListener('mouseup', () => { isDragging = false; });
-
-        // Funciones para el modal de certificados
-        function openModal(imageSrc) {
-            const modal = document.getElementById('certModal');
-            const modalImg = document.getElementById('imgModalExpanded');
-            modal.style.display = "flex";
-            modalImg.src = imageSrc;
-        }
-
-        function closeModal() {
-            const modal = document.getElementById('certModal');
-            modal.style.display = "none";
-        }
     </script>
 </body>
 </html>
