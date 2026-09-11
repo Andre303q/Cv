@@ -126,8 +126,8 @@
                     <span class="date"><i class="fa-brands fa-microsoft"></i> Microsoft</span>
                     <p>Validación de conocimientos fundamentales sobre los conceptos de la nube, servicios de Azure, seguridad, privacidad, conformidad y precios.</p>
                     
-                    <div class="cert-image-card" onclick="openModal('azure-preview.png')">
-                        <img src="azure-preview.png" alt="Azure Fundamentals">
+                    <div class="cert-preview-box">
+                        <iframe src="azure-preview.png" title="Azure Fundamentals"></iframe>
                     </div>
                 </div>
 
@@ -136,8 +136,8 @@
                     <span class="date"><i class="fa-solid fa-brain"></i> Pearson / Certiport</span>
                     <p>Conocimientos esenciales sobre los fundamentos, principios y aplicaciones prácticas de la Inteligencia Artificial Generativa.</p>
                     
-                    <div class="cert-image-card" onclick="openModal('ai-preview.png')">
-                        <img src="ai-preview.png" alt="Generative AI Foundations">
+                    <div class="cert-preview-box">
+                        <iframe src="ai-preview.png" title="Generative AI Foundations"></iframe>
                     </div>
                 </div>
 
@@ -146,8 +146,8 @@
                     <span class="date"><i class="fa-brands fa-microsoft"></i> Microsoft / Certiport</span>
                     <p>Acreditación de nivel experto en el manejo avanzado de documentos, formatos complejos y herramientas profesionales en Microsoft Word.</p>
                     
-                    <div class="cert-image-card" onclick="openModal('word-preview.png')">
-                        <img src="word-preview.png" alt="Word 2019 Expert">
+                    <div class="cert-preview-box">
+                        <iframe src="word-preview.png" title="Word 2019 Expert"></iframe>
                     </div>
                 </div>
 
@@ -156,8 +156,8 @@
                     <span class="date"><i class="fa-brands fa-microsoft"></i> Microsoft / Certiport</span>
                     <p>Certificación que acredita el dominio avanzado en el diseño, formato y presentación eficiente de información con herramientas ofimáticas.</p>
                     
-                    <div class="cert-image-card" onclick="openModal('ppt-preview.png')">
-                        <img src="ppt-preview.png" alt="PowerPoint 2019 Associate">
+                    <div class="cert-preview-box">
+                        <iframe src="ppt-preview.png" title="PowerPoint 2019 Associate"></iframe>
                     </div>
                 </div>
             </div>
@@ -250,12 +250,6 @@
 
     </main>
 
-    <!-- MODAL PARA AMPLIAR LA IMAGEN -->
-    <div id="certModal" class="modal-overlay" onclick="closeModal()">
-        <span class="modal-close">&times;</span>
-        <img class="modal-content" id="imgExpanded">
-    </div>
-
     <footer>
         <p>&copy; 2026 - Sebástian André García Bonilla. Todos los derechos reservados.</p>
     </footer>
@@ -312,18 +306,6 @@
                     card.classList.remove('active');
                 }
             });
-        }
-
-        /* LÓGICA DEL MODAL DE IMÁGENES */
-        function openModal(imageSrc) {
-            const modal = document.getElementById('certModal');
-            const modalImg = document.getElementById('imgExpanded');
-            modal.style.display = "flex";
-            modalImg.src = imageSrc;
-        }
-
-        function closeModal() {
-            document.getElementById('certModal').style.display = "none";
         }
 
         const track = document.getElementById('carousel-track');
