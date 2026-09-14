@@ -3,188 +3,253 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Portafolio Profesional</title>
+    <title>Sebástian García | Portafolio & CV</title>
     
-    <!-- Política de Seguridad de Contenidos (CSP) Estricta -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com https://cdnjs.cloudflare.com; style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com; script-src 'self'; frame-ancestors 'none'; form-action 'self';">
+    <!-- Política de Seguridad de Contenidos (CSP Estricta) -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com https://cdnjs.cloudflare.com; style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; script-src 'self';">
 
-    <!-- Fuentes de Google -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome con SRI integrado -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
     
-    <!-- Iconos FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- Hoja de Estilos Externa -->
+    <!-- Archivo de Estilos Externo -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Contenedor de Fondo Animado Dinámico -->
     <div id="animated-bg-container"></div>
 
-    <!-- Barra de Navegación -->
-    <header class="navbar">
-        <div class="nav-brand">DevPortfolio</div>
+    <!-- BARRA DE NAVEGACIÓN -->
+    <nav class="navbar">
+        <div class="nav-brand">Sebástian.dev</div>
         <div class="nav-right-controls">
             <div class="nav-status">
-                <span class="status-dot"></span>
-                <span>Disponible para proyectos</span>
+                <span class="status-dot"></span> Disponible
             </div>
-            <button class="theme-menu-btn" id="open-theme-drawer">
+            <button id="theme-menu-btn" class="theme-menu-btn">
                 <i class="fa-solid fa-palette"></i> Temas
             </button>
         </div>
-    </header>
+    </nav>
 
-    <!-- Contenido Principal -->
-    <main class="container">
+    <!-- PANEL DESPLEGABLE DE TEMAS -->
+    <div id="theme-picker-drawer" class="theme-picker-drawer">
+        <div class="theme-picker-header">
+            <h3>PERSONALIZAR TEMA</h3>
+            <button id="close-theme-drawer" class="close-drawer-btn">&times;</button>
+        </div>
+        
+        <div class="theme-section-title">Temas Sólidos</div>
+        <div class="themes-grid">
+            <button class="theme-card-picker active" data-theme="dark-classic">
+                <span class="theme-name">Classic Dark</span>
+                <div class="theme-dots"><span class="dot-bg-dark"></span><span class="dot-accent-indigo"></span></div>
+            </button>
+            <button class="theme-card-picker" data-theme="cyberpunk">
+                <span class="theme-name">Cyberpunk</span>
+                <div class="theme-dots"><span class="dot-bg-cyber"></span><span class="dot-accent-purple"></span></div>
+            </button>
+            <button class="theme-card-picker" data-theme="sunset">
+                <span class="theme-name">Sunset Glow</span>
+                <div class="theme-dots"><span class="dot-bg-sunset"></span><span class="dot-accent-orange"></span></div>
+            </button>
+            <button class="theme-card-picker" data-theme="light-clean">
+                <span class="theme-name">Clean Light</span>
+                <div class="theme-dots"><span class="dot-bg-light"></span><span class="dot-accent-blue"></span></div>
+            </button>
+        </div>
 
-        <!-- Sección Hero -->
-        <section class="hero scroll-animate">
-            <div class="hero-subtitle-badge">FULL STACK DEVELOPER</div>
-            <h1>Hola, soy <span class="highlight">Tu Nombre</span></h1>
-            <p class="tagline">Desarrollador web enfocado en crear experiencias digitales fluidas, modernas y de alto rendimiento con arquitecturas limpias.</p>
+        <div class="theme-section-title">Temas Dinámicos</div>
+        <div class="themes-grid">
+            <button class="theme-card-picker" data-theme="ocean">
+                <span class="theme-name">Océano</span>
+                <div class="theme-dots"><span class="dot-bg-ocean"></span><span class="dot-accent-cyan"></span></div>
+            </button>
+            <button class="theme-card-picker" data-theme="desert">
+                <span class="theme-name">Desierto</span>
+                <div class="theme-dots"><span class="dot-bg-desert"></span><span class="dot-accent-amber"></span></div>
+            </button>
+            <button class="theme-card-picker" data-theme="jungle">
+                <span class="theme-name">Jungla</span>
+                <div class="theme-dots"><span class="dot-bg-jungle"></span><span class="dot-accent-emerald"></span></div>
+            </button>
+        </div>
+    </div>
+
+    <!-- HERO SECTION -->
+    <header class="hero">
+        <div class="hero-content">
+            <div class="hero-subtitle-badge">PORTAFOLIO PROFESIONAL</div>
+            <h1>Hola, soy <span class="highlight">Sebástian García</span></h1>
+            <p class="tagline">Desarrollador Junior | Especialista en Lógica de Programación y Prompts de Inteligencia Artificial</p>
             
             <div class="hero-badges">
-                <span class="badge"><i class="fa-solid fa-code"></i> Frontend & Backend</span>
-                <span class="badge"><i class="fa-solid fa-rocket"></i> UI/UX Enthusiast</span>
+                <span class="badge"><i class="fa-solid fa-laptop-code"></i> Creador</span>
+                <span class="badge"><i class="fa-solid fa-brain"></i> IA & Prompts Expert</span>
             </div>
 
             <div class="social-links">
-                <a href="#contacto" class="btn primary">Contáctame <i class="fa-solid fa-arrow-right"></i></a>
-                <a href="#proyectos" class="btn secondary">Ver Proyectos</a>
+                <a href="#contacto" class="btn primary"><i class="fa-solid fa-paper-plane"></i> Contáctame</a>
+                <a href="#proyectos" class="btn secondary"><i class="fa-solid fa-folder-open"></i> Ver Proyectos</a>
             </div>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- SOBRE MÍ -->
+        <section id="sobre-mi" class="section scroll-animate">
+            <h2>Sobre mí</h2>
+            <p>Desarrollador junior con sólida base en lógica de programación, diseño de interfaces funcionales y optimización mediante herramientas de Inteligencia Artificial. Apasionado por transformar requerimientos técnicos en soluciones digitales limpias, eficientes y escalables.</p>
         </section>
 
-        <!-- Sección Sobre Mí / Experiencia -->
-        <section class="section scroll-animate">
-            <h2>Trayectoria Profesional</h2>
+        <!-- EDUCACIÓN -->
+        <section id="educacion" class="section scroll-animate">
+            <h2>Educación</h2>
             <div class="timeline">
                 <div class="timeline-item">
-                    <span class="date">2025 - Presente</span>
-                    <h3>Desarrollador Web Senior</h3>
-                    <p>Creación y mantenimiento de aplicaciones web escalables utilizando Node.js, Express y bases de datos NoSQL.</p>
-                </div>
-                <div class="timeline-item">
-                    <span class="date">2023 - 2025</span>
-                    <h3>Desarrollador Frontend</h3>
-                    <p>Diseño de interfaces responsivas y optimización de rendimiento en aplicaciones interactivas.</p>
+                    <h3>
+                        <a href="https://sitio.colegiodeinfantes.edu.gt/" target="_blank" class="school-link">
+                            Colegio San José de los Infantes <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </h3>
+                    <span class="date">Bachillerato en Computación</span>
+                    <p>Formación técnica especializada en ciencias de la computación, bases de datos y desarrollo de software.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Sección Proyectos -->
+        <!-- CERTIFICACIONES -->
+        <section id="certificaciones" class="section scroll-animate">
+            <h2>Certificaciones</h2>
+            <div class="timeline">
+                
+                <div class="timeline-item">
+                    <h3>Microsoft Certified: Azure Fundamentals</h3>
+                    <span class="date"><i class="fa-brands fa-microsoft"></i> Microsoft</span>
+                    <p>Validación de conocimientos fundamentales sobre los conceptos de la nube, servicios de Azure, seguridad, privacidad, conformidad y precios.</p>
+                    <div class="cert-pdf-box">
+                        <img src="azure-preview.png" alt="Certificado Azure Fundamentals" loading="lazy">
+                        <div class="cert-pdf-actions">
+                            <a href="azure-preview.png" target="_blank" class="btn-pdf-view"><i class="fa-solid fa-expand"></i> Pantalla completa</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>Generative AI Foundations</h3>
+                    <span class="date"><i class="fa-solid fa-brain"></i> Pearson / Certiport</span>
+                    <p>Conocimientos esenciales sobre los fundamentos, principios y aplicaciones prácticas de la Inteligencia Artificial Generativa.</p>
+                    <div class="cert-pdf-box">
+                        <img src="ai-preview.png" alt="Certificado Generative AI" loading="lazy">
+                        <div class="cert-pdf-actions">
+                            <a href="ai-preview.png" target="_blank" class="btn-pdf-view"><i class="fa-solid fa-expand"></i> Pantalla completa</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>Microsoft Office Specialist: Word 2019 Expert</h3>
+                    <span class="date"><i class="fa-brands fa-microsoft"></i> Microsoft / Certiport</span>
+                    <p>Acreditación de nivel experto en el manejo avanzado de documentos, formatos complejos y herramientas profesionales en Microsoft Word.</p>
+                    <div class="cert-pdf-box">
+                        <img src="word-preview.png" alt="Certificado Word Expert" loading="lazy">
+                        <div class="cert-pdf-actions">
+                            <a href="word-preview.png" target="_blank" class="btn-pdf-view"><i class="fa-solid fa-expand"></i> Pantalla completa</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>Microsoft Office Specialist: PowerPoint 2019 Associate</h3>
+                    <span class="date"><i class="fa-brands fa-microsoft"></i> Microsoft / Certiport</span>
+                    <p>Certificación que acredita el dominio avanzado en el diseño, formato y presentación eficiente de información con herramientas ofimáticas.</p>
+                    <div class="cert-pdf-box">
+                        <img src="ppt-preview.png" alt="Certificado PowerPoint Associate" loading="lazy">
+                        <div class="cert-pdf-actions">
+                            <a href="ppt-preview.png" target="_blank" class="btn-pdf-view"><i class="fa-solid fa-expand"></i> Pantalla completa</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- HABILIDADES -->
+        <section id="habilidades" class="section scroll-animate">
+            <h2>Habilidades Técnicas y Blandas</h2>
+            <p class="carousel-hint">
+                <i class="fa-solid fa-arrows-left-right"></i> Desliza o arrastra libremente. Movimiento continuo e infinito.
+            </p>
+            
+            <div class="carousel-container" id="draggable-carousel">
+                <div class="carousel-track" id="carousel-track">
+                    <div class="skill-card"><i class="fa-solid fa-code"></i> HTML & CSS</div>
+                    <div class="skill-card"><i class="fa-brands fa-js"></i> JavaScript</div>
+                    <div class="skill-card"><i class="fa-solid fa-language"></i> Inglés (Intermedio)</div>
+                    <div class="skill-card"><i class="fa-solid fa-lightbulb"></i> Resolución de problemas</div>
+                    <div class="skill-card"><i class="fa-solid fa-users"></i> Trabajo en equipo</div>
+                    <div class="skill-card"><i class="fa-solid fa-comments"></i> Comunicación</div>
+                    <div class="skill-card"><i class="fa-solid fa-bolt"></i> Adaptabilidad Rápida</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROYECTOS -->
         <section id="proyectos" class="section scroll-animate">
             <h2>Proyectos Destacados</h2>
-            
-            <a href="https://github.com/tu-usuario/proyecto" target="_blank" class="project-card-link">
-                <article class="project-card">
+            <a href="https://andre303q.github.io/rgpracticas/" target="_blank" class="project-card-link">
+                <div class="project-card">
                     <div class="project-header">
                         <div class="project-title-area">
-                            <div class="project-icon-box">
-                                <i class="fa-solid fa-laptop-code"></i>
-                            </div>
-                            <h3>Plataforma de Gestión</h3>
-                            <i class="fa-solid fa-arrow-up-right-from-square project-icon-external"></i>
+                            <div class="project-icon-box"><i class="fa-solid fa-business-time"></i></div>
+                            <h3>RGPracticas / AppWeb <i class="fa-solid fa-arrow-up-right-from-square external-icon"></i></h3>
                         </div>
-                        <span class="project-year-badge">2026</span>
+                        <span class="project-year-badge"><i class="fa-solid fa-calendar-days"></i> 2026</span>
                     </div>
-                    <p>Sistema web integral para control de asistencia de pasantes con reportes administrativos y control de turnos.</p>
+                    <p>AppWeb desarrollada profesionalmente para el sistema de marcaje de registros de horario de practicantes de forma sencilla, optimizada y funcional.</p>
                     <div class="project-tags">
-                        <span><i class="fa-brands fa-node-js"></i> Node.js</span>
-                        <span><i class="fa-solid fa-database"></i> MongoDB</span>
+                        <span class="tag-html"><i class="fa-brands fa-html5"></i> HTML</span>
+                        <span class="tag-css"><i class="fa-brands fa-css3-alt"></i> CSS</span>
+                        <span class="tag-js"><i class="fa-brands fa-js"></i> JavaScript</span>
                     </div>
-                </article>
+                </div>
             </a>
         </section>
 
-        <!-- Sección Habilidades (Carrusel) -->
-        <section class="section scroll-animate">
-            <h2>Habilidades Técnicas</h2>
-            <p class="carousel-hint">Desliza para explorar las tecnologías utilizadas</p>
-            <div class="carousel-container" id="skills-carousel">
-                <div class="carousel-track">
-                    <div class="skill-card"><i class="fa-brands fa-js"></i> JavaScript</div>
-                    <div class="skill-card"><i class="fa-brands fa-node"></i> Node.js</div>
-                    <div class="skill-card"><i class="fa-solid fa-database"></i> MongoDB</div>
-                    <div class="skill-card"><i class="fa-brands fa-html5"></i> HTML5 / CSS3</div>
-                    <div class="skill-card"><i class="fa-brands fa-git-alt"></i> Git & GitHub</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Sección Certificaciones -->
-        <section class="section scroll-animate">
-            <h2>Certificaciones</h2>
-            <div class="cert-pdf-box">
-                <img src="ruta-a-tu-certificado.jpg" class="cert-pdf-img" alt="Certificado Profesional">
-                <div class="cert-pdf-actions">
-                    <a href="ruta-a-tu-certificado.pdf" target="_blank" class="btn-pdf-view">Ver PDF Completo <i class="fa-solid fa-external-link-alt"></i></a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Sección Contacto -->
-        <section id="contacto" class="section scroll-animate">
-            <h2>Contacto</h2>
+        <!-- GITHUB -->
+        <section id="github" class="section scroll-animate">
+            <h2>GitHub</h2>
             <div class="github-card">
                 <div class="github-info">
-                    <h3>¿Interesado en trabajar juntos?</h3>
-                    <p>No dudes en escribirme para cualquier propuesta o consulta profesional.</p>
-                    <div class="contact-links">
-                        <a href="mailto:tucorreo@email.com" class="email-link">
-                            <i class="fa-solid fa-envelope"></i> tucorreo@email.com
-                        </a>
-                    </div>
+                    <h3><i class="fa-brands fa-github"></i> Mis repositorios</h3>
+                    <p>Revisa el código fuente y otros proyectos en mi perfil de desarrollo.</p>
                 </div>
-                <a href="mailto:tucorreo@email.com" class="btn primary">Enviar Mensaje <i class="fa-solid fa-paper-plane"></i></a>
+                <a href="https://github.com/Andre303q" target="_blank" class="btn primary">
+                    <i class="fa-brands fa-github"></i> Visitar GitHub
+                </a>
+            </div>
+        </section>
+
+        <!-- CONTACTO -->
+        <section id="contacto" class="section contacto scroll-animate">
+            <h2>Contáctame</h2>
+            <p>¿Interesado en colaborar o en sumar talento a tu equipo? Escríbeme directamente por correo:</p>
+            <div class="contact-links">
+                <a href="mailto:graciabonillasebastianandre@gmail.com" class="email-link">
+                    <i class="fa-solid fa-envelope"></i> graciabonillasebastianandre@gmail.com
+                </a>
             </div>
         </section>
 
     </main>
 
-    <!-- Menú Desplegable (Drawer) para Selector de Temas -->
-    <aside class="theme-picker-drawer" id="theme-drawer">
-        <div class="theme-picker-header">
-            <h3>SELECCIONAR TEMA</h3>
-            <button class="close-drawer-btn" id="close-theme-drawer">&times;</button>
-        </div>
-        <div class="theme-section-title">Estilos Disponibles</div>
-        <div class="themes-grid">
-            <button class="theme-card-picker active" data-theme="">
-                <span class="theme-name">Classic Dark</span>
-                <div class="theme-dots"><span style="background: #030712;"></span><span style="background: #38bdf8;"></span></div>
-            </button>
-            <button class="theme-card-picker" data-theme="theme-ocean">
-                <span class="theme-name">Ocean Depth</span>
-                <div class="theme-dots"><span style="background: #010810;"></span><span style="background: #38bdf8;"></span></div>
-            </button>
-            <button class="theme-card-picker" data-theme="theme-cyberpunk">
-                <span class="theme-name">Cyberpunk</span>
-                <div class="theme-dots"><span style="background: #0b0514;"></span><span style="background: #a855f7;"></span></div>
-            </button>
-            <button class="theme-card-picker" data-theme="theme-sunset">
-                <span class="theme-name">Sunset Glow</span>
-                <div class="theme-dots"><span style="background: #120806;"></span><span style="background: #f97316;"></span></div>
-            </button>
-            <button class="theme-card-picker" data-theme="theme-desert">
-                <span class="theme-name">Desert Sand</span>
-                <div class="theme-dots"><span style="background: #110501;"></span><span style="background: #f59e0b;"></span></div>
-            </button>
-            <button class="theme-card-picker" data-theme="theme-jungle">
-                <span class="theme-name">Jungle Emerald</span>
-                <div class="theme-dots"><span style="background: #010c05;"></span><span style="background: #34d399;"></span></div>
-            </button>
-            <button class="theme-card-picker" data-theme="theme-light-clean">
-                <span class="theme-name">Light Clean</span>
-                <div class="theme-dots"><span style="background: #f8fafc;"></span><span style="background: #0284c7;"></span></div>
-            </button>
-        </div>
-    </aside>
+    <footer>
+        <p>&copy; 2026 - Sebástian García. Todos los derechos reservados.</p>
+    </footer>
 
-    <!-- Archivo JavaScript Externo (Seguro contra CSP) -->
+    <!-- Archivo de Script Externo -->
     <script src="script.js"></script>
 </body>
 </html>
