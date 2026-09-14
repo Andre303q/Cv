@@ -97,7 +97,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // 3. Carrusel Continuo y Arrastrable de Habilidades
     const track = document.getElementById('carousel-track');
     if (track) { 
-        // Duplicar elementos para asegurar un bucle infinito fluido sin espacios vacíos
         track.innerHTML += track.innerHTML + track.innerHTML; 
 
         let currentX = 0;
@@ -150,7 +149,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 isDragging = false; 
             });
 
-            // Soporte táctil para celulares
             slider.addEventListener('touchstart', e => { 
                 isDragging = true; 
                 startXCoord = e.touches[0].clientX; 
