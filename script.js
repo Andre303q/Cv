@@ -1,184 +1,176 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // ==========================================
-    // 1. SELECTOR DE TEMAS Y MENÚ DESPLEGABLE
-    // ==========================================
-    const themeDrawer = document.getElementById('theme-drawer');
-    const openThemeDrawerBtn = document.getElementById('open-theme-drawer');
-    const closeThemeDrawerBtn = document.getElementById('close-theme-drawer');
+    // 1. Observer para animaciones de entrada en Scroll
+    const observerOptions = {
+        root: null,
+        threshold: 0.1,
+        rootMargin: "0px 0px -40px 0px"
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+            } else {
+                entry.target.classList.remove('is-visible');
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.scroll-animate').forEach(section => {
+        observer.observe(section);
+    });
+
+    // 2. Panel Desplegable de Temas (Drawer)
+    const themeMenuBtn = document.getElementById('theme-menu-btn');
+    const themeDrawer = document.getElementById('theme-picker-drawer');
+    const closeDrawerBtn = document.getElementById('close-theme-drawer');
     const themeCards = document.querySelectorAll('.theme-card-picker');
     const bgContainer = document.getElementById('animated-bg-container');
 
-    // Abrir menú lateral de temas
-    if (openThemeDrawerBtn && themeDrawer) {
-        openThemeDrawerBtn.addEventListener('click', () => {
-            themeDrawer.classList.add('open');
+    if (themeMenuBtn && themeDrawer) {
+        themeMenuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            themeDrawer.classList.toggle('open');
         });
     }
 
-    // Cerrar menú lateral de temas
-    if (closeThemeDrawerBtn && themeDrawer) {
-        closeThemeDrawerBtn.addEventListener('click', () => {
+    if (closeDrawerBtn && themeDrawer) {
+        closeDrawerBtn.addEventListener('click', () => {
             themeDrawer.classList.remove('open');
         });
     }
 
-    // Cerrar menú al hacer clic fuera de él
-    document.addEventListener('click', (event) => {
+    // Cerrar el drawer si se hace clic fuera de él
+    document.addEventListener('click', (e) => {
         if (themeDrawer && themeDrawer.classList.contains('open')) {
-            const isClickInsideDrawer = themeDrawer.contains(event.target);
-            const isClickOnOpenBtn = openThemeDrawerBtn.contains(event.target);
-            if (!isClickInsideDrawer && !isClickOnOpenBtn) {
+            if (!themeDrawer.contains(e.target) && !themeMenuBtn.contains(e.target)) {
                 themeDrawer.classList.remove('open');
             }
         }
     });
 
-    // Función para generar elementos visuales dinámicos en el fondo
-    function setupBackgroundElements(themeClass) {
-        if (!bgContainer) return;
-        bgContainer.innerHTML = ''; // Limpiar fondo anterior
+    // Cargar tema guardado en localStorage
+    const savedTheme = localStorage.getItem('selected-theme') || 'dark-classic';
+    applyTheme(savedTheme);
 
-        if (themeClass === 'theme-ocean') {
-            // Crear burbujas flotantes para el tema océano
-            for (let i = 0; i < 15; i++) {
-                const bubble = document.createElement('div');
-                bubble.classList.add('ocean-bubble');
-                const size = Math.random() * 16 + 8; // Entre 8px y 24px
-                bubble.style.width = `${size}px`;
-                bubble.style.height = `${size}px`;
-                bubble.style.left = `${Math.random() * 100}vw`;
-                bubble.style.animationDuration = `${Math.random() * 6 + 4}s`;
-                bubble.style.animationDelay = `${Math.random() * 5}s`;
-                bgContainer.appendChild(bubble);
-            }
-        } else if (themeClass === 'theme-desert') {
-            // Sol del desierto
-            const sun = document.createElement('div');
-            sun.classList.add('desert-sun');
-            bgContainer.appendChild(sun);
-        }
-    }
-
-    // Cambiar tema al hacer clic en las opciones del menú
     themeCards.forEach(card => {
         card.addEventListener('click', () => {
-            const selectedTheme = card.getAttribute('data-theme');
-
-            // Remover todas las clases de temas previos del body
-            document.body.className = '';
-
-            // Si el tema seleccionado no está vacío, agregarlo
-            if (selectedTheme) {
-                document.body.classList.add(selectedTheme);
-            }
-
-            // Actualizar clases activas en los botones del selector
-            themeCards.forEach(c => c.classList.remove('active'));
-            card.classList.add('active');
-
-            // Configurar el fondo animado correspondiente
-            setupBackgroundElements(selectedTheme);
-
-            // Guardar preferencia en localStorage
-            localStorage.setItem('selected_portfolio_theme', selectedTheme);
+            const themeName = card.getAttribute('data-theme');
+            applyTheme(themeName);
+            localStorage.setItem('selected-theme', themeName);
+            themeDrawer.classList.remove('open');
         });
     });
 
-    // Cargar tema guardado previamente (si existe)
-    const savedTheme = localStorage.getItem('selected_portfolio_theme');
-    if (savedTheme !== null) {
+    function applyTheme(theme) {
         document.body.className = '';
-        if (savedTheme) {
-            document.body.classList.add(savedTheme);
+        if (theme !== 'dark-classic') {
+            document.body.classList.add(`theme-${theme}`);
         }
+
+        if (bgContainer) {
+            bgContainer.innerHTML = '';
+            if (theme === 'ocean') {
+                let bubbles = '';
+                for (let i = 0; i < 15; i++) {
+                    const left = Math.random() * 100;
+                    const size = 6 + Math.random() * 18;
+                    const delay = Math.random() * 5;
+                    const duration = 6 + Math.random() * 6;
+                    bubbles += `<div class="ocean-bubble" style="left:${left}%; width:${size}px; height:${size}px; animation-delay:${delay}s; animation-duration:${duration}s;"></div>`;
+                }
+                bgContainer.innerHTML = bubbles;
+            } else if (theme === 'desert') {
+                bgContainer.innerHTML = '<div class="desert-sun"></div>';
+            }
+        }
+
         themeCards.forEach(card => {
-            if (card.getAttribute('data-theme') === savedTheme) {
+            if (card.getAttribute('data-theme') === theme) {
                 card.classList.add('active');
             } else {
                 card.classList.remove('active');
             }
         });
-        setupBackgroundElements(savedTheme);
-    } else {
-        setupBackgroundElements(''); // Por defecto
     }
 
-    // ==========================================
-    // 2. ANIMACIONES AL HACER SCROLL (BIDIRECCIONAL)
-    // ==========================================
-    const scrollElements = document.querySelectorAll('.scroll-animate');
+    // 3. Carrusel Continuo y Arrastrable de Habilidades
+    const track = document.getElementById('carousel-track');
+    if (track) { 
+        // Duplicar elementos para asegurar un bucle infinito fluido sin espacios vacíos
+        track.innerHTML += track.innerHTML + track.innerHTML; 
 
-    const elementInView = (element, dividend = 1.25) => {
-        const elementTop = element.getBoundingClientRect().top;
-        return (
-            elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend
-        );
-    };
+        let currentX = 0;
+        let speed = 0.8;
+        let isDragging = false;
+        let startXCoord = 0;
+        let previousX = 0;
 
-    const elementOutofView = (element) => {
-        const elementTop = element.getBoundingClientRect().top;
-        return (
-            elementTop > (window.innerHeight || document.documentElement.clientHeight)
-        );
-    };
+        function getSingleWidth() { 
+            return track.scrollWidth / 3; 
+        }
 
-    const displayScrollElement = (element) => {
-        element.classList.add('is-visible');
-    };
-
-    const hideScrollElement = (element) => {
-        element.classList.remove('is-visible');
-    };
-
-    const handleScrollAnimation = () => {
-        scrollElements.forEach((el) => {
-            if (elementInView(el, 1.2)) {
-                displayScrollElement(el);
-            } else if (elementOutofView(el)) {
-                hideScrollElement(el);
+        function step() {
+            if (!isDragging) {
+                currentX -= speed;
+                let singleWidth = getSingleWidth();
+                if (Math.abs(currentX) >= singleWidth) {
+                    currentX += singleWidth;
+                }
             }
-        });
-    };
+            track.style.transform = `translateX(${currentX}px)`;
+            requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
 
-    window.addEventListener('scroll', () => {
-        handleScrollAnimation();
-    });
+        const slider = document.getElementById('draggable-carousel');
+        if (slider) {
+            slider.addEventListener('mousedown', e => { 
+                isDragging = true; 
+                startXCoord = e.pageX; 
+                previousX = currentX; 
+            });
 
-    // Ejecutar una vez al cargar para mostrar elementos visibles iniciales
-    handleScrollAnimation();
+            window.addEventListener('mousemove', e => {
+                if (!isDragging) return;
+                currentX = previousX + (e.pageX - startXCoord);
+                let singleWidth = getSingleWidth();
+                if (Math.abs(currentX) >= singleWidth * 2) { 
+                    currentX = -singleWidth; 
+                    previousX = currentX; 
+                    startXCoord = e.pageX; 
+                } else if (currentX > 0) {
+                    currentX = -singleWidth;
+                    previousX = currentX;
+                    startXCoord = e.pageX;
+                }
+            });
 
-    // ==========================================
-    // 3. CARRUSEL HORIZONTAL ARRASTRABLE (DRAG & SCROLL)
-    // ==========================================
-    const slider = document.getElementById('skills-carousel');
-    let isDown = false;
-    let startX;
-    let scrollLeft;
+            window.addEventListener('mouseup', () => { 
+                isDragging = false; 
+            });
 
-    if (slider) {
-        slider.addEventListener('mousedown', (e) => {
-            isDown = true;
-            slider.classList.add('active');
-            startX = e.pageX - slider.offsetLeft;
-            scrollLeft = slider.scrollLeft;
-        });
+            // Soporte táctil para celulares
+            slider.addEventListener('touchstart', e => { 
+                isDragging = true; 
+                startXCoord = e.touches[0].clientX; 
+                previousX = currentX; 
+            });
 
-        slider.addEventListener('mouseleave', () => {
-            isDown = false;
-            slider.classList.remove('active');
-        });
+            window.addEventListener('touchmove', e => {
+                if (!isDragging) return;
+                currentX = previousX + (e.touches[0].clientX - startXCoord);
+                let singleWidth = getSingleWidth();
+                if (Math.abs(currentX) >= singleWidth * 2) { 
+                    currentX = -singleWidth; 
+                    previousX = currentX; 
+                    startXCoord = e.touches[0].clientX; 
+                }
+            });
 
-        slider.addEventListener('mouseup', () => {
-            isDown = false;
-            slider.classList.remove('active');
-        });
-
-        slider.addEventListener('mousemove', (e) => {
-            if (!isDown) return;
-            e.preventDefault();
-            const x = e.pageX - slider.offsetLeft;
-            const walk = (x - startX) * 2; // Velocidad de desplazamiento
-            slider.scrollLeft = scrollLeft - walk;
-        });
+            window.addEventListener('touchend', () => { 
+                isDragging = false; 
+            });
+        }
     }
 });
