@@ -1,4 +1,4 @@
-/* plus-jakarta-sans-regular - latin */
+//* plus-jakarta-sans-regular - latin */
 @font-face {
   font-display: swap;
   font-family: 'Plus Jakarta Sans';
@@ -49,7 +49,7 @@
   font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
-  src: url('fonts/inter-v13-latin-regular.woff2') format('woff2');
+  src: url('fonts/inter-v20-latin-regular.woff2') format('woff2');
 }
 
 /* inter-500 - latin */
@@ -58,7 +58,7 @@
   font-family: 'Inter';
   font-style: normal;
   font-weight: 500;
-  src: url('fonts/inter-v13-latin-500.woff2') format('woff2');
+  src: url('fonts/inter-v20-latin-500.woff2') format('woff2');
 }
 
 /* inter-600 - latin */
@@ -67,8 +67,8 @@
   font-family: 'Inter';
   font-style: normal;
   font-weight: 600;
-  src: url('fonts/inter-v13-latin-600.woff2') format('woff2');
-}
+  src: url('fonts/inter-v20-latin-600.woff2') format('woff2');
+} 
 
 /* Tipografía base segura para evitar llamadas externas y alertas de ZAP */
 body {
